@@ -10861,7 +10861,7 @@ a:focus {
 }
 
 .bg-login-image {
-  background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800");
+
   background-position: center;
   background-size: cover;
 }
@@ -10935,6 +10935,14 @@ form.user .btn-user {
   color: #fff;
   background-color: #3b5998;
   border-color: #fff;
+}
+
+div#avatar {
+
+  width: 80px;
+  height: 103px;
+  padding: 0;
+
 }
 
 .btn-facebook:hover {

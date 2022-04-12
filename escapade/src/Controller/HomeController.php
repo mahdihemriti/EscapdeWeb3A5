@@ -74,4 +74,13 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
+    /**
+     * @Route("/panier", name="panier")
+     */
+    public function affichepanier(): Response
+    {
+        return $this->render('Front/panier.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
 }
