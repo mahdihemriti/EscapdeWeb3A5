@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 10 avr. 2022 à 13:45
+-- Généré le : dim. 10 avr. 2022 à 15:00
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 7.4.27
 
@@ -155,7 +155,7 @@ CREATE TABLE `moyendetransport` (
   `capacite` int(11) NOT NULL,
   `description` varchar(30) NOT NULL,
   `status` enum('disponible','indisponible') NOT NULL,
-  `tarifJournée` double NOT NULL,
+  `tarifJournee` double NOT NULL,
   `idAgence` int(11) NOT NULL,
   `idDestination` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
