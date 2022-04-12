@@ -59,9 +59,9 @@ class Moyendetransport
     /**
      * @var float
      *
-     * @ORM\Column(name="tarifJournee", type="float", precision=10, scale=0, nullable=false)
+     * @ORM\Column(name="tarifJourn√©e", type="float", precision=10, scale=0, nullable=false)
      */
-    private $tarifjournee;
+    private $tarifjourn„©e;
 
     /**
      * @var \Destination
