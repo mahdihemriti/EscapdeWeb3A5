@@ -1,0 +1,32 @@
+{% extends 'baseBack.html.twig' %}
+{% block content %}
+    <h1>Créer une nouvelle destination</h1>
+    <hr><hr>
+
+    {{ form_start(form,{'attr':{'novalidate': 'novalidate'}}) }}
+
+    {{ form_label(form.pays,'Pays') }}
+    {{ form_widget(form.pays,{'attr':{
+        'class':'pays','placeholder':'Veuillez entrer le pays','novalidate': 'novalidate'
+    }}) }}
+    {{ form_errors(form.pays) }}
+    <br>
+
+    {{ form_label(form.ville,'Ville') }}
+    {{ form_widget(form.ville,{'attr':{
+        'class':'ville','placeholder':'Veuillez entrer la ville','novalidate': 'novalidate'
+    }}) }}
+    {{ form_errors(form.ville) }}
+<br>
+    {{ form_label(form.img,'Image') }}
+    {{ form_widget(form.img,{'attr':{
+        'class':'img','placeholder':'Veuillez entrer la ville','novalidate': 'novalidate'
+    }}) }}
+    {{ form_errors(form.img) }}
+    <br>
+    <br>
+
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_destination_index') }}">Retour à la liste</a>
+{% endblock %}

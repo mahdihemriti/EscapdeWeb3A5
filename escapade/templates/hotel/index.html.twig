@@ -1,0 +1,41 @@
+{% extends 'baseBack.html.twig' %}
+{% block content %}
+    <h1>Liste de nos hôtels</h1>
+    <hr><hr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Matricule fiscale</th>
+                <th>Nom</th>
+                <th>Nombre des étoiles</th>
+                <th>Description</th>
+                <th>Destination</th>
+
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hotel in hotels %}
+            <tr>
+
+                <td>{{ hotel.matriculefiscale }}</td>
+                <td>{{ hotel.nom }}</td>
+                <td>{{ hotel.nbretoile }}</td>
+                <td>{{ hotel.description }}</td>
+
+                <td>{{ hotel.iddestination.pays }}</td>
+                <td>
+                    <a href="{{ path('app_hotel_show', {'idhotel': hotel.idhotel}) }}">Détails</a>
+                    <a href="{{ path('app_hotel_edit', {'idhotel': hotel.idhotel}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">Pas d'hôtels trouvés</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_hotel_new') }}">Ajouter un hôtel</a>
+{% endblock %}
