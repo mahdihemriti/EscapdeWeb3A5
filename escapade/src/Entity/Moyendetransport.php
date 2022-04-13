@@ -83,5 +83,106 @@ class Moyendetransport
      */
     private $idagence;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getLibelle(): ?string
+    {
+        return $this->libelle;
+    }
+
+    public function setLibelle(string $libelle): self
+    {
+        $this->libelle = $libelle;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getCapacite(): ?int
+    {
+        return $this->capacite;
+    }
+
+    public function setCapacite(int $capacite): self
+    {
+        $this->capacite = $capacite;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function getTarifjournã©e(): ?float
+    {
+        return $this->tarifjournã©e;
+    }
+
+    public function setTarifjournã©e(float $tarifjournã©e): self
+    {
+        $this->tarifjournã©e = $tarifjournã©e;
+
+        return $this;
+    }
+
+    public function getIddestination(): ?Destination
+    {
+        return $this->iddestination;
+    }
+
+    public function setIddestination(?Destination $iddestination): self
+    {
+        $this->iddestination = $iddestination;
+
+        return $this;
+    }
+
+    public function getIdagence(): ?Agencedelocation
+    {
+        return $this->idagence;
+    }
+
+    public function setIdagence(?Agencedelocation $idagence): self
+    {
+        $this->idagence = $idagence;
+
+        return $this;
+    }
+
 
 }

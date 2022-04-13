@@ -42,5 +42,46 @@ class Promotion
      */
     private $datefin;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getTaux(): ?float
+    {
+        return $this->taux;
+    }
+
+    public function setTaux(float $taux): self
+    {
+        $this->taux = $taux;
+
+        return $this;
+    }
+
+    public function getDatedebut(): ?\DateTimeInterface
+    {
+        return $this->datedebut;
+    }
+
+    public function setDatedebut(\DateTimeInterface $datedebut): self
+    {
+        $this->datedebut = $datedebut;
+
+        return $this;
+    }
+
+    public function getDatefin(): ?\DateTimeInterface
+    {
+        return $this->datefin;
+    }
+
+    public function setDatefin(\DateTimeInterface $datefin): self
+    {
+        $this->datefin = $datefin;
+
+        return $this;
+    }
+
 
 }

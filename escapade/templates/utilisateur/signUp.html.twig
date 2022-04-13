@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+
+{% block content %}
+    <h1>Nouveau utilisateur</h1>
+
+    {{ form_start(form,{'attr':{'novalidate': 'novalidate'}}) }}
+
+    {{ form_label(form.nom,'nom') }}
+
+    {{ form_widget(form.nom,{'attr':{
+        'class':'nom','placeholder':'Veuillez entrer nom'
+    }}) }}
+    {{ form_errors(form.nom) }}
+    <br>
+
+    {{ form_label(form.prenom, 'prenom') }}
+
+    {{ form_widget(form.prenom,{'attr':{
+        'class':'prenom','placeholder':'Veuillez entrer le prenom'
+    }}) }}
+    {{ form_errors(form.prenom) }}
+    <br>
+    {{ form_label(form.email,'email') }}
+
+    {{ form_widget(form.email,{'attr':{
+        'class':'email','placeholder':'Veuillez entrer le email'
+    }}) }}
+    {{ form_errors(form.email) }}
+    <br>
+    {{ form_label(form.datedenaissance,'datedenaissance') }}
+
+    {{ form_widget(form.datedenaissance,{'attr':{
+        'class':'datedenaissance','placeholder':'Veuillez entrer datedenaissance'
+    }}) }}
+    {{ form_errors(form.datedenaissance) }}
+    <br>
+    {{ form_label(form.numtel,'numtel') }}
+
+    {{ form_widget(form.numtel,{'attr':{
+        'class':'numtel','placeholder':'Veuillez entrer le num tel'
+    }}) }}
+    {{ form_errors(form.numtel) }}
+
+    <br>
+    {{ form_label(form.ville,'ville') }}
+
+    {{ form_widget(form.ville,{'attr':{
+        'class':'ville','placeholder':'Veuillez entrer ville'
+    }}) }}
+    {{ form_errors(form.ville) }}
+
+    <br>
+    {{ form_label(form.mdp,'password') }}
+
+    {{ form_widget(form.mdp,{'attr':{
+        'class':'mdp','placeholder':'Veuillez entrer mdp'
+    }}) }}
+    {{ form_errors(form.mdp) }}
+    <br>
+    <br>
+    {{ form_label(form.Confirm_Password,'confirm password') }}
+
+    {{ form_widget(form.Confirm_Password,{'attr':{
+        'class':'Confirm_Password','placeholder':'Veuillez entrer mdp'
+    }}) }}
+    {{ form_errors(form.Confirm_Password) }}
+    <br>
+    {{ form_label(form.image,'image') }}
+
+    {{ form_widget(form.image,{'attr':{
+        'class':'image','placeholder':'Veuillez entrer l image'
+    }}) }}
+    {{ form_errors(form.image) }}
+    <br>
+
+    <button class="btn">{{ button_label|default('inscrire') }}</button>
+    {{ form_end(form) }}
+
+
+
+{% endblock %}

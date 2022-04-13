@@ -45,5 +45,46 @@ class Commentaire
      */
     private $idclient;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    public function getIdclient(): ?Utilisateur
+    {
+        return $this->idclient;
+    }
+
+    public function setIdclient(?Utilisateur $idclient): self
+    {
+        $this->idclient = $idclient;
+
+        return $this;
+    }
+
 
 }

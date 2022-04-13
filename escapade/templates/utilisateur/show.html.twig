@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateur{% endblock %}
+{% block logIn %}
+    <li><a href="{{ path ('reclamation') }}">Réclamation</a></li>
+    <li><a href="{{ path ('panier') }}"><i class='icon-shopping-cart'></i></a></li>
+    <li>
+        <a href="{{ path ('home') }}"class="fh5co-sub-ddown"><i class="icon-user"></i></a>
+        <ul class="fh5co-sub-menu">
+            <li><a href="{{ path ('app_utilisateur_show',{id: utilisateur.id}) }}">Profil</a></li>
+            <li><a href="{{ path('home') }}">deconnexion</a></li>
+        </ul>
+    </li>
+{% endblock %}
+
+
+{% block content %}
+    <h1>Utilisateur</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ utilisateur.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ utilisateur.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ utilisateur.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ utilisateur.email }}</td>
+            </tr>
+            <tr>
+                <th>Datedenaissance</th>
+                <td>{{ utilisateur.datedenaissance ? utilisateur.datedenaissance|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Numtel</th>
+                <td>{{ utilisateur.numtel }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ utilisateur.ville }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td><img src="{{asset('uploads/'~utilisateur.image)}}" width="50" height="50"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_utilisateur_edit', {'id': utilisateur.id}) }}">edit</a>
+
+    {{ include('utilisateur/_delete_form.html.twig') }}
+{% endblock %}

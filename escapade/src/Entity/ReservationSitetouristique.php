@@ -53,5 +53,53 @@ class ReservationSitetouristique
      */
     private $idclient;
 
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    public function getIdguide(): ?Guide
+    {
+        return $this->idguide;
+    }
+
+    public function setIdguide(?Guide $idguide): self
+    {
+        $this->idguide = $idguide;
+
+        return $this;
+    }
+
+    public function getIdsitetouristique(): ?Sitetourstique
+    {
+        return $this->idsitetouristique;
+    }
+
+    public function setIdsitetouristique(?Sitetourstique $idsitetouristique): self
+    {
+        $this->idsitetouristique = $idsitetouristique;
+
+        return $this;
+    }
+
+    public function getIdclient(): ?Utilisateur
+    {
+        return $this->idclient;
+    }
+
+    public function setIdclient(?Utilisateur $idclient): self
+    {
+        $this->idclient = $idclient;
+
+        return $this;
+    }
+
 
 }

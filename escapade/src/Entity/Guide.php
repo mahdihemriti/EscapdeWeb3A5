@@ -66,5 +66,82 @@ class Guide
      */
     private $idsitetouristique;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getPernom(): ?string
+    {
+        return $this->pernom;
+    }
+
+    public function setPernom(string $pernom): self
+    {
+        $this->pernom = $pernom;
+
+        return $this;
+    }
+
+    public function getNationnalite(): ?string
+    {
+        return $this->nationnalite;
+    }
+
+    public function setNationnalite(string $nationnalite): self
+    {
+        $this->nationnalite = $nationnalite;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getLangue(): ?string
+    {
+        return $this->langue;
+    }
+
+    public function setLangue(string $langue): self
+    {
+        $this->langue = $langue;
+
+        return $this;
+    }
+
+    public function getIdsitetouristique(): ?Sitetourstique
+    {
+        return $this->idsitetouristique;
+    }
+
+    public function setIdsitetouristique(?Sitetourstique $idsitetouristique): self
+    {
+        $this->idsitetouristique = $idsitetouristique;
+
+        return $this;
+    }
+
 
 }

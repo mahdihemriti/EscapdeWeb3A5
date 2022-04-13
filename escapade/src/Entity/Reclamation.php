@@ -3,12 +3,15 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ReclamationRepository;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+
 
 /**
  * Reclamation
  *
  * @ORM\Table(name="reclamation", indexes={@ORM\Index(name="Fk_UtilisateurReclamation", columns={"idClient"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=ReclamationRepository::class)
  */
 class Reclamation
 {
@@ -44,6 +47,47 @@ class Reclamation
      * })
      */
     private $idclient;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getIdclient(): ?Utilisateur
+    {
+        return $this->idclient;
+    }
+
+    public function setIdclient(?Utilisateur $idclient): self
+    {
+        $this->idclient = $idclient;
+
+        return $this;
+    }
 
 
 }

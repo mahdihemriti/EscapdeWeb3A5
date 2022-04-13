@@ -76,5 +76,94 @@ class Sitetourstique
      */
     private $iddestination;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getLibelle(): ?string
+    {
+        return $this->libelle;
+    }
+
+    public function setLibelle(string $libelle): self
+    {
+        $this->libelle = $libelle;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(string $adresse): self
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getPrix(): ?float
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(float $prix): self
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getIdguide(): ?Guide
+    {
+        return $this->idguide;
+    }
+
+    public function setIdguide(?Guide $idguide): self
+    {
+        $this->idguide = $idguide;
+
+        return $this;
+    }
+
+    public function getIddestination(): ?Destination
+    {
+        return $this->iddestination;
+    }
+
+    public function setIddestination(?Destination $iddestination): self
+    {
+        $this->iddestination = $iddestination;
+
+        return $this;
+    }
+
 
 }

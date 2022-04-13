@@ -13,16 +13,23 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('Front/index.html.twig', [
+        return $this->render('front/index.html.twig', [
             'controller_name' => 'HomeController',
         ]);
+    }
+    /**
+     * @Route("/homeC", name="homeC")
+     */
+    public function homeC(): Response
+    {
+        return $this->render('front/homeConnected.html.twig');
     }
     /**
      * @Route("/hotel", name="hotel")
      */
     public function afficheH(): Response
     {
-        return $this->render('Front/hotel.html.twig', [
+        return $this->render('front/hotel.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }
@@ -32,7 +39,7 @@ class HomeController extends AbstractController
      */
     public function afficheMT(): Response
     {
-        return $this->render('Front/moyenT.html.twig', [
+        return $this->render('front/moyenT.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }
@@ -41,26 +48,18 @@ class HomeController extends AbstractController
      */
     public function afficheST(): Response
     {
-        return $this->render('Front/siteT.html.twig', [
+        return $this->render('front/siteT.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }
 
-    /**
-     * @Route("/reclamation", name="reclamation")
-     */
-    public function afficheR(): Response
-    {
-        return $this->render('Front/reclamation.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
-    }
+
     /**
      * @Route("/profil", name="profil")
      */
     public function afficheP(): Response
     {
-        return $this->render('Front/profil.html.twig', [
+        return $this->render('front/profil.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }
@@ -70,7 +69,7 @@ class HomeController extends AbstractController
      */
     public function afficheApropos(): Response
     {
-        return $this->render('Front/apropos.html.twig', [
+        return $this->render('front/apropos.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }
@@ -79,7 +78,7 @@ class HomeController extends AbstractController
      */
     public function affichepanier(): Response
     {
-        return $this->render('Front/panier.html.twig', [
+        return $this->render('front/panier.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }
