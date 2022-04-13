@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e85c3487-f02c-40fd-9903-c21f7fa99b21" name="Changes" comment="copie0">
+      <change beforePath="$PROJECT_DIR$/escapade.sql" beforeDir="false" afterPath="$PROJECT_DIR$/escapade.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escapade/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/escapade/src/Controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escapade/templates/Front/profil.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/escapade/templates/Front/profil.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escapade/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/escapade/templates/base.html.twig" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/escapade/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/doctrine-bridge" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/phpunit-bridge" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/twig-bundle" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/escapade/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/escapade/vendor/twig/extra-bundle" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/mailer" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/debug-bundle" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/escapade/vendor/sensio/framework-extra-bundle" />
+      <path value="$PROJECT_DIR$/escapade/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/web-profiler-bundle" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/maker-bundle" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/security-guard" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/browser-kit" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/polyfill-intl-icu" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/twig-bridge" />
+      <path value="$PROJECT_DIR$/escapade/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/serializer" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/debug" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/dotenv" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/asset" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/expression-language" />
+      <path value="$PROJECT_DIR$/escapade/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/escapade/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/escapade/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/escapade/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/escapade/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/escapade/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/escapade/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/escapade/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/escapade/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/escapade/vendor/phpunit/php-invoker" />
+      <path value="$PROJECT_DIR$/escapade/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/escapade/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/escapade/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/escapade/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/escapade/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/escapade/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/escapade/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/escapade/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/escapade/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/escapade/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/escapade/vendor/doctrine/doctrine-bundle" />
+      <path value="$PROJECT_DIR$/escapade/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/escapade/vendor/doctrine/sql-formatter" />
+      <path value="$PROJECT_DIR$/escapade/vendor/doctrine/persistence" />
+      <path value="$PROJECT_DIR$/escapade/vendor/sebastian/lines-of-code" />
+      <path value="$PROJECT_DIR$/escapade/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/escapade/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/escapade/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/escapade/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/escapade/vendor/doctrine/annotations" />
+      <path value="$PROJECT_DIR$/escapade/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/escapade/vendor/friendsofphp/proxy-manager-lts" />
+      <path value="$PROJECT_DIR$/escapade/vendor/doctrine/doctrine-migrations-bundle" />
+      <path value="$PROJECT_DIR$/escapade/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/escapade/vendor/doctrine/migrations" />
+      <path value="$PROJECT_DIR$/escapade/vendor/sebastian/code-unit" />
+      <path value="$PROJECT_DIR$/escapade/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/escapade/vendor/doctrine/common" />
+      <path value="$PROJECT_DIR$/escapade/vendor/sebastian/cli-parser" />
+      <path value="$PROJECT_DIR$/escapade/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/escapade/vendor/sebastian/complexity" />
+      <path value="$PROJECT_DIR$/escapade/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/escapade/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/escapade/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/escapade/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/escapade/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/escapade/vendor/laminas/laminas-code" />
+      <path value="$PROJECT_DIR$/escapade/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/escapade/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/escapade/vendor/composer" />
+      <path value="$PROJECT_DIR$/escapade/vendor/psr/link" />
+      <path value="$PROJECT_DIR$/escapade/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/escapade/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/escapade/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/cache-contracts" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/form" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/monolog-bundle" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/cache" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/security-core" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/inflector" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/property-info" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/property-access" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/proxy-manager-bridge" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/security-csrf" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/stopwatch" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/flex" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/options-resolver" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/framework-bundle" />
+      <path value="$PROJECT_DIR$/escapade/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/polyfill-php81" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/validator" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/dom-crawler" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/web-link" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/security-bundle" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/web-server-bundle" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/intl" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/http-client" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/http-client-contracts" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/monolog-bridge" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="27bhI0V1ex1K8jIDPZGxpSKjvES" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/escapade" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e85c3487-f02c-40fd-9903-c21f7fa99b21" name="Changes" comment="" />
+      <created>1649594608380</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1649594608380</updated>
+      <workItem from="1649594610615" duration="3059000" />
+      <workItem from="1649631451301" duration="1201000" />
+      <workItem from="1649681325842" duration="599000" />
+      <workItem from="1649776210331" duration="5356000" />
+    </task>
+    <task id="LOCAL-00001" summary="copie0">
+      <created>1649597030417</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1649597030417</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="copie0" />
+    <option name="LAST_COMMIT_MESSAGE" value="copie0" />
+  </component>
+</project>
