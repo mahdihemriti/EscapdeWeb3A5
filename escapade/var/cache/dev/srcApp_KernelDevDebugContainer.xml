@@ -148,6 +148,7 @@
     <parameter key="twig.exception_listener.controller">null</parameter>
     <parameter key="twig.form.resources" type="collection">
       <parameter>form_div_layout.html.twig</parameter>
+      <parameter>bootstrap_4_layout.html.twig</parameter>
     </parameter>
     <parameter key="twig.default_path">C:\Users\asus\escapade/templates</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
@@ -346,6 +347,13 @@
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\BackController"/>
       </call>
     </service>
+    <service id="App\Controller\BlogController" class="App\Controller\BlogController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\BlogController"/>
+      </call>
+    </service>
     <service id="App\Controller\FactureController" class="App\Controller\FactureController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -366,6 +374,9 @@
       <call method="setContainer">
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\PromotionController"/>
       </call>
+    </service>
+    <service id="App\Form\BlogType" class="App\Form\BlogType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
     </service>
     <service id="App\Form\FactureType" class="App\Form\FactureType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
@@ -803,6 +814,7 @@
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\BlogType</argument>
         <argument>App\Form\FactureType</argument>
         <argument>App\Form\PromotionType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
@@ -1138,7 +1150,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.UdwFKFj"/>
+      <argument type="service" id=".service_locator.FV_gms2"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -4939,6 +4951,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\BackController" class="App\Controller\BackController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\BackController" class="App\Controller\BackController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\BackController" class="App\Controller\BackController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\BlogController" class="App\Controller\BlogController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\BlogController" class="App\Controller\BlogController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\BlogController" class="App\Controller\BlogController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\FactureController" class="App\Controller\FactureController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\FactureController" class="App\Controller\FactureController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\FactureController" class="App\Controller\FactureController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -4948,6 +4963,8 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\PromotionController" class="App\Controller\PromotionController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\PromotionController" class="App\Controller\PromotionController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\PromotionController" class="App\Controller\PromotionController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\BlogType" class="App\Form\BlogType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\BlogType" class="App\Form\BlogType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\FactureType" class="App\Form\FactureType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\FactureType" class="App\Form\FactureType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\PromotionType" class="App\Form\PromotionType" autowire="true" abstract="true"/>
@@ -5237,6 +5254,25 @@
         <argument>make:migration</argument>
       </call>
     </service>
+    <service id=".service_locator.x8FmIZ0" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.FaOxBQA" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="blog" type="service_closure" id=".errored..service_locator.FaOxBQA.App\Entity\Blog"/>
+      </argument>
+    </service>
+    <service id=".service_locator.0KmN81A" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="blog" type="service_closure" id=".errored..service_locator.0KmN81A.App\Entity\Blog"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
     <service id=".service_locator.ynYNJ8X" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5249,26 +5285,40 @@
         <argument key="promotionRepository" type="service_closure" id="App\Repository\PromotionRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.MfFBuKd" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.Tj0LRil" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Controller\BlogController::delete" type="service_closure" id=".service_locator.0KmN81A"/>
+        <argument key="App\Controller\BlogController::edit" type="service_closure" id=".service_locator.0KmN81A"/>
+        <argument key="App\Controller\BlogController::index" type="service_closure" id=".service_locator.x8FmIZ0"/>
+        <argument key="App\Controller\BlogController::new" type="service_closure" id=".service_locator.x8FmIZ0"/>
+        <argument key="App\Controller\BlogController::show" type="service_closure" id=".service_locator.FaOxBQA"/>
         <argument key="App\Controller\FactureController::delete" type="service_closure" id=".service_locator.ynYNJ8X"/>
         <argument key="App\Controller\FactureController::edit" type="service_closure" id=".service_locator.ynYNJ8X"/>
         <argument key="App\Controller\FactureController::index" type="service_closure" id=".service_locator.ynYNJ8X"/>
+        <argument key="App\Controller\FactureController::listo1" type="service_closure" id=".service_locator.ynYNJ8X"/>
         <argument key="App\Controller\FactureController::show" type="service_closure" id=".service_locator.ynYNJ8X"/>
         <argument key="App\Controller\PromotionController::delete" type="service_closure" id=".service_locator.Z2K.Iwb"/>
         <argument key="App\Controller\PromotionController::edit" type="service_closure" id=".service_locator.Z2K.Iwb"/>
         <argument key="App\Controller\PromotionController::index" type="service_closure" id=".service_locator.Z2K.Iwb"/>
         <argument key="App\Controller\PromotionController::indexfront" type="service_closure" id=".service_locator.Z2K.Iwb"/>
+        <argument key="App\Controller\PromotionController::listo1" type="service_closure" id=".service_locator.Z2K.Iwb"/>
         <argument key="App\Controller\PromotionController::show" type="service_closure" id=".service_locator.Z2K.Iwb"/>
+        <argument key="App\Controller\BlogController:delete" type="service_closure" id=".service_locator.0KmN81A"/>
+        <argument key="App\Controller\BlogController:edit" type="service_closure" id=".service_locator.0KmN81A"/>
+        <argument key="App\Controller\BlogController:index" type="service_closure" id=".service_locator.x8FmIZ0"/>
+        <argument key="App\Controller\BlogController:new" type="service_closure" id=".service_locator.x8FmIZ0"/>
+        <argument key="App\Controller\BlogController:show" type="service_closure" id=".service_locator.FaOxBQA"/>
         <argument key="App\Controller\FactureController:delete" type="service_closure" id=".service_locator.ynYNJ8X"/>
         <argument key="App\Controller\FactureController:edit" type="service_closure" id=".service_locator.ynYNJ8X"/>
         <argument key="App\Controller\FactureController:index" type="service_closure" id=".service_locator.ynYNJ8X"/>
+        <argument key="App\Controller\FactureController:listo1" type="service_closure" id=".service_locator.ynYNJ8X"/>
         <argument key="App\Controller\FactureController:show" type="service_closure" id=".service_locator.ynYNJ8X"/>
         <argument key="App\Controller\PromotionController:delete" type="service_closure" id=".service_locator.Z2K.Iwb"/>
         <argument key="App\Controller\PromotionController:edit" type="service_closure" id=".service_locator.Z2K.Iwb"/>
         <argument key="App\Controller\PromotionController:index" type="service_closure" id=".service_locator.Z2K.Iwb"/>
         <argument key="App\Controller\PromotionController:indexfront" type="service_closure" id=".service_locator.Z2K.Iwb"/>
+        <argument key="App\Controller\PromotionController:listo1" type="service_closure" id=".service_locator.Z2K.Iwb"/>
         <argument key="App\Controller\PromotionController:show" type="service_closure" id=".service_locator.Z2K.Iwb"/>
       </argument>
     </service>
@@ -5331,9 +5381,10 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.UdwFKFj" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.FV_gms2" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\BlogType" type="service_closure" id="App\Form\BlogType"/>
         <argument key="App\Form\FactureType" type="service_closure" id="App\Form\FactureType"/>
         <argument key="App\Form\PromotionType" type="service_closure" id="App\Form\PromotionType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
@@ -5566,6 +5617,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\BlogController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\BlogController"/>
+      <argument>App\Controller\BlogController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
     <service id=".service_locator.vdmMuyE.App\Controller\FactureController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\FactureController"/>
       <argument>App\Controller\FactureController</argument>
@@ -5730,12 +5787,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.MfFBuKd"/>
+      <argument type="service" id=".service_locator.Tj0LRil"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.MfFBuKd"/>
+      <argument type="service" id=".service_locator.Tj0LRil"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -5745,6 +5802,8 @@
       </call>
       <factory class="Symfony\Component\HttpClient\HttpClient" method="create"/>
     </service>
+    <service id=".errored..service_locator.FaOxBQA.App\Entity\Blog" class="App\Entity\Blog"/>
+    <service id=".errored..service_locator.0KmN81A.App\Entity\Blog" class="App\Entity\Blog"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <argument type="service" id=".service_locator.TfYcj5y"/>
       <argument type="collection">
@@ -6135,7 +6194,7 @@
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker" public="false"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.MfFBuKd"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.Tj0LRil"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

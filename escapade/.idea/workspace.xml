@@ -144,6 +144,10 @@
       <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
       <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
       <path value="$PROJECT_DIR$/vendor/symfony/web-server-bundle" />
+      <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
     </include_path>
   </component>
   <component name="ProjectId" id="27YbvRl6oU7EyP1RLaia0ssM5mf" />
@@ -192,7 +196,8 @@
       <workItem from="1649593495694" duration="1410000" />
       <workItem from="1649779521103" duration="1024000" />
       <workItem from="1649780575546" duration="6826000" />
-      <workItem from="1649800284250" duration="29737000" />
+      <workItem from="1649800284250" duration="32241000" />
+      <workItem from="1650292910798" duration="23950000" />
     </task>
     <servers />
   </component>

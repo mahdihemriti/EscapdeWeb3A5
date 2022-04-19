@@ -28,8 +28,11 @@ return [
         '/comBack' => [[['_route' => 'comBack', '_controller' => 'App\\Controller\\BackController::afficheComB'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'login', '_controller' => 'App\\Controller\\BackController::affichelogin'], null, null, null, false, false, null]],
         '/inscrit' => [[['_route' => 'inscrit', '_controller' => 'App\\Controller\\BackController::afficheInscrit'], null, null, null, false, false, null]],
+        '/blog' => [[['_route' => 'app_blog_index', '_controller' => 'App\\Controller\\BlogController::index'], null, ['GET' => 0], null, true, false, null]],
+        '/blog/new' => [[['_route' => 'app_blog_new', '_controller' => 'App\\Controller\\BlogController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/facture' => [[['_route' => 'app_facture_index', '_controller' => 'App\\Controller\\FactureController::index'], null, ['GET' => 0], null, true, false, null]],
         '/facture/new' => [[['_route' => 'app_facture_new', '_controller' => 'App\\Controller\\FactureController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/facture/listo1/back' => [[['_route' => 'liste', '_controller' => 'App\\Controller\\FactureController::listo1'], null, ['GET' => 0], null, false, false, null]],
         '/home' => [[['_route' => 'home', '_controller' => 'App\\Controller\\HomeController::index'], null, null, null, false, false, null]],
         '/hotel' => [[['_route' => 'hotel', '_controller' => 'App\\Controller\\HomeController::afficheH'], null, null, null, false, false, null]],
         '/moyenT' => [[['_route' => 'moyenT', '_controller' => 'App\\Controller\\HomeController::afficheMT'], null, null, null, false, false, null]],
@@ -40,6 +43,8 @@ return [
         '/promotion' => [[['_route' => 'app_promotion_index', '_controller' => 'App\\Controller\\PromotionController::index'], null, ['GET' => 0], null, true, false, null]],
         '/promotion/front' => [[['_route' => 'app_promotion_indexfront', '_controller' => 'App\\Controller\\PromotionController::indexfront'], null, ['GET' => 0], null, false, false, null]],
         '/promotion/new' => [[['_route' => 'app_promotion_new', '_controller' => 'App\\Controller\\PromotionController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/promotion/search/back' => [[['_route' => 'promoAjax', '_controller' => 'App\\Controller\\PromotionController::search'], null, ['GET' => 0], null, false, false, null]],
+        '/promotion/listo1/back' => [[['_route' => 'listo1', '_controller' => 'App\\Controller\\PromotionController::listo1'], null, ['GET' => 0], null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -58,15 +63,23 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
-                .'|/facture/([^/]++)(?'
-                    .'|(*:189)'
-                    .'|/edit(*:202)'
-                    .'|(*:210)'
+                .'|/blog/([^/]++)(?'
+                    .'|(*:186)'
+                    .'|/edit(*:199)'
+                    .'|(*:207)'
+                .')'
+                .'|/facture/(?'
+                    .'|([^/]++)(?'
+                        .'|(*:239)'
+                        .'|/edit(*:252)'
+                        .'|(*:260)'
+                    .')'
+                    .'|search(*:275)'
                 .')'
                 .'|/promotion/([^/]++)(?'
-                    .'|(*:241)'
-                    .'|/edit(*:254)'
-                    .'|(*:262)'
+                    .'|(*:306)'
+                    .'|/edit(*:319)'
+                    .'|(*:327)'
                 .')'
             .')/?$}sD',
     ],
@@ -78,12 +91,16 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        189 => [[['_route' => 'app_facture_show', '_controller' => 'App\\Controller\\FactureController::show'], ['idf'], ['GET' => 0], null, false, true, null]],
-        202 => [[['_route' => 'app_facture_edit', '_controller' => 'App\\Controller\\FactureController::edit'], ['idf'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        210 => [[['_route' => 'app_facture_delete', '_controller' => 'App\\Controller\\FactureController::delete'], ['idf'], ['POST' => 0], null, false, true, null]],
-        241 => [[['_route' => 'app_promotion_show', '_controller' => 'App\\Controller\\PromotionController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        254 => [[['_route' => 'app_promotion_edit', '_controller' => 'App\\Controller\\PromotionController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        262 => [
+        186 => [[['_route' => 'app_blog_show', '_controller' => 'App\\Controller\\BlogController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        199 => [[['_route' => 'app_blog_edit', '_controller' => 'App\\Controller\\BlogController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        207 => [[['_route' => 'app_blog_delete', '_controller' => 'App\\Controller\\BlogController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        239 => [[['_route' => 'app_facture_show', '_controller' => 'App\\Controller\\FactureController::show'], ['idf'], ['GET' => 0], null, false, true, null]],
+        252 => [[['_route' => 'app_facture_edit', '_controller' => 'App\\Controller\\FactureController::edit'], ['idf'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        260 => [[['_route' => 'app_facture_delete', '_controller' => 'App\\Controller\\FactureController::delete'], ['idf'], ['POST' => 0], null, false, true, null]],
+        275 => [[['_route' => 'factureAjax', '_controller' => 'App\\Controller\\FactureController::search'], [], ['GET' => 0], null, false, false, null]],
+        306 => [[['_route' => 'app_promotion_show', '_controller' => 'App\\Controller\\PromotionController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        319 => [[['_route' => 'app_promotion_edit', '_controller' => 'App\\Controller\\PromotionController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        327 => [
             [['_route' => 'app_promotion_delete', '_controller' => 'App\\Controller\\PromotionController::delete'], ['id'], ['POST' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

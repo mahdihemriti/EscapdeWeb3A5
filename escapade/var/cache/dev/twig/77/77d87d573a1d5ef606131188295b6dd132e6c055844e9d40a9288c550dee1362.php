@@ -66,14 +66,57 @@ class __TwigTemplate_47bfe05e99fac4fe3579cb6f0efd9ee76fbd988b9f00da0e3e41eadacb8
 
         // line 6
         echo "    <h1>Ajouter une facture</h1>
-
+    <br>
+    <br>
     ";
-        // line 8
-        echo twig_include($this->env, $context, "facture/form.html.twig", ["button_label" => "New"]);
+        // line 9
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 9, $this->source); })()), 'form_start', ["attr" => ["novalidate" => "novalidate"]]);
         echo "
 
+    ";
+        // line 11
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 11, $this->source); })()), "prixtotal", [], "any", false, false, false, 11), 'label', ["label" => "Prix total"]);
+        echo "
+    <br>
+    ";
+        // line 13
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 13, $this->source); })()), "prixtotal", [], "any", false, false, false, 13), 'widget', ["attr" => ["class" => "prixtotal", "placeholder" => "prixtotal"]]);
+        echo "
+
+ <br>
+
+    ";
+        // line 17
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 17, $this->source); })()), "idclient", [], "any", false, false, false, 17), 'label', ["label" => "Client"]);
+        echo "
+    <br>
+    ";
+        // line 19
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 19, $this->source); })()), "idclient", [], "any", false, false, false, 19), 'widget', ["attr" => ["class" => "idclient", "placeholder" => "idclient"]]);
+        echo "
+
+
+
+<br>
+    ";
+        // line 24
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 24, $this->source); })()), "idpromotion", [], "any", false, false, false, 24), 'label', ["label" => "Promotion"]);
+        echo "
+    <br>
+    ";
+        // line 26
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 26, $this->source); })()), "idpromotion", [], "any", false, false, false, 26), 'widget', ["attr" => ["class" => "idpromotion", "placeholder" => "idpromotion"]]);
+        echo "
+
+<br> <br>
+    ";
+        // line 29
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 29, $this->source); })()), 'form_end');
+        echo "
+
+    <br>
     <a href=\"";
-        // line 10
+        // line 32
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_facture_index");
         echo "\">back to list</a>
 ";
@@ -97,7 +140,7 @@ class __TwigTemplate_47bfe05e99fac4fe3579cb6f0efd9ee76fbd988b9f00da0e3e41eadacb8
 
     public function getDebugInfo()
     {
-        return array (  77 => 10,  72 => 8,  68 => 6,  58 => 5,  35 => 1,);
+        return array (  120 => 32,  114 => 29,  108 => 26,  103 => 24,  95 => 19,  90 => 17,  83 => 13,  78 => 11,  73 => 9,  68 => 6,  58 => 5,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -108,9 +151,31 @@ class __TwigTemplate_47bfe05e99fac4fe3579cb6f0efd9ee76fbd988b9f00da0e3e41eadacb8
 
 {% block content %}
     <h1>Ajouter une facture</h1>
+    <br>
+    <br>
+    {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
 
-    {{ include('facture/form.html.twig', {'button_label': 'New'}) }}
+    {{ form_label(form.prixtotal,'Prix total') }}
+    <br>
+    {{ form_widget(form.prixtotal,{'attr':{'class':'prixtotal','placeholder':'prixtotal'}}) }}
 
+ <br>
+
+    {{ form_label(form.idclient,'Client') }}
+    <br>
+    {{ form_widget(form.idclient,{'attr':{'class':'idclient','placeholder':'idclient'}}) }}
+
+
+
+<br>
+    {{ form_label(form.idpromotion,'Promotion') }}
+    <br>
+    {{ form_widget(form.idpromotion,{'attr':{'class':'idpromotion','placeholder':'idpromotion'}}) }}
+
+<br> <br>
+    {{ form_end(form) }}
+
+    <br>
     <a href=\"{{ path('app_facture_index') }}\">back to list</a>
 {% endblock %}
 ", "facture/new.html.twig", "C:\\Users\\asus\\escapade\\templates\\facture\\new.html.twig");

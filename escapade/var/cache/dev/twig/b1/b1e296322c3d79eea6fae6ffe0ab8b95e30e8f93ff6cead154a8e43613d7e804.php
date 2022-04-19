@@ -95,7 +95,7 @@ class __TwigTemplate_c33d208e5800a8cce47ebdb360741463f832d5abbcdea4d2c7667467c80
 
 
             <tr>
-                <th>idclient</th>
+                <th>Client</th>
                 <td>";
         // line 28
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["facture"]) || array_key_exists("facture", $context) ? $context["facture"] : (function () { throw new RuntimeError('Variable "facture" does not exist.', 28, $this->source); })()), "idclient", [], "any", false, false, false, 28), "nom", [], "any", false, false, false, 28), "html", null, true);
@@ -103,7 +103,7 @@ class __TwigTemplate_c33d208e5800a8cce47ebdb360741463f832d5abbcdea4d2c7667467c80
             </tr>
             <tr>
 
-                <th>idpromotion</th>
+                <th>Promotion</th>
                 <td>";
         // line 33
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["facture"]) || array_key_exists("facture", $context) ? $context["facture"] : (function () { throw new RuntimeError('Variable "facture" does not exist.', 33, $this->source); })()), "idpromotion", [], "any", false, false, false, 33), "taux", [], "any", false, false, false, 33), "html", null, true);
@@ -190,12 +190,12 @@ class __TwigTemplate_c33d208e5800a8cce47ebdb360741463f832d5abbcdea4d2c7667467c80
 
 
             <tr>
-                <th>idclient</th>
+                <th>Client</th>
                 <td>{{ facture.idclient.nom }}</td>
             </tr>
             <tr>
 
-                <th>idpromotion</th>
+                <th>Promotion</th>
                 <td>{{ facture.idpromotion.taux }}</td>
             </tr>
              <tr>

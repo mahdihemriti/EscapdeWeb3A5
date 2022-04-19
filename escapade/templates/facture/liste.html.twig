@@ -1,0 +1,46 @@
+{% block content %}
+<div class="fa fa-chevron-down">
+    <div class="dropdown-item">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h1 align="center">Liste des factures</h1>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="example" class="dropdown-item" border="2">
+                                <thead class=" fa fa-chevron-down">
+                                <tr>
+                                    <th>Prixtotal</th>
+                                    <th>Date</th>
+                                    <th>Prixfinal</th>
+                                    <th>Client</th>
+                                    <th>Promotion</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for facture in factures %}
+                                    <tr>
+
+                                        <td>{{ facture.prixtotal }}</td>
+                                        <td>{{ facture.date ? facture.date|date('Y-m-d') : '' }}</td>
+                                        <td>{{ facture.prixfinal }}</td>
+                                        <td>{{ facture.idclient.nom }}</td>
+                                        <td>{{ facture.idpromotion.taux }}</td>
+
+
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="5">Acune facture disponible</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+
+                            {% endblock %}
+

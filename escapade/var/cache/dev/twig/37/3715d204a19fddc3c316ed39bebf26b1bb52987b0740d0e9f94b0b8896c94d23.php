@@ -65,90 +65,69 @@ class __TwigTemplate_de961a72ddfd2da317ad7c7bc30a6b8cb5f54d42e1fb3b51a811b45c1f9
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
         // line 4
-        echo "    <h1>liste des promotions</h1>
+        echo "<h1> Liste des promotions</h1>
+    <form>
+        <div class=\"container\">
+        <div class=\"input-group\">
+            <input type=\"text\" id=\"search\" class=\"form-control bg-light border-1 \" placeholder=\"Search for...\"
+                   aria-label=\"Search\" aria-describedby=\"basic-addon2\">
+            <div class=\"input-group-append\">
+                <button class=\"btn btn-primary\" type=\"button\">
+                    <i class=\"fas fa-search fa-sm\"></i>
+                </button>
 
-    <table class=\"table\">
-        <thead>
-            <tr>
-                <th>Taux</th>
+            </div>
+        </div>
+        </div>
+    </form>
 
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class=\"container\" id=\"all\">
         ";
-        // line 15
-        $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["promotions"]) || array_key_exists("promotions", $context) ? $context["promotions"] : (function () { throw new RuntimeError('Variable "promotions" does not exist.', 15, $this->source); })()));
-        $context['_iterated'] = false;
-        $context['loop'] = [
-          'parent' => $context['_parent'],
-          'index0' => 0,
-          'index'  => 1,
-          'first'  => true,
-        ];
-        if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof \Countable)) {
-            $length = count($context['_seq']);
-            $context['loop']['revindex0'] = $length - 1;
-            $context['loop']['revindex'] = $length;
-            $context['loop']['length'] = $length;
-            $context['loop']['last'] = 1 === $length;
-        }
-        foreach ($context['_seq'] as $context["_key"] => $context["promotion"]) {
-            // line 16
-            echo "            <tr>
-
-                <td>";
-            // line 18
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["promotion"], "taux", [], "any", false, false, false, 18), "html", null, true);
-            echo "</td>
-
-
-                <td>
-                    <a href=\"";
-            // line 22
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_promotion_show", ["id" => twig_get_attribute($this->env, $this->source, $context["promotion"], "id", [], "any", false, false, false, 22)]), "html", null, true);
-            echo "\">  <i class=\"fa fa-eye\"></i></a>
-                     <a href=\"";
-            // line 23
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_promotion_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["promotion"], "id", [], "any", false, false, false, 23)]), "html", null, true);
-            echo "\"> <i class=\"fa fa-pen\"></i> </a>
-                       ";
-            // line 24
-            echo twig_include($this->env, $context, "promotion/_delete_form.html.twig");
-            echo "
-
-                </td>
-            </tr>
-        ";
-            $context['_iterated'] = true;
-            ++$context['loop']['index0'];
-            ++$context['loop']['index'];
-            $context['loop']['first'] = false;
-            if (isset($context['loop']['length'])) {
-                --$context['loop']['revindex0'];
-                --$context['loop']['revindex'];
-                $context['loop']['last'] = 0 === $context['loop']['revindex0'];
-            }
-        }
-        if (!$context['_iterated']) {
-            // line 29
-            echo "            <tr>
-                <td colspan=\"5\">no records found</td>
-            </tr>
-        ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['promotion'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 33
-        echo "        </tbody>
-    </table>
-
-    <a href=\"";
-        // line 36
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_promotion_new");
-        echo "\">Ajouter</a>
+        // line 21
+        $this->loadTemplate("promotion/promoAjax.html.twig", "promotion/index.html.twig", 21)->display($context);
+        // line 22
+        echo "    </div>
+<br>
+    <script src=\"";
+        // line 24
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/jquery.js"), "html", null, true);
+        echo "\"></script>
+    <script
+            src=\"";
+        // line 26
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"), "html", null, true);
+        echo "\">
+    </script>
+    <script>
+        \$( document ).ready(function() {
+            var currentRequest = null;
+            \$(\"#search\").keyup(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte
+                afin d’effectuer la recherche */
+                var value = \$(this).val();
+                if(currentRequest != null) {
+                    currentRequest.abort();
+                }
+                /* Ajax est lancé lors du remplissage du champ texte dont l’id est
+                « search » pour faire la recherche */
+                currentRequest = \$.ajax({
+                    url : \"";
+        // line 41
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("promoAjax");
+        echo "\",
+                    type : 'GET',
+                    data: {
+                        'searchValue' : value
+                    },
+                    success : function(retour)
+                    {
+                        \$('#all').html(retour);
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
 
 ";
         
@@ -171,7 +150,7 @@ class __TwigTemplate_de961a72ddfd2da317ad7c7bc30a6b8cb5f54d42e1fb3b51a811b45c1f9
 
     public function getDebugInfo()
     {
-        return array (  150 => 36,  145 => 33,  136 => 29,  118 => 24,  114 => 23,  110 => 22,  103 => 18,  99 => 16,  81 => 15,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  116 => 41,  98 => 26,  93 => 24,  89 => 22,  87 => 21,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -179,39 +158,57 @@ class __TwigTemplate_de961a72ddfd2da317ad7c7bc30a6b8cb5f54d42e1fb3b51a811b45c1f9
         return new Source("{% extends 'baseBack.html.twig' %}
 
 {% block content %}
-    <h1>liste des promotions</h1>
+<h1> Liste des promotions</h1>
+    <form>
+        <div class=\"container\">
+        <div class=\"input-group\">
+            <input type=\"text\" id=\"search\" class=\"form-control bg-light border-1 \" placeholder=\"Search for...\"
+                   aria-label=\"Search\" aria-describedby=\"basic-addon2\">
+            <div class=\"input-group-append\">
+                <button class=\"btn btn-primary\" type=\"button\">
+                    <i class=\"fas fa-search fa-sm\"></i>
+                </button>
 
-    <table class=\"table\">
-        <thead>
-            <tr>
-                <th>Taux</th>
+            </div>
+        </div>
+        </div>
+    </form>
 
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for promotion in promotions %}
-            <tr>
-
-                <td>{{ promotion.taux }}</td>
-
-
-                <td>
-                    <a href=\"{{ path('app_promotion_show', {'id': promotion.id}) }}\">  <i class=\"fa fa-eye\"></i></a>
-                     <a href=\"{{ path('app_promotion_edit', {'id': promotion.id}) }}\"> <i class=\"fa fa-pen\"></i> </a>
-                       {{ include('promotion/_delete_form.html.twig') }}
-
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan=\"5\">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href=\"{{ path('app_promotion_new') }}\">Ajouter</a>
+    <div class=\"container\" id=\"all\">
+        {% include 'promotion/promoAjax.html.twig' %}
+    </div>
+<br>
+    <script src=\"{{ asset('assets/js/jquery.js') }}\"></script>
+    <script
+            src=\"{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js')}}\">
+    </script>
+    <script>
+        \$( document ).ready(function() {
+            var currentRequest = null;
+            \$(\"#search\").keyup(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte
+                afin d’effectuer la recherche */
+                var value = \$(this).val();
+                if(currentRequest != null) {
+                    currentRequest.abort();
+                }
+                /* Ajax est lancé lors du remplissage du champ texte dont l’id est
+                « search » pour faire la recherche */
+                currentRequest = \$.ajax({
+                    url : \"{{ path('promoAjax') }}\",
+                    type : 'GET',
+                    data: {
+                        'searchValue' : value
+                    },
+                    success : function(retour)
+                    {
+                        \$('#all').html(retour);
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
 
 {% endblock %}
 ", "promotion/index.html.twig", "C:\\Users\\asus\\escapade\\templates\\promotion\\index.html.twig");

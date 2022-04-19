@@ -30,7 +30,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 ],
             ],
             'repositoryClass' => [
-                3 => 'FactureRepository',
+                3 => 'App\\Repository\\FactureRepository',
             ],
         ],
     ],

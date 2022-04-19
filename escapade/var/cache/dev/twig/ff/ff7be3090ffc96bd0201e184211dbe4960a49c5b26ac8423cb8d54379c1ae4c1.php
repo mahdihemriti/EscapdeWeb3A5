@@ -125,36 +125,16 @@ class __TwigTemplate_d2f215f60a069630f0b8142e4b459b3374cb7eceea84320de850852c947
                         </tr>
                         </thead>
                         <tbody>
-                        ";
-        // line 61
-        $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["factures"]) || array_key_exists("factures", $context) ? $context["factures"] : (function () { throw new RuntimeError('Variable "factures" does not exist.', 61, $this->source); })()));
-        $context['_iterated'] = false;
-        foreach ($context['_seq'] as $context["_key"] => $context["facture"]) {
-            // line 62
-            echo "                        <tr>
+                        <tr>
 
+                            <td class=\"product-thumb\">
+                                <img width=\"80px\" height=\"auto\" src=\"images/products/products-1.jpg\" alt=\"image description\"></td>
                             <td class=\"product-details\">
-                                <h3 class=\"title\">";
-            // line 65
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["facture"], "prixtotal", [], "any", false, false, false, 65), "html", null, true);
-            echo "</h3>
-                                <span class=\"add-id\">";
-            // line 66
-            ((twig_get_attribute($this->env, $this->source, $context["facture"], "date", [], "any", false, false, false, 66)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["facture"], "date", [], "any", false, false, false, 66), "Y-m-d"), "html", null, true))) : (print ("")));
-            echo "</span>
-                                <span><strong>Posted on: </strong><time>";
-            // line 67
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["facture"], "prixfinal", [], "any", false, false, false, 67), "html", null, true);
-            echo "</time> </span>
-                                <span class=\"status active\">";
-            // line 68
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["facture"], "idclient", [], "any", false, false, false, 68), "nom", [], "any", false, false, false, 68), "html", null, true);
-            echo "</span>
-                                <span class=\"location\">";
-            // line 69
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["facture"], "idpromotion", [], "any", false, false, false, 69), "taux", [], "any", false, false, false, 69), "html", null, true);
-            echo "</span>
+                                <h3 class=\"title\">Macbook Pro 15inch</h3>
+                                <span class=\"add-id\"><strong>Ad ID:</strong> ng3D5hAMHPajQrM</span>
+                                <span><strong>Posted on: </strong><time>Jun 27, 2017</time> </span>
+                                <span class=\"status active\"><strong>Status</strong>Active</span>
+                                <span class=\"location\"><strong>Location</strong>Dhaka,Bangladesh</span>
                             </td>
                             <td class=\"product-category\"><span class=\"categories\">Laptops</span></td>
                             <td class=\"action\" data-title=\"Action\">
@@ -179,21 +159,8 @@ class __TwigTemplate_d2f215f60a069630f0b8142e4b459b3374cb7eceea84320de850852c947
                                 </div>
                             </td>
                         </tr>
-                        ";
-            $context['_iterated'] = true;
-        }
-        if (!$context['_iterated']) {
-            // line 95
-            echo "                            <tr>
-                                <td colspan=\"5\">Table vide</td>
-                            </tr>
-                        ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['facture'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 99
-        echo "                        </tbody>
+
+                        </tbody>
                     </table>
 
                 </div>
@@ -249,7 +216,7 @@ class __TwigTemplate_d2f215f60a069630f0b8142e4b459b3374cb7eceea84320de850852c947
 
     public function getDebugInfo()
     {
-        return array (  196 => 99,  187 => 95,  156 => 69,  152 => 68,  148 => 67,  144 => 66,  140 => 65,  135 => 62,  130 => 61,  77 => 11,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  77 => 11,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -314,15 +281,16 @@ class __TwigTemplate_d2f215f60a069630f0b8142e4b459b3374cb7eceea84320de850852c947
                         </tr>
                         </thead>
                         <tbody>
-                        {% for facture in factures %}
                         <tr>
 
+                            <td class=\"product-thumb\">
+                                <img width=\"80px\" height=\"auto\" src=\"images/products/products-1.jpg\" alt=\"image description\"></td>
                             <td class=\"product-details\">
-                                <h3 class=\"title\">{{ facture.prixtotal }}</h3>
-                                <span class=\"add-id\">{{ facture.date ? facture.date|date('Y-m-d') : '' }}</span>
-                                <span><strong>Posted on: </strong><time>{{ facture.prixfinal }}</time> </span>
-                                <span class=\"status active\">{{ facture.idclient.nom }}</span>
-                                <span class=\"location\">{{ facture.idpromotion.taux }}</span>
+                                <h3 class=\"title\">Macbook Pro 15inch</h3>
+                                <span class=\"add-id\"><strong>Ad ID:</strong> ng3D5hAMHPajQrM</span>
+                                <span><strong>Posted on: </strong><time>Jun 27, 2017</time> </span>
+                                <span class=\"status active\"><strong>Status</strong>Active</span>
+                                <span class=\"location\"><strong>Location</strong>Dhaka,Bangladesh</span>
                             </td>
                             <td class=\"product-category\"><span class=\"categories\">Laptops</span></td>
                             <td class=\"action\" data-title=\"Action\">
@@ -347,11 +315,7 @@ class __TwigTemplate_d2f215f60a069630f0b8142e4b459b3374cb7eceea84320de850852c947
                                 </div>
                             </td>
                         </tr>
-                        {% else %}
-                            <tr>
-                                <td colspan=\"5\">Table vide</td>
-                            </tr>
-                        {% endfor %}
+
                         </tbody>
                     </table>
 

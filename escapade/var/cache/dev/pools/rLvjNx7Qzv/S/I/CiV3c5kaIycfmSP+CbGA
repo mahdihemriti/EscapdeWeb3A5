@@ -2,31 +2,34 @@
 
 return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
     $o = [
-        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Validator\\Constraints\\Expression'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\Expression')),
-        clone ($p['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+        clone ($p['Symfony\\Component\\Validator\\Constraints\\Expression'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\Expression')),
     ],
     null,
     [
         'stdClass' => [
-            'expression' => [
-                'this.getDatedebut() < this.getDatefin()',
-            ],
-            'groups' => [
-                [
-                    'Default',
-                ],
-            ],
             'name' => [
-                1 => 'dateFin',
+                'dateFin',
             ],
             'type' => [
-                1 => 'date',
+                'date',
             ],
             'precision' => [
-                1 => null,
+                null,
             ],
             'scale' => [
-                1 => null,
+                null,
+            ],
+            'message' => [
+                1 => 'Date fin doit être superieure à la date de début',
+            ],
+            'expression' => [
+                1 => 'this.getDatefin() > this.getDatedebut()',
+            ],
+            'groups' => [
+                1 => [
+                    'Default',
+                ],
             ],
         ],
     ],

@@ -65,72 +65,69 @@ class __TwigTemplate_b1688466060942cf92697233b8af264029f8f0dfd32a31812946ac524ea
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
         // line 5
-        echo "    <h1>liste des factures</h1>
+        echo "    <h1>Liste des factures</h1>
+    <form>
+        <div class=\"container\">
+            <div class=\"input-group\">
+                <input type=\"text\" id=\"search\" class=\"form-control bg-light border-1 \" placeholder=\"Search for...\"
+                       aria-label=\"Search\" aria-describedby=\"basic-addon2\">
+                <div class=\"input-group-append\">
+                    <button class=\"btn btn-primary\" type=\"button\">
+                        <i class=\"fas fa-search fa-sm\"></i>
+                    </button>
 
-    <table class=\"table\">
-        <thead>
-            <tr>
+                </div>
+            </div>
+        </div>
+    </form>
 
-                <th>Prixtotal</th>
-                <th>Date</th>
-                <th>Prixfinal</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class=\"container\" id=\"all\">
         ";
-        // line 18
-        $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["factures"]) || array_key_exists("factures", $context) ? $context["factures"] : (function () { throw new RuntimeError('Variable "factures" does not exist.', 18, $this->source); })()));
-        $context['_iterated'] = false;
-        foreach ($context['_seq'] as $context["_key"] => $context["facture"]) {
-            // line 19
-            echo "            <tr>
-
-                <td>";
-            // line 21
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["facture"], "prixtotal", [], "any", false, false, false, 21), "html", null, true);
-            echo "</td>
-                <td>";
-            // line 22
-            ((twig_get_attribute($this->env, $this->source, $context["facture"], "date", [], "any", false, false, false, 22)) ? (print (twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["facture"], "date", [], "any", false, false, false, 22), "Y-m-d"), "html", null, true))) : (print ("")));
-            echo "</td>
-                <td>";
-            // line 23
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["facture"], "prixfinal", [], "any", false, false, false, 23), "html", null, true);
-            echo "</td>
-                <td>
-                    <a href=\"";
-            // line 25
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_facture_show", ["idf" => twig_get_attribute($this->env, $this->source, $context["facture"], "idf", [], "any", false, false, false, 25)]), "html", null, true);
-            echo "\">show</a>
-                    <a href=\"";
-            // line 26
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_facture_edit", ["idf" => twig_get_attribute($this->env, $this->source, $context["facture"], "idf", [], "any", false, false, false, 26)]), "html", null, true);
-            echo "\">edit</a>
-                </td>
-            </tr>
-        ";
-            $context['_iterated'] = true;
-        }
-        if (!$context['_iterated']) {
-            // line 30
-            echo "            <tr>
-                <td colspan=\"5\">no records found</td>
-            </tr>
-        ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['facture'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 34
-        echo "        </tbody>
-    </table>
-
-    <a href=\"";
-        // line 37
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_facture_new");
-        echo "\">Create new</a>
+        // line 22
+        $this->loadTemplate("facture/factureAjax.html.twig", "facture/index.html.twig", 22)->display($context);
+        // line 23
+        echo "    </div>
+    <br>
+    <script src=\"";
+        // line 25
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/jquery.js"), "html", null, true);
+        echo "\"></script>
+    <script
+            src=\"";
+        // line 27
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"), "html", null, true);
+        echo "\">
+    </script>
+    <script>
+        \$( document ).ready(function() {
+            var currentRequest = null;
+            \$(\"#search\").keyup(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte
+                afin d’effectuer la recherche */
+                var value = \$(this).val();
+                if(currentRequest != null) {
+                    currentRequest.abort();
+                }
+                /* Ajax est lancé lors du remplissage du champ texte dont l’id est
+                « search » pour faire la recherche */
+                currentRequest = \$.ajax({
+                    url : \"";
+        // line 42
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("factureAjax");
+        echo "\",
+                    type : 'GET',
+                    data: {
+                        'searchValue' : value
+                    },
+                    success : function(retour)
+                    {
+                        \$('#all').html(retour);
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -152,7 +149,7 @@ class __TwigTemplate_b1688466060942cf92697233b8af264029f8f0dfd32a31812946ac524ea
 
     public function getDebugInfo()
     {
-        return array (  132 => 37,  127 => 34,  118 => 30,  109 => 26,  105 => 25,  100 => 23,  96 => 22,  92 => 21,  88 => 19,  83 => 18,  68 => 5,  58 => 4,  35 => 1,);
+        return array (  116 => 42,  98 => 27,  93 => 25,  89 => 23,  87 => 22,  68 => 5,  58 => 4,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -161,39 +158,57 @@ class __TwigTemplate_b1688466060942cf92697233b8af264029f8f0dfd32a31812946ac524ea
 
 
 {% block content %}
-    <h1>liste des factures</h1>
+    <h1>Liste des factures</h1>
+    <form>
+        <div class=\"container\">
+            <div class=\"input-group\">
+                <input type=\"text\" id=\"search\" class=\"form-control bg-light border-1 \" placeholder=\"Search for...\"
+                       aria-label=\"Search\" aria-describedby=\"basic-addon2\">
+                <div class=\"input-group-append\">
+                    <button class=\"btn btn-primary\" type=\"button\">
+                        <i class=\"fas fa-search fa-sm\"></i>
+                    </button>
 
-    <table class=\"table\">
-        <thead>
-            <tr>
+                </div>
+            </div>
+        </div>
+    </form>
 
-                <th>Prixtotal</th>
-                <th>Date</th>
-                <th>Prixfinal</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for facture in factures %}
-            <tr>
-
-                <td>{{ facture.prixtotal }}</td>
-                <td>{{ facture.date ? facture.date|date('Y-m-d') : '' }}</td>
-                <td>{{ facture.prixfinal }}</td>
-                <td>
-                    <a href=\"{{ path('app_facture_show', {'idf': facture.idf}) }}\">show</a>
-                    <a href=\"{{ path('app_facture_edit', {'idf': facture.idf}) }}\">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan=\"5\">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href=\"{{ path('app_facture_new') }}\">Create new</a>
+    <div class=\"container\" id=\"all\">
+        {% include 'facture/factureAjax.html.twig' %}
+    </div>
+    <br>
+    <script src=\"{{ asset('assets/js/jquery.js') }}\"></script>
+    <script
+            src=\"{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js')}}\">
+    </script>
+    <script>
+        \$( document ).ready(function() {
+            var currentRequest = null;
+            \$(\"#search\").keyup(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte
+                afin d’effectuer la recherche */
+                var value = \$(this).val();
+                if(currentRequest != null) {
+                    currentRequest.abort();
+                }
+                /* Ajax est lancé lors du remplissage du champ texte dont l’id est
+                « search » pour faire la recherche */
+                currentRequest = \$.ajax({
+                    url : \"{{ path('factureAjax') }}\",
+                    type : 'GET',
+                    data: {
+                        'searchValue' : value
+                    },
+                    success : function(retour)
+                    {
+                        \$('#all').html(retour);
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
 {% endblock %}
 ", "facture/index.html.twig", "C:\\Users\\asus\\escapade\\templates\\facture\\index.html.twig");
     }

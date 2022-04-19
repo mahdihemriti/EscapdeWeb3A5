@@ -73,15 +73,18 @@ class __TwigTemplate_cb078bd7545e771c397b888efdf62b8119152c570386f3d390d228e3d39
         $this->displayBlock('header', $context, $blocks);
         // line 264
         echo "
+        <div class=\"container\">
+
         ";
-        // line 265
+        // line 267
         $this->displayBlock('content', $context, $blocks);
-        // line 268
-        echo "
+        // line 270
+        echo "        </div>
+
         ";
-        // line 269
+        // line 272
         $this->displayBlock('footer', $context, $blocks);
-        // line 281
+        // line 284
         echo "    </div>
 
 </div>
@@ -92,9 +95,9 @@ class __TwigTemplate_cb078bd7545e771c397b888efdf62b8119152c570386f3d390d228e3d39
 
 <!-- Scroll to Top Button-->
 ";
-        // line 290
+        // line 293
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 304
+        // line 307
         echo "</body>
 
 </html>";
@@ -466,7 +469,7 @@ class __TwigTemplate_cb078bd7545e771c397b888efdf62b8119152c570386f3d390d228e3d39
 
     }
 
-    // line 265
+    // line 267
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -476,7 +479,7 @@ class __TwigTemplate_cb078bd7545e771c397b888efdf62b8119152c570386f3d390d228e3d39
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
-        // line 266
+        // line 268
         echo "
         ";
         
@@ -487,7 +490,7 @@ class __TwigTemplate_cb078bd7545e771c397b888efdf62b8119152c570386f3d390d228e3d39
 
     }
 
-    // line 269
+    // line 272
     public function block_footer($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -497,7 +500,7 @@ class __TwigTemplate_cb078bd7545e771c397b888efdf62b8119152c570386f3d390d228e3d39
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "footer"));
 
-        // line 270
+        // line 273
         echo "            <!-- End of Main Content -->
             <!-- Footer -->
             <footer class=\"sticky-footer bg-white\">
@@ -517,7 +520,7 @@ class __TwigTemplate_cb078bd7545e771c397b888efdf62b8119152c570386f3d390d228e3d39
 
     }
 
-    // line 290
+    // line 293
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -527,38 +530,38 @@ class __TwigTemplate_cb078bd7545e771c397b888efdf62b8119152c570386f3d390d228e3d39
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 291
+        // line 294
         echo "    <!-- Bootstrap core JavaScript-->
     <script src=\"";
-        // line 292
+        // line 295
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back/vendor/jquery/jquery.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 293
+        // line 296
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back/vendor/bootstrap/js/bootstrap.bundle.min.js"), "html", null, true);
         echo "\"></script>
     <!-- Core plugin JavaScript-->
     <script src=\"";
-        // line 295
+        // line 298
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back/vendor/jquery-easing/jquery.easing.min.js"), "html", null, true);
         echo "\"></script>
     <!-- Custom scripts for all pages-->
     <script src=\"";
-        // line 297
+        // line 300
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back/js/sb-admin-2.min.js"), "html", null, true);
         echo "\"></script>
     <!-- Page level plugins -->
     <script src=\"";
-        // line 299
+        // line 302
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back/vendor/chart.js/Chart.min.js"), "html", null, true);
         echo "\"></script>
     <!-- Page level custom scripts -->
     <script src=\"";
-        // line 301
+        // line 304
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back/js/demo/chart-area-demo.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 302
+        // line 305
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back/js/demo/chart-pie-demo.js"), "html", null, true);
         echo "\"></script>
 ";
@@ -582,7 +585,7 @@ class __TwigTemplate_cb078bd7545e771c397b888efdf62b8119152c570386f3d390d228e3d39
 
     public function getDebugInfo()
     {
-        return array (  562 => 302,  558 => 301,  553 => 299,  548 => 297,  543 => 295,  538 => 293,  534 => 292,  531 => 291,  521 => 290,  501 => 270,  491 => 269,  480 => 266,  470 => 265,  451 => 255,  404 => 211,  303 => 113,  299 => 112,  276 => 92,  270 => 89,  266 => 88,  249 => 74,  245 => 73,  241 => 72,  237 => 71,  233 => 70,  229 => 69,  225 => 68,  199 => 45,  186 => 35,  178 => 29,  168 => 28,  156 => 21,  149 => 17,  145 => 15,  135 => 14,  120 => 6,  110 => 5,  98 => 304,  96 => 290,  85 => 281,  83 => 269,  80 => 268,  78 => 265,  75 => 264,  73 => 28,  66 => 23,  64 => 14,  60 => 13,  57 => 12,  55 => 5,  49 => 1,);
+        return array (  565 => 305,  561 => 304,  556 => 302,  551 => 300,  546 => 298,  541 => 296,  537 => 295,  534 => 294,  524 => 293,  504 => 273,  494 => 272,  483 => 268,  473 => 267,  454 => 255,  407 => 211,  306 => 113,  302 => 112,  279 => 92,  273 => 89,  269 => 88,  252 => 74,  248 => 73,  244 => 72,  240 => 71,  236 => 70,  232 => 69,  228 => 68,  202 => 45,  189 => 35,  181 => 29,  171 => 28,  159 => 21,  152 => 17,  148 => 15,  138 => 14,  123 => 6,  113 => 5,  101 => 307,  99 => 293,  88 => 284,  86 => 272,  82 => 270,  80 => 267,  75 => 264,  73 => 28,  66 => 23,  64 => 14,  60 => 13,  57 => 12,  55 => 5,  49 => 1,);
     }
 
     public function getSourceContext()
@@ -851,9 +854,12 @@ class __TwigTemplate_cb078bd7545e771c397b888efdf62b8119152c570386f3d390d228e3d39
         <!-- End of Topbar -->
         {% endblock %}
 
+        <div class=\"container\">
+
         {% block content %}
 
         {% endblock %}
+        </div>
 
         {% block footer %}
             <!-- End of Main Content -->

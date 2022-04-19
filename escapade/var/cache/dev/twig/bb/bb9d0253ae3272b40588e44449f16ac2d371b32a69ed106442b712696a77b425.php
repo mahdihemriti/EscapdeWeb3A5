@@ -78,7 +78,7 @@ class __TwigTemplate_8ce1f0a8748975012eb15d0ee2ff316a9b68185ce9df11bc0ae9ecc5670
                     <!-- Nested Row within Card Body -->
                     <div class=\"row\">
                         <div  class=\"col-lg-6 d-none d-lg-block\">
-                            <img src=\"images/log.jpg\" width=\"400\">
+                            <img src=\"images/log.jpg\" width=\"400\" >
                         </div>
                         <div class=\"col-lg-6\">
                             <div class=\"p-5\">
@@ -201,7 +201,7 @@ class __TwigTemplate_8ce1f0a8748975012eb15d0ee2ff316a9b68185ce9df11bc0ae9ecc5670
                     <!-- Nested Row within Card Body -->
                     <div class=\"row\">
                         <div  class=\"col-lg-6 d-none d-lg-block\">
-                            <img src=\"images/log.jpg\" width=\"400\">
+                            <img src=\"images/log.jpg\" width=\"400\" >
                         </div>
                         <div class=\"col-lg-6\">
                             <div class=\"p-5\">

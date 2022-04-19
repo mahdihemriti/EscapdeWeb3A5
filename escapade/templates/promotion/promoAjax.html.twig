@@ -1,0 +1,39 @@
+<br>
+<br>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Taux</th>
+
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for promotion in promotions %}
+            <tr>
+
+                <td>{{ promotion.taux }}</td>
+
+
+                <td>
+                    <a href="{{ path('app_promotion_show', {'id': promotion.id}) }}">  <i class="fa fa-eye"></i></a>
+                    <a href="{{ path('app_promotion_edit', {'id': promotion.id}) }}"> <i class="fa fa-pen"></i> </a>
+                    {{ include('promotion/_delete_form.html.twig') }}
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Acune promotion disponible</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_promotion_new') }}">Ajouter une promotion</a>
+    <br>
+
+    <a  href="{{ path('listo1') }}">Mettre sous forme pdf</a>
+
+
+
