@@ -115,7 +115,7 @@ class __TwigTemplate_b1688466060942cf92697233b8af264029f8f0dfd32a31812946ac524ea
         // line 42
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("factureAjax");
         echo "\",
-                    type : 'GET',
+                    type : 'POST',
                     data: {
                         'searchValue' : value
                     },
@@ -196,7 +196,7 @@ class __TwigTemplate_b1688466060942cf92697233b8af264029f8f0dfd32a31812946ac524ea
                 « search » pour faire la recherche */
                 currentRequest = \$.ajax({
                     url : \"{{ path('factureAjax') }}\",
-                    type : 'GET',
+                    type : 'POST',
                     data: {
                         'searchValue' : value
                     },

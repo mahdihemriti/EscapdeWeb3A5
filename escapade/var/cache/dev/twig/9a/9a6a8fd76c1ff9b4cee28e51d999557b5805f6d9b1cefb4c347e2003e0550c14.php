@@ -92,8 +92,9 @@ class __TwigTemplate_b9e15b4545676da01c14ff3586cda362930dc7d56a40541147e16484353
                             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                         </div>
                     </div>
-                </div>
-                <div class=\"col-md-6 animate-box\">
+
+                    </div>
+                 <div class=\"col-md-6 animate-box\">
                     <img class=\"img-responsive\" src=\"images/cover_bg_3.jpg\" alt=\"travel\">
                     <a href=\"#\" class=\"flight-book\">
                         <div class=\"plane-name\">
@@ -292,8 +293,9 @@ class __TwigTemplate_b9e15b4545676da01c14ff3586cda362930dc7d56a40541147e16484353
                             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                         </div>
                     </div>
-                </div>
-                <div class=\"col-md-6 animate-box\">
+
+                    </div>
+                 <div class=\"col-md-6 animate-box\">
                     <img class=\"img-responsive\" src=\"images/cover_bg_3.jpg\" alt=\"travel\">
                     <a href=\"#\" class=\"flight-book\">
                         <div class=\"plane-name\">

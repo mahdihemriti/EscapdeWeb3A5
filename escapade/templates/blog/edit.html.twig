@@ -1,13 +1,29 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseBack.html.twig' %}
 
-{% block title %}Edit Blog{% endblock %}
+{% block content %}
+    <h1>Modifier blog</h1>
+    <br>
+    <br>
+    {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
 
-{% block body %}
-    <h1>Edit Blog</h1>
+    {{ form_label(form.nom,'Nom') }}
+    <br>
+    {{ form_widget(form.nom,{'attr':{'class':'nom','placeholder':'nom'}}) }}
 
-    {{ include('blog/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_blog_index') }}">back to list</a>
+    <br>
+    {{ form_label(form.description,'Description') }}
+    {{ form_widget(form.description,{'attr':{'class':'description','placeholder':'description'}}) }}
 
-    {{ include('blog/_delete_form.html.twig') }}
+    <br>
+    {{ form_label(form.image,'Image') }}
+    {{ form_widget(form.image,{'attr':{'class':'image','placeholder':'image'}}) }}
+
+    <br>
+    {{ form_end(form) }}
+
+    <br>
+    <a href="{{ path('app_blog_index') }}">Retour à la liste des blogs</a>
+
+
 {% endblock %}

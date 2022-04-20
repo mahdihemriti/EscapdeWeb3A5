@@ -30,6 +30,7 @@ class PromotionController extends AbstractController
             'promotions' => $promotionRepository->findAll(),
         ]);
     }
+
     /**
      * @Route("/front", name="app_promotion_indexfront", methods={"GET"})
      */

@@ -71,20 +71,20 @@ class __TwigTemplate_cb078bd7545e771c397b888efdf62b8119152c570386f3d390d228e3d39
 ";
         // line 28
         $this->displayBlock('header', $context, $blocks);
-        // line 264
+        // line 266
         echo "
         <div class=\"container\">
 
         ";
-        // line 267
+        // line 269
         $this->displayBlock('content', $context, $blocks);
-        // line 270
+        // line 272
         echo "        </div>
 
         ";
-        // line 272
+        // line 274
         $this->displayBlock('footer', $context, $blocks);
-        // line 284
+        // line 286
         echo "    </div>
 
 </div>
@@ -95,9 +95,9 @@ class __TwigTemplate_cb078bd7545e771c397b888efdf62b8119152c570386f3d390d228e3d39
 
 <!-- Scroll to Top Button-->
 ";
-        // line 293
+        // line 295
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 307
+        // line 309
         echo "</body>
 
 </html>";
@@ -274,10 +274,12 @@ class __TwigTemplate_cb078bd7545e771c397b888efdf62b8119152c570386f3d390d228e3d39
         echo "\">Réclamation</a>
                     <a class=\"collapse-item\" href=\"/promotion/\">Promotion</a>
                     <a class=\"collapse-item\" href=\"/facture/\">Panier</a>
+                    <a class=\"collapse-item\" href=\"/blog/\">Blog</a>
                     <a class=\"collapse-item\" href=\"";
-        // line 92
+        // line 93
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("comBack");
         echo "\">Commentaire</a>
+
                 </div>
             </div>
         </li>
@@ -298,11 +300,11 @@ class __TwigTemplate_cb078bd7545e771c397b888efdf62b8119152c570386f3d390d228e3d39
                 <div class=\"bg-white py-2 collapse-inner rounded\">
                     <h6 class=\"collapse-header\">Login Screens:</h6>
                     <a class=\"collapse-item\" href=\"";
-        // line 112
+        // line 114
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("login");
         echo "\">Login</a>
                     <a class=\"collapse-item\" href=\"";
-        // line 113
+        // line 115
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("inscrit");
         echo "\">Register</a>
                     <a class=\"collapse-item\" href=\"forgot-password.html\">Forgot Password</a>
@@ -403,7 +405,7 @@ class __TwigTemplate_cb078bd7545e771c397b888efdf62b8119152c570386f3d390d228e3d39
                             <span class=\"mr-2 d-none d-lg-inline text-gray-600 small\">Ben Brahim Céline</span>
                             <img class=\"img-profile rounded-circle\"
                                  src=\"";
-        // line 211
+        // line 213
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/undraw_profile.svg"), "html", null, true);
         echo "\">
                         </a>
@@ -450,7 +452,7 @@ class __TwigTemplate_cb078bd7545e771c397b888efdf62b8119152c570386f3d390d228e3d39
                         <div class=\"modal-footer\">
                             <button class=\"btn btn-secondary\" type=\"button\" data-dismiss=\"modal\">Cancel</button>
                             <a class=\"btn btn-primary\" href=\"";
-        // line 255
+        // line 257
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("login");
         echo "\">Logout</a>
                         </div>
@@ -469,7 +471,7 @@ class __TwigTemplate_cb078bd7545e771c397b888efdf62b8119152c570386f3d390d228e3d39
 
     }
 
-    // line 267
+    // line 269
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -479,7 +481,7 @@ class __TwigTemplate_cb078bd7545e771c397b888efdf62b8119152c570386f3d390d228e3d39
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
-        // line 268
+        // line 270
         echo "
         ";
         
@@ -490,7 +492,7 @@ class __TwigTemplate_cb078bd7545e771c397b888efdf62b8119152c570386f3d390d228e3d39
 
     }
 
-    // line 272
+    // line 274
     public function block_footer($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -500,7 +502,7 @@ class __TwigTemplate_cb078bd7545e771c397b888efdf62b8119152c570386f3d390d228e3d39
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "footer"));
 
-        // line 273
+        // line 275
         echo "            <!-- End of Main Content -->
             <!-- Footer -->
             <footer class=\"sticky-footer bg-white\">
@@ -520,7 +522,7 @@ class __TwigTemplate_cb078bd7545e771c397b888efdf62b8119152c570386f3d390d228e3d39
 
     }
 
-    // line 293
+    // line 295
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -530,38 +532,38 @@ class __TwigTemplate_cb078bd7545e771c397b888efdf62b8119152c570386f3d390d228e3d39
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 294
+        // line 296
         echo "    <!-- Bootstrap core JavaScript-->
     <script src=\"";
-        // line 295
+        // line 297
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back/vendor/jquery/jquery.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 296
+        // line 298
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back/vendor/bootstrap/js/bootstrap.bundle.min.js"), "html", null, true);
         echo "\"></script>
     <!-- Core plugin JavaScript-->
     <script src=\"";
-        // line 298
+        // line 300
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back/vendor/jquery-easing/jquery.easing.min.js"), "html", null, true);
         echo "\"></script>
     <!-- Custom scripts for all pages-->
     <script src=\"";
-        // line 300
+        // line 302
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back/js/sb-admin-2.min.js"), "html", null, true);
         echo "\"></script>
     <!-- Page level plugins -->
     <script src=\"";
-        // line 302
+        // line 304
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back/vendor/chart.js/Chart.min.js"), "html", null, true);
         echo "\"></script>
     <!-- Page level custom scripts -->
     <script src=\"";
-        // line 304
+        // line 306
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back/js/demo/chart-area-demo.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 305
+        // line 307
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back/js/demo/chart-pie-demo.js"), "html", null, true);
         echo "\"></script>
 ";
@@ -585,7 +587,7 @@ class __TwigTemplate_cb078bd7545e771c397b888efdf62b8119152c570386f3d390d228e3d39
 
     public function getDebugInfo()
     {
-        return array (  565 => 305,  561 => 304,  556 => 302,  551 => 300,  546 => 298,  541 => 296,  537 => 295,  534 => 294,  524 => 293,  504 => 273,  494 => 272,  483 => 268,  473 => 267,  454 => 255,  407 => 211,  306 => 113,  302 => 112,  279 => 92,  273 => 89,  269 => 88,  252 => 74,  248 => 73,  244 => 72,  240 => 71,  236 => 70,  232 => 69,  228 => 68,  202 => 45,  189 => 35,  181 => 29,  171 => 28,  159 => 21,  152 => 17,  148 => 15,  138 => 14,  123 => 6,  113 => 5,  101 => 307,  99 => 293,  88 => 284,  86 => 272,  82 => 270,  80 => 267,  75 => 264,  73 => 28,  66 => 23,  64 => 14,  60 => 13,  57 => 12,  55 => 5,  49 => 1,);
+        return array (  567 => 307,  563 => 306,  558 => 304,  553 => 302,  548 => 300,  543 => 298,  539 => 297,  536 => 296,  526 => 295,  506 => 275,  496 => 274,  485 => 270,  475 => 269,  456 => 257,  409 => 213,  308 => 115,  304 => 114,  280 => 93,  273 => 89,  269 => 88,  252 => 74,  248 => 73,  244 => 72,  240 => 71,  236 => 70,  232 => 69,  228 => 68,  202 => 45,  189 => 35,  181 => 29,  171 => 28,  159 => 21,  152 => 17,  148 => 15,  138 => 14,  123 => 6,  113 => 5,  101 => 309,  99 => 295,  88 => 286,  86 => 274,  82 => 272,  80 => 269,  75 => 266,  73 => 28,  66 => 23,  64 => 14,  60 => 13,  57 => 12,  55 => 5,  49 => 1,);
     }
 
     public function getSourceContext()
@@ -681,7 +683,9 @@ class __TwigTemplate_cb078bd7545e771c397b888efdf62b8119152c570386f3d390d228e3d39
                     <a class=\"collapse-item\" href=\"{{ path ('reclamationBack') }}\">Réclamation</a>
                     <a class=\"collapse-item\" href=\"/promotion/\">Promotion</a>
                     <a class=\"collapse-item\" href=\"/facture/\">Panier</a>
+                    <a class=\"collapse-item\" href=\"/blog/\">Blog</a>
                     <a class=\"collapse-item\" href=\"{{ path ('comBack') }}\">Commentaire</a>
+
                 </div>
             </div>
         </li>

@@ -384,6 +384,10 @@
     <service id="App\Form\PromotionType" class="App\Form\PromotionType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Repository\BlogRepository" class="App\Repository\BlogRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\FactureRepository" class="App\Repository\FactureRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -3968,7 +3972,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.LMlRqcs"/>
+      <argument type="service" id=".service_locator.ZLM7fED"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -4969,6 +4973,8 @@
     <service id=".abstract.instanceof.App\Form\FactureType" class="App\Form\FactureType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\PromotionType" class="App\Form\PromotionType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\PromotionType" class="App\Form\PromotionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\BlogRepository" class="App\Repository\BlogRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\BlogRepository" class="App\Repository\BlogRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\FactureRepository" class="App\Repository\FactureRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\FactureRepository" class="App\Repository\FactureRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\PromotionRepository" class="App\Repository\PromotionRepository" autowire="true" abstract="true"/>
@@ -5260,17 +5266,10 @@
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator.FaOxBQA" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.4JAAJ.e" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="blog" type="service_closure" id=".errored..service_locator.FaOxBQA.App\Entity\Blog"/>
-      </argument>
-    </service>
-    <service id=".service_locator.0KmN81A" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="blog" type="service_closure" id=".errored..service_locator.0KmN81A.App\Entity\Blog"/>
-        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="blogRepository" type="service_closure" id="App\Repository\BlogRepository"/>
       </argument>
     </service>
     <service id=".service_locator.ynYNJ8X" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -5285,14 +5284,15 @@
         <argument key="promotionRepository" type="service_closure" id="App\Repository\PromotionRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.Tj0LRil" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.OWpx.DU" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Controller\BlogController::delete" type="service_closure" id=".service_locator.0KmN81A"/>
-        <argument key="App\Controller\BlogController::edit" type="service_closure" id=".service_locator.0KmN81A"/>
+        <argument key="App\Controller\BlogController::delete" type="service_closure" id=".service_locator.4JAAJ.e"/>
+        <argument key="App\Controller\BlogController::detail" type="service_closure" id=".service_locator.4JAAJ.e"/>
+        <argument key="App\Controller\BlogController::edit" type="service_closure" id=".service_locator.4JAAJ.e"/>
         <argument key="App\Controller\BlogController::index" type="service_closure" id=".service_locator.x8FmIZ0"/>
-        <argument key="App\Controller\BlogController::new" type="service_closure" id=".service_locator.x8FmIZ0"/>
-        <argument key="App\Controller\BlogController::show" type="service_closure" id=".service_locator.FaOxBQA"/>
+        <argument key="App\Controller\BlogController::indexfront" type="service_closure" id=".service_locator.4JAAJ.e"/>
+        <argument key="App\Controller\BlogController::show" type="service_closure" id=".service_locator.4JAAJ.e"/>
         <argument key="App\Controller\FactureController::delete" type="service_closure" id=".service_locator.ynYNJ8X"/>
         <argument key="App\Controller\FactureController::edit" type="service_closure" id=".service_locator.ynYNJ8X"/>
         <argument key="App\Controller\FactureController::index" type="service_closure" id=".service_locator.ynYNJ8X"/>
@@ -5304,11 +5304,12 @@
         <argument key="App\Controller\PromotionController::indexfront" type="service_closure" id=".service_locator.Z2K.Iwb"/>
         <argument key="App\Controller\PromotionController::listo1" type="service_closure" id=".service_locator.Z2K.Iwb"/>
         <argument key="App\Controller\PromotionController::show" type="service_closure" id=".service_locator.Z2K.Iwb"/>
-        <argument key="App\Controller\BlogController:delete" type="service_closure" id=".service_locator.0KmN81A"/>
-        <argument key="App\Controller\BlogController:edit" type="service_closure" id=".service_locator.0KmN81A"/>
+        <argument key="App\Controller\BlogController:delete" type="service_closure" id=".service_locator.4JAAJ.e"/>
+        <argument key="App\Controller\BlogController:detail" type="service_closure" id=".service_locator.4JAAJ.e"/>
+        <argument key="App\Controller\BlogController:edit" type="service_closure" id=".service_locator.4JAAJ.e"/>
         <argument key="App\Controller\BlogController:index" type="service_closure" id=".service_locator.x8FmIZ0"/>
-        <argument key="App\Controller\BlogController:new" type="service_closure" id=".service_locator.x8FmIZ0"/>
-        <argument key="App\Controller\BlogController:show" type="service_closure" id=".service_locator.FaOxBQA"/>
+        <argument key="App\Controller\BlogController:indexfront" type="service_closure" id=".service_locator.4JAAJ.e"/>
+        <argument key="App\Controller\BlogController:show" type="service_closure" id=".service_locator.4JAAJ.e"/>
         <argument key="App\Controller\FactureController:delete" type="service_closure" id=".service_locator.ynYNJ8X"/>
         <argument key="App\Controller\FactureController:edit" type="service_closure" id=".service_locator.ynYNJ8X"/>
         <argument key="App\Controller\FactureController:index" type="service_closure" id=".service_locator.ynYNJ8X"/>
@@ -5553,9 +5554,10 @@
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service_closure" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
       </argument>
     </service>
-    <service id=".service_locator.LMlRqcs" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.ZLM7fED" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Repository\BlogRepository" type="service_closure" id="App\Repository\BlogRepository"/>
         <argument key="App\Repository\FactureRepository" type="service_closure" id="App\Repository\FactureRepository"/>
         <argument key="App\Repository\PromotionRepository" type="service_closure" id="App\Repository\PromotionRepository"/>
       </argument>
@@ -5787,12 +5789,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.Tj0LRil"/>
+      <argument type="service" id=".service_locator.OWpx.DU"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.Tj0LRil"/>
+      <argument type="service" id=".service_locator.OWpx.DU"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -5802,8 +5804,6 @@
       </call>
       <factory class="Symfony\Component\HttpClient\HttpClient" method="create"/>
     </service>
-    <service id=".errored..service_locator.FaOxBQA.App\Entity\Blog" class="App\Entity\Blog"/>
-    <service id=".errored..service_locator.0KmN81A.App\Entity\Blog" class="App\Entity\Blog"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <argument type="service" id=".service_locator.TfYcj5y"/>
       <argument type="collection">
@@ -6194,7 +6194,7 @@
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker" public="false"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.Tj0LRil"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.OWpx.DU"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

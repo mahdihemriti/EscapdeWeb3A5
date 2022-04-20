@@ -29,7 +29,9 @@ return [
         '/login' => [[['_route' => 'login', '_controller' => 'App\\Controller\\BackController::affichelogin'], null, null, null, false, false, null]],
         '/inscrit' => [[['_route' => 'inscrit', '_controller' => 'App\\Controller\\BackController::afficheInscrit'], null, null, null, false, false, null]],
         '/blog' => [[['_route' => 'app_blog_index', '_controller' => 'App\\Controller\\BlogController::index'], null, ['GET' => 0], null, true, false, null]],
+        '/blog/front' => [[['_route' => 'app_blog_indexfront', '_controller' => 'App\\Controller\\BlogController::indexfront'], null, ['GET' => 0], null, false, false, null]],
         '/blog/new' => [[['_route' => 'app_blog_new', '_controller' => 'App\\Controller\\BlogController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/blog/search/back' => [[['_route' => 'blogAjax', '_controller' => 'App\\Controller\\BlogController::search'], null, ['GET' => 0], null, false, false, null]],
         '/facture' => [[['_route' => 'app_facture_index', '_controller' => 'App\\Controller\\FactureController::index'], null, ['GET' => 0], null, true, false, null]],
         '/facture/new' => [[['_route' => 'app_facture_new', '_controller' => 'App\\Controller\\FactureController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/facture/listo1/back' => [[['_route' => 'liste', '_controller' => 'App\\Controller\\FactureController::listo1'], null, ['GET' => 0], null, false, false, null]],
@@ -63,23 +65,26 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
-                .'|/blog/([^/]++)(?'
-                    .'|(*:186)'
-                    .'|/edit(*:199)'
-                    .'|(*:207)'
+                .'|/blog(?'
+                    .'|showf/([^/]++)(*:191)'
+                    .'|/([^/]++)(?'
+                        .'|(*:211)'
+                        .'|/edit(*:224)'
+                        .'|(*:232)'
+                    .')'
                 .')'
                 .'|/facture/(?'
                     .'|([^/]++)(?'
-                        .'|(*:239)'
-                        .'|/edit(*:252)'
-                        .'|(*:260)'
+                        .'|(*:265)'
+                        .'|/edit(*:278)'
+                        .'|(*:286)'
                     .')'
-                    .'|search(*:275)'
+                    .'|search(*:301)'
                 .')'
                 .'|/promotion/([^/]++)(?'
-                    .'|(*:306)'
-                    .'|/edit(*:319)'
-                    .'|(*:327)'
+                    .'|(*:332)'
+                    .'|/edit(*:345)'
+                    .'|(*:353)'
                 .')'
             .')/?$}sD',
     ],
@@ -91,16 +96,17 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        186 => [[['_route' => 'app_blog_show', '_controller' => 'App\\Controller\\BlogController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        199 => [[['_route' => 'app_blog_edit', '_controller' => 'App\\Controller\\BlogController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        207 => [[['_route' => 'app_blog_delete', '_controller' => 'App\\Controller\\BlogController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        239 => [[['_route' => 'app_facture_show', '_controller' => 'App\\Controller\\FactureController::show'], ['idf'], ['GET' => 0], null, false, true, null]],
-        252 => [[['_route' => 'app_facture_edit', '_controller' => 'App\\Controller\\FactureController::edit'], ['idf'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        260 => [[['_route' => 'app_facture_delete', '_controller' => 'App\\Controller\\FactureController::delete'], ['idf'], ['POST' => 0], null, false, true, null]],
-        275 => [[['_route' => 'factureAjax', '_controller' => 'App\\Controller\\FactureController::search'], [], ['GET' => 0], null, false, false, null]],
-        306 => [[['_route' => 'app_promotion_show', '_controller' => 'App\\Controller\\PromotionController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        319 => [[['_route' => 'app_promotion_edit', '_controller' => 'App\\Controller\\PromotionController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        327 => [
+        191 => [[['_route' => 'frontblog', '_controller' => 'App\\Controller\\BlogController::detail'], ['id'], ['GET' => 0], null, false, true, null]],
+        211 => [[['_route' => 'app_blog_show', '_controller' => 'App\\Controller\\BlogController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        224 => [[['_route' => 'app_blog_edit', '_controller' => 'App\\Controller\\BlogController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        232 => [[['_route' => 'app_blog_delete', '_controller' => 'App\\Controller\\BlogController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        265 => [[['_route' => 'app_facture_show', '_controller' => 'App\\Controller\\FactureController::show'], ['idf'], ['GET' => 0], null, false, true, null]],
+        278 => [[['_route' => 'app_facture_edit', '_controller' => 'App\\Controller\\FactureController::edit'], ['idf'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        286 => [[['_route' => 'app_facture_delete', '_controller' => 'App\\Controller\\FactureController::delete'], ['idf'], ['POST' => 0], null, false, true, null]],
+        301 => [[['_route' => 'factureAjax', '_controller' => 'App\\Controller\\FactureController::search'], [], ['GET' => 0], null, false, false, null]],
+        332 => [[['_route' => 'app_promotion_show', '_controller' => 'App\\Controller\\PromotionController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        345 => [[['_route' => 'app_promotion_edit', '_controller' => 'App\\Controller\\PromotionController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        353 => [
             [['_route' => 'app_promotion_delete', '_controller' => 'App\\Controller\\PromotionController::delete'], ['id'], ['POST' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

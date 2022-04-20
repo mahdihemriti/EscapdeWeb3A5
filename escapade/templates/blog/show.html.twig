@@ -1,16 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseBack.html.twig' %}
 
-{% block title %}Blog{% endblock %}
 
-{% block body %}
+
+{% block content %}
     <h1>Blog</h1>
 
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ blog.id }}</td>
-            </tr>
+
             <tr>
                 <th>Nom</th>
                 <td>{{ blog.nom }}</td>
@@ -25,14 +22,18 @@
             </tr>
             <tr>
                 <th>Image</th>
-                <td>{{ blog.image }}</td>
+                <td><img src="{{ asset('images/' ~ blog.image) }}" width="50" height="50"></td>
+            </tr>
+            <tr>
+                <th> </th>
+                <td><a href="{{ path('app_blog_edit', {'id': blog.id}) }}"> <i class="fa fa-pen"></i></a></td>
+                <td>    {{ include('blog/_delete_form.html.twig') }} </td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_blog_index') }}">back to list</a>
+    <a href="{{ path('app_blog_index') }}">Retour à la liste des blogs</a>
 
-    <a href="{{ path('app_blog_edit', {'id': blog.id}) }}">edit</a>
 
-    {{ include('blog/_delete_form.html.twig') }}
+
 {% endblock %}

@@ -110,6 +110,8 @@
                                 <li><a href="{{ path ('moyenT') }}">Moyen de transport</a></li>
                                 <li><a href="{{ path ('siteT') }}">Site Touristique</a></li>
                                 <li><a href="/promotion/front">Nos promotion</a></li>
+                                <li><a href="{{ path ('app_blog_indexfront') }}">Blog</a></li>
+
                                 {% block logIn %}
                                 {# <li><a href="{{ path ('panier') }}"><i class='icon-shopping-cart'></i></a></li> #}
                                     <li>
@@ -131,10 +133,12 @@
                 </div>
             </header>
         {% endblock %}
-        <div>
+        <div class="container">
+
             {% block content %}
 
             {% endblock %}
+
         </div>
         {% block footer %}
             <footer>

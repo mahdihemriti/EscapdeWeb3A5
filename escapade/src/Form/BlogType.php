@@ -4,8 +4,11 @@ namespace App\Form;
 
 use App\Entity\Blog;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use App\Repository\BlogRepository;
 
 class BlogType extends AbstractType
 {
@@ -13,9 +16,11 @@ class BlogType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('date')
             ->add('description')
-            ->add('image')
+            ->add('image',FileType::class,[
+                'mapped'=>false,
+                'required'=>false,
+            ])
         ;
     }
 

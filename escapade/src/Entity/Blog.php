@@ -3,7 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use App\Repository\BlogRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Blog
@@ -25,8 +26,9 @@ class Blog
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="nom", type="string", length=20, nullable=false)
+     *  @Assert\Type("string")
+     *  @Assert\NotBlank(message="Ce champ ne doit pas être vide")
+     * @ORM\Column(name="nom", type="string", length=50, nullable=false)
      */
     private $nom;
 
@@ -39,14 +41,18 @@ class Blog
 
     /**
      * @var string
-     *
+     *@Assert\NotBlank(message="Ce champ ne doit pas être vide")
      * @ORM\Column(name="description", type="string", length=255, nullable=false)
+     * @Assert\Length(min=15)
      */
     private $description;
 
     /**
      * @var string
-     *
+     * @Assert\Image(
+     *     allowLandscape = true,
+     *     allowPortrait = true
+     * )
      * @ORM\Column(name="image", type="string", length=255, nullable=false)
      */
     private $image;

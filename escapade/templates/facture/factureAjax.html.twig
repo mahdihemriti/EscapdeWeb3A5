@@ -1,12 +1,12 @@
 <br>
 <br>
-<table class="table">
+<table class="table table-striped">
     <thead>
     <tr>
 
-        <th>Prixtotal</th>
+        <th>Prix total</th>
         <th>Date</th>
-        <th>Prixfinal</th>
+        <th>Prix final</th>
         <th>actions</th>
     </tr>
     </thead>
@@ -20,6 +20,7 @@
             <td>
                 <a href="{{ path('app_facture_show', {'idf': facture.idf}) }}"><i class="fa fa-eye"></i></a>
                 <a href="{{ path('app_facture_edit', {'idf': facture.idf}) }}"><i class="fa fa-pen"></i></a>
+                {{ include('facture/_delete_form.html.twig') }}
             </td>
         </tr>
     {% else %}

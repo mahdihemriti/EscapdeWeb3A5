@@ -44,7 +44,6 @@ class FactureRepository extends ServiceEntityRepository
             $this->_em->flush();
         }
     }
-
     public function findbyprix($prixtotal){
         return $this->createQueryBuilder('e')
             ->where('e.prixtotal LIKE :prixtotal')

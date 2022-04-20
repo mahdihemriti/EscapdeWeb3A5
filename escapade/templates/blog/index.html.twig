@@ -1,41 +1,57 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseBack.html.twig' %}
 
-{% block title %}Blog index{% endblock %}
 
-{% block body %}
-    <h1>Blog index</h1>
+{% block content %}
+    <h1>Liste des blogs </h1>
+    <form>
+        <div class="container">
+            <div class="input-group">
+                <input type="text" id="search" class="form-control bg-light border-1 " placeholder="Search for..."
+                       aria-label="Search" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Date</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for blog in blogs %}
-            <tr>
-                <td>{{ blog.id }}</td>
-                <td>{{ blog.nom }}</td>
-                <td>{{ blog.date ? blog.date|date('Y-m-d') : '' }}</td>
-                <td>{{ blog.description }}</td>
-                <td>{{ blog.image }}</td>
-                <td>
-                    <a href="{{ path('app_blog_show', {'id': blog.id}) }}">show</a>
-                    <a href="{{ path('app_blog_edit', {'id': blog.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                </div>
+            </div>
+        </div>
+    </form>
 
-    <a href="{{ path('app_blog_new') }}">Create new</a>
+    <div class="container" id="all">
+        {% include 'blog/blogAjax.html.twig' %}
+    </div>
+    <br>
+    <script src="{{ asset('assets/js/jquery.js') }}"></script>
+    <script
+            src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js')}}">
+    </script>
+    <script>
+        $( document ).ready(function() {
+            var currentRequest = null;
+            $("#search").keyup(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte
+                afin d’effectuer la recherche */
+                var value = $(this).val();
+                if(currentRequest != null) {
+                    currentRequest.abort();
+                }
+                /* Ajax est lancé lors du remplissage du champ texte dont l’id est
+                « search » pour faire la recherche */
+                currentRequest = $.ajax({
+                    url : "{{ path('blogAjax') }}",
+                    type : 'GET',
+                    data: {
+                        'searchValue' : value
+                    },
+                    success : function(retour)
+                    {
+                        $('#all').html(retour);
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
+
 {% endblock %}

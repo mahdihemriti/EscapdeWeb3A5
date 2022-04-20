@@ -93,17 +93,19 @@ class __TwigTemplate_c070cf7d2a47cc77506d87ca71d4091b793c56fdd040cde0940456b69e1
         ";
         // line 95
         $this->displayBlock('header', $context, $blocks);
-        // line 134
-        echo "        <div>
+        // line 136
+        echo "        <div class=\"container\">
+
             ";
-        // line 135
-        $this->displayBlock('content', $context, $blocks);
         // line 138
-        echo "        </div>
+        $this->displayBlock('content', $context, $blocks);
+        // line 141
+        echo "
+        </div>
         ";
-        // line 139
+        // line 143
         $this->displayBlock('footer', $context, $blocks);
-        // line 210
+        // line 214
         echo "    </div>
     <!-- END fh5co-page -->
 
@@ -337,10 +339,15 @@ class __TwigTemplate_c070cf7d2a47cc77506d87ca71d4091b793c56fdd040cde0940456b69e1
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("siteT");
         echo "\">Site Touristique</a></li>
                                 <li><a href=\"/promotion/front\">Nos promotion</a></li>
-                                ";
+                                <li><a href=\"";
         // line 113
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_blog_indexfront");
+        echo "\">Blog</a></li>
+
+                                ";
+        // line 115
         $this->displayBlock('logIn', $context, $blocks);
-        // line 126
+        // line 128
         echo "
                             </ul>
 
@@ -357,7 +364,7 @@ class __TwigTemplate_c070cf7d2a47cc77506d87ca71d4091b793c56fdd040cde0940456b69e1
 
     }
 
-    // line 113
+    // line 115
     public function block_logIn($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -367,12 +374,12 @@ class __TwigTemplate_c070cf7d2a47cc77506d87ca71d4091b793c56fdd040cde0940456b69e1
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "logIn"));
 
-        // line 114
+        // line 116
         echo "                                ";
-        // line 115
+        // line 117
         echo "                                    <li>
                                         <a href=\"";
-        // line 116
+        // line 118
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
         echo "\"class=\"fh5co-sub-ddown\"><i class=\"icon-user\"></i></a>
                                         <ul class=\"fh5co-sub-menu\">
@@ -392,7 +399,7 @@ class __TwigTemplate_c070cf7d2a47cc77506d87ca71d4091b793c56fdd040cde0940456b69e1
 
     }
 
-    // line 135
+    // line 138
     public function block_content($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -402,7 +409,7 @@ class __TwigTemplate_c070cf7d2a47cc77506d87ca71d4091b793c56fdd040cde0940456b69e1
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
-        // line 136
+        // line 139
         echo "
             ";
         
@@ -413,7 +420,7 @@ class __TwigTemplate_c070cf7d2a47cc77506d87ca71d4091b793c56fdd040cde0940456b69e1
 
     }
 
-    // line 139
+    // line 143
     public function block_footer($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -423,7 +430,7 @@ class __TwigTemplate_c070cf7d2a47cc77506d87ca71d4091b793c56fdd040cde0940456b69e1
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "footer"));
 
-        // line 140
+        // line 144
         echo "            <footer>
                 <div id=\"footer\">
                     <div class=\"container\">
@@ -514,7 +521,7 @@ class __TwigTemplate_c070cf7d2a47cc77506d87ca71d4091b793c56fdd040cde0940456b69e1
 
     public function getDebugInfo()
     {
-        return array (  427 => 140,  417 => 139,  406 => 136,  396 => 135,  376 => 116,  373 => 115,  371 => 114,  361 => 113,  344 => 126,  342 => 113,  337 => 111,  333 => 110,  329 => 109,  323 => 106,  318 => 104,  311 => 100,  305 => 96,  295 => 95,  281 => 86,  276 => 84,  272 => 83,  267 => 81,  262 => 79,  258 => 78,  253 => 76,  249 => 75,  244 => 73,  239 => 71,  235 => 70,  230 => 68,  225 => 66,  220 => 64,  214 => 61,  208 => 58,  205 => 57,  195 => 56,  180 => 50,  175 => 48,  171 => 47,  166 => 45,  161 => 43,  156 => 41,  151 => 39,  146 => 37,  141 => 35,  133 => 29,  123 => 28,  107 => 210,  105 => 139,  102 => 138,  100 => 135,  97 => 134,  95 => 95,  88 => 90,  86 => 56,  83 => 55,  81 => 28,  60 => 10,  49 => 1,);
+        return array (  434 => 144,  424 => 143,  413 => 139,  403 => 138,  383 => 118,  380 => 117,  378 => 116,  368 => 115,  351 => 128,  349 => 115,  344 => 113,  339 => 111,  335 => 110,  331 => 109,  325 => 106,  320 => 104,  313 => 100,  307 => 96,  297 => 95,  283 => 86,  278 => 84,  274 => 83,  269 => 81,  264 => 79,  260 => 78,  255 => 76,  251 => 75,  246 => 73,  241 => 71,  237 => 70,  232 => 68,  227 => 66,  222 => 64,  216 => 61,  210 => 58,  207 => 57,  197 => 56,  182 => 50,  177 => 48,  173 => 47,  168 => 45,  163 => 43,  158 => 41,  153 => 39,  148 => 37,  143 => 35,  135 => 29,  125 => 28,  109 => 214,  107 => 143,  103 => 141,  101 => 138,  97 => 136,  95 => 95,  88 => 90,  86 => 56,  83 => 55,  81 => 28,  60 => 10,  49 => 1,);
     }
 
     public function getSourceContext()
@@ -631,6 +638,8 @@ class __TwigTemplate_c070cf7d2a47cc77506d87ca71d4091b793c56fdd040cde0940456b69e1
                                 <li><a href=\"{{ path ('moyenT') }}\">Moyen de transport</a></li>
                                 <li><a href=\"{{ path ('siteT') }}\">Site Touristique</a></li>
                                 <li><a href=\"/promotion/front\">Nos promotion</a></li>
+                                <li><a href=\"{{ path ('app_blog_indexfront') }}\">Blog</a></li>
+
                                 {% block logIn %}
                                 {# <li><a href=\"{{ path ('panier') }}\"><i class='icon-shopping-cart'></i></a></li> #}
                                     <li>
@@ -652,10 +661,12 @@ class __TwigTemplate_c070cf7d2a47cc77506d87ca71d4091b793c56fdd040cde0940456b69e1
                 </div>
             </header>
         {% endblock %}
-        <div>
+        <div class=\"container\">
+
             {% block content %}
 
             {% endblock %}
+
         </div>
         {% block footer %}
             <footer>

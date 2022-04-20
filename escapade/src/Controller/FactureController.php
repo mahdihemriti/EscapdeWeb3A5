@@ -108,7 +108,7 @@ class FactureController extends AbstractController
 
     public function search(Request $request ) :Response
     {
-        $factureRepository = $this->getDoctrine()->getRepository(Facture::class);
+        $factureRepository = $this->getDoctrine()->getRepository(facture::class);
         $requestString=$request->get('searchValue');
         $facture = $factureRepository->findbyprix($requestString);
         return $this->render('facture/factureAjax.html.twig', [
