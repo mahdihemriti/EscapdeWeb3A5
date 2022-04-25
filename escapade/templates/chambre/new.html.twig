@@ -1,0 +1,73 @@
+{% extends 'baseBack.html.twig' %}
+{% block content %}
+    <h1>Créer une nouvelle chambre</h1>
+
+    {{ form_start(form,{'attr':{'novalidate': 'novalidate'}}) }}
+
+    {{ form_label(form.num,'Numéro chambre') }}
+
+    {{ form_widget(form.num,{'attr':{
+        'class':'num','placeholder':'Veuillez entrer le numéro de la chambre'
+    }}) }}
+
+    <br>
+
+    {{ form_label(form.type, 'Type') }}
+
+    {{ form_widget(form.type,{'attr':{
+        'class':'type'
+    }}) }}
+
+    <br>
+    {{ form_label(form.vuesurmer,'Vue sur mer') }}
+
+    {{ form_widget(form.vuesurmer,{'attr':{
+        'class':'vuesurmer'
+    }}) }}
+
+    <br>
+    {{ form_label(form.description,'Description') }}
+
+    {{ form_widget(form.description,{'attr':{
+        'class':'description','placeholder':'Veuillez entrer la description'
+    }}) }}
+
+
+    <br>
+    {{ form_label(form.prixnuit,'Prix nuitée') }}
+    {{ form_widget(form.prixnuit,{'attr':{
+        'class':'prixnuit','placeholder':'Veuillez entrer le prix de la nuitée'
+    }}) }}
+
+
+    <br>
+
+    {{ form_label(form.status,'Le nombre des chambres total') }}
+
+    {{ form_widget(form.status,{'attr':{
+        'class':'maxchambre'
+    }}) }}
+
+    <br>
+    {{ form_label(form.img,'Image') }}
+
+    {{ form_widget(form.img,{'attr':{
+        'class':'img','placeholder':'Veuillez entrer l image'
+    }}) }}
+
+    <br>
+    {{ form_label(form.idhotel, 'Hôtel')  }}
+
+    {{ form_widget(form.idhotel,{'attr':{
+        'class':'idhotel','placeholder':'Veuillez entrer le pays','novalidate': 'novalidate'
+    }}) }}
+
+    <br>
+    <button name="button" type="submit" class="btn-success">Enregistrer</button>
+    {{ form_end(form) }}
+
+
+<br>
+
+    <a class="btn btn-primary mb-2" href="{{ path('app_chambre_index') }}">Retour à la liste</a>
+{% endblock %}

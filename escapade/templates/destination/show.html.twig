@@ -1,32 +1,39 @@
 {% extends 'baseBack.html.twig' %}
+
 {% block content %}
 
     <h1>Destination</h1>
-<hr><hr>
-    <table class="table">
+<br>
+    <br>
+    <table class="table table-striped">
         <tbody>
 
             <tr>
-                <th>Pays</th>
-                <td>{{ destination.pays }}</td>
+                <th>PAYS</th>
+                <td>{{ dest.pays }}</td>
             </tr>
             <tr>
-                <th>Ville</th>
-                <td>{{ destination.ville }}</td>
+                <th>VILLE</th>
+                <td>{{ dest.ville }}</td>
             </tr>
             <tr>
-                <th>Image</th>
+                <th>IMAGE</th>
                 <td>
-                    <img src="{{ asset('images/' ~ destination.img) }}" width="50" height="50">
+                    <img src="{{ asset('images/' ~ dest.img) }}" width="50" height="50">
                 </td>
 
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_destination_index') }}">Retour à la liste</a>
+         <a class="btn btn-primary " href="{{ path('app_destination_index') }}">Retour à la liste</a>
 
-    <a href="{{ path('app_destination_edit', {'id': destination.id}) }}">Modifier</a>
+         <a class="btn btn-primary " href="{{ path('app_destination_edit', {'id': dest.id}) }}">Modifier</a>
+
+
+    <br>
+
+    <br>
 
     {{ include('destination/_delete_form.html.twig') }}
 {% endblock %}

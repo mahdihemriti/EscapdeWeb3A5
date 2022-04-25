@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Hotel;
+use App\Repository\ChambreRepository;
+use App\Repository\DestinationRepository;
 use App\Repository\HotelRepository;
 use App\Form\HotelType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -26,13 +28,32 @@ class HotelController extends AbstractController
             'hotels' => $hotelRepository->findAll(),
         ]);
     }
+
+    /**
+     * @Route("/ReservationCh",name="ReservationCh")
+     */
+
+    public function reserv()
+    {
+        return $this->render('hotel/reserverChambre.html.twig');
+    }
     /**
      * @Route("/front", name="app_hotel_indexfront", methods={"GET"})
      */
     public function affichage(HotelRepository $hotelRepository)
     {
         return $this->render('hotel/indexFront.html.twig', [
-            'hotels' => $hotelRepository->findAll(),
+            'hotels' => $hotelRepository->findAll()
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/hotel", name="app_hotel_id_dest")
+     */
+    public function liste($id, HotelRepository $hotelRepository)
+    {
+        return $this->render('hotel/listeHotelFront.html.twig', [
+            'hotels' => $hotelRepository->findBydes($id)
         ]);
     }
 

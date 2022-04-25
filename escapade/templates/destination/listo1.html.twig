@@ -1,0 +1,47 @@
+{% block content %}
+    <div class="fa fa-chevron-down">
+    <div class="dropdown-item">
+    <div class="row">
+    <div class="col-md-12">
+    <div class="card">
+    <div class="card-header card-header-primary">
+        <a class="btn btn-primary " href="{{ path('app_destination_index') }}">
+            <img src="images/logo.png" width="100" height="100">
+        </a>
+        <h1 align="center">Liste des destinations</h1>
+        <br>
+
+    </div>
+    <div class=" col-md-6 card-body">
+    <div class="table-responsive">
+    <table id="example" class="table table-striped"border="3">
+        <thead class="  fa fa-chevron-down" >
+        <tr>
+            <th>PAYS</th>
+            <th>VILLE</th>
+            <th>IMAGE</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for destination in destinations %}
+            <tr>
+
+                <td>{{ destination.pays }}</td>
+                <td>{{ destination.ville }}</td>
+                <td>
+                    <img class="image-display" src="images/{{ destination.img}} " width="100" height="70">
+                </td>
+
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Acune destination disponible</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

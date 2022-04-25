@@ -1,32 +1,149 @@
 {% extends 'baseBack.html.twig' %}
+{%  block javascripts %}
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script >
+
+        $(document).ready(function() {
+
+            let setVilleEditMode=()=> {
+                //EDIT MODE
+                //FIRST WE SET OPTIONS FOR VILLE
+                let pays = $("#destination_pays").val();
+                let path = window.location.pathname;
+                let part = path.substring(
+                    path.lastIndexOf("destination/") + 12,
+                    path.lastIndexOf("/")
+                );
+                let id = part;
+                console.log(id)
+                if (pays != null && id!='/') {
+
+
+                    //WE CALL AN API THAT RETURNS VILLE OF A SPECIFIC DESTINATION AND WE SET IT AS SELECTED
+
+
+                    $.ajax({
+
+                        url: "/destination/ajax/getville/" + id,
+                        method: 'get',
+                        success: function (data, reponse) {
+                            console.log(reponse)
+                            console.log(data)
+                            if (pays=="France"){
+
+                                $('#destination_ville').find('option').remove().end().append($('<option>').val("Paris").text("Paris"));
+                                $('#destination_ville').append($('<option>').val("Nice").text("Nice"));
+
+                            }
+
+                            if (pays=="Belgique"){
+
+                                $('#destination_ville').find('option').remove().end().append($('<option>').val("Bruxelles").text("Bruxelles"));
+                                $('#destination_ville').append($('<option>').val("Namur").text("Namur"));
+                                $('#destination_ville').append($('<option>').val("Bruges").text("Bruges"));
+
+                            }
+                            if (pays=="Japon"){
+
+                                $('#destination_ville').find('option').remove().end().append($('<option>').val("Okazaki").text("Okazaki"));
+                                $('#destination_ville').append($('<option>').val("Toyokawa").text("Toyokawa"));
+                                $('#destination_ville').append($('<option>').val("Inazawa").text("Inazawa"));
+                            }
+                            if (pays=="Chine"){
+
+                                $('#destination_ville').find('option').remove().end().append($('<option>').val("Shanghai").text("Shanghai"));
+                                $('#destination_ville').append($('<option>').val("Pékin").text("Pékin"));
+                                $('#destination_ville').append($('<option>').val("Jinan").text("Jinan"));
+                            }
+                            if (pays=="Cuba"){
+
+                                $('#destination_ville').find('option').remove().end().append($('<option>').val("Havane").text("Havane"));
+                                $('#destination_ville').append($('<option>').val("Bayamo").text("Bayamo"));
+                                $('#destination_ville').append($('<option>').val("Florida").text("Florida"));
+                            }
+                            document.getElementById('destination_ville').value = data
+
+                        },
+                        error: function () {
+                            console.log("erreur")
+                        },
+                    });
+                }
+                else{
+                    $('#destination_ville').find('option').remove().end().append($('<option>').val("Paris").text("Paris"));
+                    $('#destination_ville').append($('<option>').val("Nice").text("Nice"));
+                }
+            }
+            setVilleEditMode();
+
+            $(document).on('change', '#destination_pays', function () {
+                if ($("#destination_pays").val()!=null){
+                    console.log("changed")
+                    let pays = $("#destination_pays").val();
+                    console.log(pays)
+
+                    if (pays=="France"){
+
+                        $('#destination_ville').find('option').remove().end().append($('<option>').val("Paris").text("Paris"));
+                        $('#destination_ville').append($('<option>').val("Nice").text("Nice"));
+
+                    }
+
+                    if (pays=="Belgique"){
+
+                        $('#destination_ville').find('option').remove().end().append($('<option>').val("Bruxelles").text("Bruxelles"));
+                        $('#destination_ville').append($('<option>').val("Namur").text("Namur"));
+                        $('#destination_ville').append($('<option>').val("Bruges").text("Bruges"));
+
+                    }
+                    if (pays=="Japon"){
+
+                        $('#destination_ville').find('option').remove().end().append($('<option>').val("Okazaki").text("Okazaki"));
+                        $('#destination_ville').append($('<option>').val("Toyokawa").text("Toyokawa"));
+                        $('#destination_ville').append($('<option>').val("Inazawa").text("Inazawa"));
+                    }
+                    if (pays=="Chine"){
+
+                        $('#destination_ville').find('option').remove().end().append($('<option>').val("Shanghai").text("Shanghai"));
+                        $('#destination_ville').append($('<option>').val("Pékin").text("Pékin"));
+                        $('#destination_ville').append($('<option>').val("Jinan").text("Jinan"));
+                    }
+                    if (pays=="Cuba"){
+
+                        $('#destination_ville').find('option').remove().end().append($('<option>').val("Havane").text("Havane"));
+                        $('#destination_ville').append($('<option>').val("Bayamo").text("Bayamo"));
+                        $('#destination_ville').append($('<option>').val("Florida").text("Florida"));
+                    }
+
+                }
+                /*
+                console.log("changed")
+                let $field = $(this)
+                let $form = $field.closest('form')
+                let data = {}
+                data[$field.attr('name')] = $field.val()
+                $.post($form.attr('action'), data).then(function (data) {
+                    let $input = $(data).find('#destination_ville')
+                    $('#destination_ville').replaceWith($input)
+                })
+                */
+
+            })
+
+        })
+    </script>
+{% endblock %}
 {% block content %}
     <h1>Créer une nouvelle destination</h1>
-    <hr><hr>
+    <br> <br>
 
     {{ form_start(form,{'attr':{'novalidate': 'novalidate'}}) }}
-
-    {{ form_label(form.pays,'Pays') }}
-    {{ form_widget(form.pays,{'attr':{
-        'class':'pays','placeholder':'Veuillez entrer le pays','novalidate': 'novalidate'
-    }}) }}
-    {{ form_errors(form.pays) }}
-    <br>
-
-    {{ form_label(form.ville,'Ville') }}
-    {{ form_widget(form.ville,{'attr':{
-        'class':'ville','placeholder':'Veuillez entrer la ville','novalidate': 'novalidate'
-    }}) }}
-    {{ form_errors(form.ville) }}
-<br>
-    {{ form_label(form.img,'Image') }}
-    {{ form_widget(form.img,{'attr':{
-        'class':'img','placeholder':'Veuillez entrer la ville','novalidate': 'novalidate'
-    }}) }}
-    {{ form_errors(form.img) }}
-    <br>
-    <br>
-
+ {{ form_widget(form) }}
+    <button name="button" type="submit" class="btn-success">Enregistrer</button>
     {{ form_end(form) }}
+    <br>
 
-    <a href="{{ path('app_destination_index') }}">Retour à la liste</a>
+    <a class="btn btn-primary mb-2" href="{{ path('app_destination_index') }}">Retour à la liste</a>
+
 {% endblock %}

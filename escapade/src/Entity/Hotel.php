@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Entity;
-
+use App\Repository\ChambreRepository;
+use App\Repository\DestinationRepository;
+use App\Repository\HotelRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 

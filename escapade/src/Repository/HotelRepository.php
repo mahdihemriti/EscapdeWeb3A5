@@ -45,22 +45,21 @@ class HotelRepository extends ServiceEntityRepository
         }
     }
 
-    // /**
-    //  * @return Hotel[] Returns an array of Hotel objects
-    //  */
-    /*
-    public function findByExampleField($value)
+     /**
+      * @return Hotel[] Returns an array of Hotel objects
+      */
+
+    public function findBydes($id)
     {
         return $this->createQueryBuilder('h')
-            ->andWhere('h.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('h.id', 'ASC')
+            ->andWhere('h.iddestination = :val')
+            ->setParameter('val', $id)
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Hotel

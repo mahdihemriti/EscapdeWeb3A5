@@ -46,6 +46,14 @@ class DestinationRepository extends ServiceEntityRepository
         }
     }
 
+    public function findbypays($pays){
+        return $this->createQueryBuilder('e')
+            ->where('e.pays LIKE :pays')
+            ->setParameter('pays', '%'.$pays.'%')
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Destination[] Returns an array of Destination objects
     //  */

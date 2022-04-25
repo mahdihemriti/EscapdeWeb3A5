@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+
+{% block content %}
+    <div id="fh5co-tours" class="fh5co-section-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+                    <h3>Réserver un vol</h3>
+                    <p> L'instant le plus heureux d'une vie humaine est le départ vers une terre inconnue.</p>
+                </div>
+            </div>
+            <div class="row row-bottom-padded-md">
+
+                <div class="col-md-12 animate-box">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2>Le monde est un livre, et ceux qui ne voyagent pas ne lisent qu'une seule page</h2>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+            {% for destination in destinations %}
+            <div class="row row-bottom-padded-md">
+                <div class="col-md-3 col-sm-1 fh5co-tours animate-box" data-animate-effect="fadeIn">
+                    <div href="#">
+                        <a class="btn btn-primary "
+                           href="{{ path('app_hotel_id_dest', {'id': destination.id}) }}">
+                        <img src="{{ asset('images/' ~ destination.img ) }}"
+                             alt="{{ destination.pays }}" class="img-responsive" height="50" width="600" >
+                        </a>
+                        <div class="desc">
+                            <span></span>
+                            <a
+                               href="{{ path('app_hotel_id_dest', {'id': destination.id}) }}">
+                            <h3>{{ destination.pays }}</h3>
+                            </a>
+                            <a
+                               href="{{ path('app_hotel_id_dest', {'id': destination.id}) }}">
+                            <h3>Ville: {{ destination.ville}} </h3>
+
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

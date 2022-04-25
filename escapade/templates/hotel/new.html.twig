@@ -9,7 +9,7 @@
     {{ form_widget(form.matriculefiscale,{'attr':{
         'class':'matriculefiscale','placeholder':'Veuillez entrer la matricule fiscale','novalidate': 'novalidate'
     }}) }}
-    {{ form_errors(form.matriculefiscale) }}
+
     <br>
 
     {{ form_label(form.nom, 'Libelle') }}
@@ -17,21 +17,21 @@
     {{ form_widget(form.nom,{'attr':{
         'class':'nom','placeholder':'Veuillez entrer le libelle','novalidate': 'novalidate'
     }}) }}
-    {{ form_errors(form.nom) }}
+
     <br>
     {{ form_label(form.nbretoile,'Nombre des étoiles') }}
 
     {{ form_widget(form.nbretoile,{'attr':{
         'class':'nbretoile','placeholder':'Veuillez entrer le nombre des *','novalidate': 'novalidate'
     }}) }}
-    {{ form_errors(form.nbretoile) }}
+
     <br>
     {{ form_label(form.description,'Description') }}
 
     {{ form_widget(form.description,{'attr':{
         'class':'description','placeholder':'Veuillez entrer la description','novalidate': 'novalidate'
     }}) }}
-    {{ form_errors(form.description) }}
+
 
     <br>
     {{ form_label(form.nbchambretotal,'Le nombre des chambres réservées') }}
@@ -39,7 +39,7 @@
     {{ form_widget(form.nbchambretotal,{'attr':{
         'class':'nbchambretotal','placeholder':'Veuillez entrer le nbr des chambres réservées','novalidate': 'novalidate'
     }}) }}
-    {{ form_errors(form.nbchambretotal) }}
+
 
     <br>
     {{ form_label(form.maxchambre,'Le nombre des chambres total') }}
@@ -47,21 +47,21 @@
     {{ form_widget(form.maxchambre,{'attr':{
         'class':'maxchambre','placeholder':'Veuillez entrer le nbr des chambres total','novalidate': 'novalidate'
     }}) }}
-    {{ form_errors(form.maxchambre) }}
+
     <br>
     {{ form_label(form.imghotel,'Image') }}
 
     {{ form_widget(form.imghotel,{'attr':{
         'class':'imghotel','placeholder':'Veuillez entrer l image','novalidate': 'novalidate'
     }}) }}
-    {{ form_errors(form.imghotel) }}
+
     <br>
     {{ form_label(form.iddestination, 'Destination')  }}
 
     {{ form_widget(form.iddestination,{'attr':{
         'class':'iddestination','placeholder':'Veuillez entrer le pays','novalidate': 'novalidate'
     }}) }}
-    {{ form_errors(form.iddestination)  }}
+
     <br>
 
     {{ form_end(form) }}

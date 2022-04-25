@@ -1,0 +1,52 @@
+{% extends 'baseBack.html.twig' %}
+
+
+
+{% block content %}
+    <h1>Liste de nos chambres</h1>
+
+    <br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+
+                <th>Numéro Chambre</th>
+                <th>Type</th>
+
+                <th>Prix nuitée</th>
+                <th>Status</th>
+
+                <th>ACTIONS</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for chambre in chambres %}
+            <tr>
+
+                <td>{{ chambre.num }}</td>
+                <td>{{ chambre.type }}</td>
+
+                <td>{{ chambre.prixnuit }}</td>
+                <td>{{ chambre.status }}</td>
+
+                <td>
+                    <a class="btn btn-primary "  href="{{ path('app_chambre_show', {'id': chambre.id}) }}">Détails</a>
+                     <a class="btn btn-primary "  href="{{ path('app_chambre_edit', {'id': chambre.id}) }}">Modifier</a>
+                 <br> <br>
+                    {{ include('chambre/_delete_form.html.twig') }}
+                </td>
+                <td> </td>
+            </tr>
+
+        {% else %}
+            <tr>
+                <td colspan="9">Aucune chambre trouvée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<p>
+    <a class="btn btn-primary " href="{{ path('app_chambre_new') }}">Ajouter une chambre</a>
+</p>
+
+{% endblock %}

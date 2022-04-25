@@ -2,36 +2,56 @@
 {% block content %}
 
     <h1>Liste de nos destinations </h1>
-    <hr>
-    <hr>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Pays</th>
+    <form>
+        <div class="container">
+            <div class="input-group">
+                <input type="text" id="search" class="form-control bg-light border-1 " placeholder="Search for..."
+                       aria-label="Search" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
 
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for destination in destinations %}
-            <tr>
-                <td>{{ destination.pays }}</td>
+                </div>
+            </div>
+        </div>
+    </form>
 
+    <div class="container" id="all">
+        {% include 'destination/destinationAjax.html.twig' %}
+    </div>
+    <br>
+    <script src="{{ asset('assets/js/jquery.js') }}"></script>
+    <script
+            src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js')}}">
+    </script>
+    <script>
+        $( document ).ready(function() {
+            var currentRequest = null;
+            $("#search").keyup(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte
+                afin d’effectuer la recherche */
+                var value = $(this).val();
+                if(currentRequest != null) {
+                    currentRequest.abort();
+                }
+                /* Ajax est lancé lors du remplissage du champ texte dont l’id est
+                « search » pour faire la recherche */
+                currentRequest = $.ajax({
+                    url : "{{ path('destinationAjax') }}",
+                    type : 'GET',
+                    data: {
+                        'searchValue' : value
+                    },
+                    success : function(retour)
+                    {
+                        $('#all').html(retour);
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
 
-
-                <td>
-                    <a href="{{ path('app_destination_show', {'id': destination.id}) }}">Détails</a>
-                    <a href="{{ path('app_destination_edit', {'id': destination.id}) }}">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">Pas de destinations trouvées</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_destination_new') }}">Ajouter une destination</a>
 
 {% endblock %}

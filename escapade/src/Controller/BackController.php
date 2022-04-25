@@ -5,6 +5,9 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\ChambreRepository;
+use App\Repository\DestinationRepository;
+use App\Repository\HotelRepository;
 
 class BackController extends AbstractController
 {

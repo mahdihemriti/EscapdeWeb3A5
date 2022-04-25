@@ -5,6 +5,8 @@ namespace App\Form;
 use App\Repository\HotelRepository;
 use App\Repository\DestinationRepository;
 use App\Entity\Destination;
+use App\Repository\ChambreRepository;
+
 use App\Entity\Hotel;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;

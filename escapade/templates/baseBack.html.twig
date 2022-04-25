@@ -11,12 +11,15 @@
     {% endblock %}
     <title>Escapade</title>
     <link rel="shortcut icon" href="{{ asset ('images/logo.png') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     {% block stylesheets %}
 
         <!-- Custom fonts for this template-->
         <link href="{{ asset('back/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
               rel="stylesheet">
+
         <!-- Custom styles for this template-->
         <link href="{{ asset('back/css/sb-admin-2.min.css') }}" rel="stylesheet">
     {% endblock %}
@@ -65,9 +68,9 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">VOYAGE</h6>
-                    <a class="collapse-item" href="/destination/">Destinaton</a>
+                    <a class="collapse-item" href="/destination">Destinaton</a>
                     <a class="collapse-item" href="/hotel/">Hôtel</a>
-                    <a class="collapse-item" href="#">Chambre</a>
+                    <a class="collapse-item" href="/chambre/">Chambre</a>
                     <a class="collapse-item" href="{{ path ('guideBack') }}">Guide</a>
                     <a class="collapse-item" href="{{ path ('siteTBack') }}">Site tourstique</a>
                     <a class="collapse-item" href="{{ path ('MoyenTBack') }}">Moyen de transport</a>
@@ -264,10 +267,16 @@
         {% block title %}
 
         {% endblock %}
-
+        <div class="container">
         {% block content %}
 
+
+
+            <script src="{{ asset('js/app.js')}}"></script>
+            <script src="{{ asset('js/jquery.min.js')}}"></script>
         {% endblock %}
+        </div>
+
 
         {% block footer %}
             <!-- End of Main Content -->
@@ -275,7 +284,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; ESCAPADE 2022</span>
                     </div>
                 </div>
             </footer>
@@ -284,6 +293,9 @@
     </div>
 
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 <!-- End of Content Wrapper -->
 
@@ -291,7 +303,11 @@
 
 <!-- Scroll to Top Button-->
 {% block javascripts %}
+
+
+
     <!-- Bootstrap core JavaScript-->
+
     <script src="{{ asset('back/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('back/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- Core plugin JavaScript-->
@@ -303,7 +319,9 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('back/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('back/js/demo/chart-pie-demo.js') }}"></script>
+
 {% endblock %}
 </body>
 
 </html>
+

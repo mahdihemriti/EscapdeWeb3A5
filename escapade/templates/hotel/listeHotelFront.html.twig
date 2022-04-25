@@ -16,31 +16,30 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2>Le monde est un livre, et ceux qui ne voyagent pas ne lisent qu'une seule page</h2>
+                            <br>
+                            <br>
+                            <h2>List de nos hôtels dans la destination choisie</h2>
                         </div>
-
-
                     </div>
                 </div>
 
             </div>
             {% for hotel in hotels %}
             <div class="row row-bottom-padded-md">
-                <div class="col-md-4 col-sm-4 fh5co-tours animate-box" data-animate-effect="fadeIn">
-                    <div href="#"><img src="{{ asset('images/' ~ hotel.imghotel ) }}" alt="{{ hotel.nom }}" class="img-responsive">
+                <div class="col-md-3 col-sm-1 fh5co-tours animate-box" data-animate-effect="fadeIn">
+                    <div href="#">
+                            <img src="{{ asset('images/' ~ hotel.imghotel ) }}"
+                                 alt="{{ hotel.nom }}" class="img-responsive" height="50" width="600" >
                         <div class="desc">
                             <span></span>
                             <h3>{{ hotel.nom }}</h3>
-                            <h3>{{ hotel.nbretoile }} étoiles</h3>
-
-                            <span class="price">{{ hotel.iddestination.pays }}</span>
+                            <h3>Ville: {{ hotel.nbretoile}}  étoiles</h3>
+                            <a class="btn btn-primary " href="{{ path('ReservationCh') }}">  Réserver </a>
 
                         </div>
                     </div>
                 </div>
                 {% endfor %}
-
-
-
 
             </div>
         </div>
