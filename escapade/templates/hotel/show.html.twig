@@ -2,13 +2,13 @@
 {% block content %}
 
     <h1>Hotel</h1>
-    <hr><hr>
-
-    <table class="table">
+    <br>
+    <br>
+    <table class="table table-striped">
         <tbody>
 
             <tr>
-                <th>Matricule fiscale</th>
+                <th>Matricule fiscal</th>
                 <td>{{ hotel.matriculefiscale }}</td>
             </tr>
             <tr>
@@ -21,7 +21,7 @@
             </tr>
             <tr>
                 <th>Description</th>
-                <td>{{ hotel.description }}</td>
+                <td>{{ hotel.description | raw }}</td>
             </tr>
             <tr>
                 <th>Destination</th>
@@ -44,11 +44,11 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_hotel_index') }}">Retour à la liste</a>
+    <a  class="btn btn-primary " href="{{ path('app_hotel_index') }}">Retour à la liste</a>
     <br>
     <br>
 
-    <a href="{{ path('app_hotel_edit', {'idhotel': hotel.idhotel}) }}">Modifier</a>
+    <a  class="btn btn-primary " href="{{ path('app_hotel_edit', {'idhotel': hotel.idhotel}) }}">Modifier</a>
     <br>
 
     {{ include('hotel/_delete_form.html.twig') }}

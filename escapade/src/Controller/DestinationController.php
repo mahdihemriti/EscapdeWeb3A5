@@ -16,6 +16,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use Symfony\Component\Notifier\Notification\Notification;
+use Symfony\Component\Notifier\NotifierInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
@@ -44,31 +46,67 @@ class DestinationController extends AbstractController
     /**
      * @Route("/new", name="app_destination_new", methods={"GET", "POST"})
      */
-    public function new(Request $request)
+    public function new(Request $request,DestinationRepository $repo)
     {
-
+    $p=0;
         $destination=new Destination();
         $form=$this->createForm(DestinationType::class,$destination);
         $form->handleRequest($request);
 
-        if( $form->isSubmitted() && $form->isValid()){
-            $uploadedFile = $form['img']->getData();
-            if ($uploadedFile) {
-                $image = $this->getParameter('kernel.project_dir') . '/public/images';
-                $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $newFilename = $originalFilename . '-' . uniqid() . '.' . $uploadedFile->guessExtension();
-                $uploadedFile->move(
-                    $image,
-                    $newFilename
-                );
-                $destination->setImg($newFilename);}
-            $em=$this->getDoctrine()->getManager();
-            $em->persist($destination);
-            $em->flush();
-            return $this->redirectToRoute('app_destination_show',['id'=>$destination->getId()]);
+        if( $form->isSubmitted() && $form->isValid()) {
+
+            $destinations = $repo->findAll();
+
+            foreach ($destinations as $des) {
+
+                if ($destination->getVille() == $des->getVille() && $destination->getPays() == $des->getPays()) {
+                    $p = 1;
+                }
+
+            }
+            if ($p == 0) {
+
+
+                $uploadedFile = $form['img']->getData();
+                if ($uploadedFile) {
+                    $image = $this->getParameter('kernel.project_dir') . '/public/images';
+                    $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                    $newFilename = $originalFilename . '-' . uniqid() . '.' . $uploadedFile->guessExtension();
+                    $uploadedFile->move(
+                        $image,
+                        $newFilename
+                    );
+                    $destination->setImg($newFilename);
+                }
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($destination);
+                $em->flush();
+              //  $sid = 'AC261bf63b493af9d47649c8ba01efc947';
+               // $token = '296eb5f7d332842af27a38b4126c5571';
+                //$sms = new \Twilio\Rest\Client($sid, $token);
+             /*   $sms->messages->create(
+                    '+21627986111',
+                    [
+                        'from' => '+19379091230',
+                        'body' => 'Une nouvelle destination a été ajoutée avec succès' . ' - ' .
+                            $destination->getPays() . ' - ' . $destination->getVille()
+
+                    ]
+                );*/
+                return $this->redirectToRoute('app_destination_show', ['id' => $destination->getId()]);
+            }
+            else
+            {
+                $this->addFlash('success', 'Cette destination existe déjà!!  ');
+                return $this->render("destination/new.html.twig",
+                    ['form' => $form->createView()]);
+
+            }
+
+
         }
-        return $this->render("destination/new.html.twig",
-            ['form'=>$form->createView()]);
+            return $this->render("destination/new.html.twig",
+                ['form' => $form->createView()]);
 
 
     }
@@ -81,7 +119,7 @@ class DestinationController extends AbstractController
     {
         $destination=$repository->find($id);
        return $this->render('destination/show.html.twig', [
-            'dest' => $destination,
+            'dest' => $destination,'id'=>$id
         ]);
     }
 
@@ -109,11 +147,12 @@ class DestinationController extends AbstractController
             $em=$this->getDoctrine()->getManager();
 
             $em->flush();
+            $this->addFlash('message','modification avec succés');
             return $this->redirectToRoute('app_destination_index');
         }
         if (!$form->isSubmitted()){
             /*
-            if ($form->getData() == "France") {
+            if ($form->getDGMata() == "France") {
                 $form->getParent()->add('ville', ChoiceType::class,
                     array('choices' => ['Paris' => 'Paris', 'Nice' => 'Nice']));
             }

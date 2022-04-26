@@ -102,7 +102,7 @@ class Destination
     }
 
     public function __toString(){
-    return "$this->pays";
+    return $this->pays+ " "+$this->ville ;
     }
 
 

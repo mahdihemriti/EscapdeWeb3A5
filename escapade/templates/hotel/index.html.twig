@@ -1,11 +1,16 @@
 {% extends 'baseBack.html.twig' %}
 {% block content %}
+
+    <a  class="btn btn-primary " href="{{ path('statHotel') }}">Statistiques</a>     <br>    <br>  <br>
     <h1>Liste de nos hôtels</h1>
-    <hr><hr>
-    <table class="table">
+    <br>
+
+
+    <br>
+    <table class="table table-striped">
         <thead>
             <tr>
-                <th>Matricule fiscale</th>
+                <th>Matricule fiscal</th>
                 <th>Nom</th>
                 <th>Nombre des étoiles</th>
                 <th>Description</th>
@@ -21,12 +26,12 @@
                 <td>{{ hotel.matriculefiscale }}</td>
                 <td>{{ hotel.nom }}</td>
                 <td>{{ hotel.nbretoile }}</td>
-                <td>{{ hotel.description }}</td>
+                <td>{{ hotel.description | raw }}</td>
 
                 <td>{{ hotel.iddestination.pays }}</td>
                 <td>
-                    <a href="{{ path('app_hotel_show', {'idhotel': hotel.idhotel}) }}">Détails</a>
-                    <a href="{{ path('app_hotel_edit', {'idhotel': hotel.idhotel}) }}">Modifier</a>
+                    <a  class="btn btn-primary " href="{{ path('app_hotel_show', {'idhotel': hotel.idhotel}) }}">Détails</a>
+                    <a  class="btn btn-primary " href="{{ path('app_hotel_edit', {'idhotel': hotel.idhotel}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -37,5 +42,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_hotel_new') }}">Ajouter un hôtel</a>
+    <a  class="btn btn-primary " href="{{ path('app_hotel_new') }}">Ajouter un hôtel</a>
 {% endblock %}

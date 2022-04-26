@@ -30,7 +30,7 @@ class ChambreController extends AbstractController
     /**
      * @Route("/new", name="app_chambre_new", methods={"GET", "POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, \Swift_Mailer $mailer): Response
     {
         $chambre = new Chambre();
         $form = $this->createForm(ChambreType::class, $chambre);
@@ -52,6 +52,21 @@ class ChambreController extends AbstractController
             $em=$this->getDoctrine()->getManager();
             $em->persist($chambre);
             $em->flush();
+            $message = (new \Swift_Message('activation mail'))
+
+                ->setFrom('celine.benbrahim@esprit.tn')
+                ->setTo("meryem.daghrour@esprit.tn")
+                ->setBody($this->renderView(
+                // templates/emails/registration.html.twig
+                    'chambre/message.html.twig'
+                ),
+                    'text/html'
+                )
+
+
+            ;
+
+            $mailer->send($message);
             return $this->redirectToRoute('app_chambre_show',['id'=>$chambre->getId()]);
         }
 

@@ -1,13 +1,13 @@
 {% extends 'baseBack.html.twig' %}
 {% block content %}
     <h1>Créer un nouveau hôtel</h1>
-    <hr><hr>
+<br> <br>
     {{ form_start(form,{'attr':{'novalidate': 'novalidate'}}) }}
 
-    {{ form_label(form.matriculefiscale,'Matricule fiscale') }}
+    {{ form_label(form.matriculefiscale,'Matricule fiscal') }}
 
     {{ form_widget(form.matriculefiscale,{'attr':{
-        'class':'matriculefiscale','placeholder':'Veuillez entrer la matricule fiscale','novalidate': 'novalidate'
+        'class':'matriculefiscale','placeholder':'Veuillez entrer la matricule fiscal','novalidate': 'novalidate'
     }}) }}
 
     <br>

@@ -13,6 +13,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class HotelType extends AbstractType
 {
@@ -22,7 +23,7 @@ class HotelType extends AbstractType
             ->add('matriculefiscale')
             ->add('nom')
             ->add('nbretoile')
-            ->add('description')
+            ->add('description',CKEditorType::class)
             ->add('nbchambretotal')
             ->add('maxchambre')
             ->add('imghotel',FileType::class,[
@@ -30,7 +31,8 @@ class HotelType extends AbstractType
                 'required'=>false,
             ])
             ->add('iddestination',EntityType::class, ['class'=>Destination::class,
-            'choice_label'=>'pays'
+            'choice_label'=>'ville'
+
 
             ])
         ;

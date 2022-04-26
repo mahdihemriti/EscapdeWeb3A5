@@ -38,6 +38,7 @@ class DestinationType extends AbstractType
                 FormEvents::POST_SUBMIT,
 
                 function (FormEvent $event) {
+
                     $form = $event->getForm();
                     if ($form->getData() == "France") {
                         $form->getParent()->add('ville', ChoiceType::class,
@@ -57,7 +58,7 @@ class DestinationType extends AbstractType
                             array('choices' => ['Shanghai' => 'Shanghai', 'Pékin' => 'Pékin', 'Jinan' => 'Jinan']));
                     }
                     if ($form->getData() == "Cuba") {
-                        $form->add('ville', ChoiceType::class,
+                        $form->getParent()->add('ville', ChoiceType::class,
                             array('choices' => ['Havane' => 'Havane', 'Bayamo' => 'Bayamo', 'Florida' => 'Florida']));
                     }
 

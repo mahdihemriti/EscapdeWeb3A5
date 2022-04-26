@@ -23,8 +23,9 @@
                 </div>
 
             </div>
-            {% for destination in destinations %}
             <div class="row row-bottom-padded-md">
+                {% for destination in destinations %}
+
                 <div class="col-md-3 col-sm-1 fh5co-tours animate-box" data-animate-effect="fadeIn">
                     <div href="#">
                         <a class="btn btn-primary "
@@ -47,12 +48,13 @@
                         </div>
                     </div>
                 </div>
+
+
+
                 {% endfor %}
 
-
-
-
             </div>
+
         </div>
     </div>
 {% endblock %}

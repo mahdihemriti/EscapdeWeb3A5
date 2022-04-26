@@ -136,6 +136,13 @@
 {% endblock %}
 {% block content %}
     <h1>Créer une nouvelle destination</h1>
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
     <br> <br>
 
     {{ form_start(form,{'attr':{'novalidate': 'novalidate'}}) }}

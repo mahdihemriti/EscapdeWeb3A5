@@ -4,8 +4,9 @@
 
 {% block content %}
     <h1>Chambre</h1>
-
-    <table class="table">
+    <br>
+    <br>
+    <table class="table table-striped">
         <tbody>
 
             <tr>
@@ -39,7 +40,7 @@
             <tr>
 
                 <td>
-                    <a  class="btn btn-primary " href="{{ path('app_chambre_index') }}">Retour à la liste</a>
+                    <a   class="btn btn-primary " href="{{ path('app_chambre_index') }}">Retour à la liste</a>
                 </td>
                 <td>
                     <a  class="btn btn-primary " href="{{ path('app_chambre_edit', {'id': chambre.id}) }}">Modifier</a>

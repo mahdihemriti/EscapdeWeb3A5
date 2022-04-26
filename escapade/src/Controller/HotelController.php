@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Destination;
 use App\Entity\Hotel;
 use App\Repository\ChambreRepository;
 use App\Repository\DestinationRepository;
@@ -10,6 +11,7 @@ use App\Form\HotelType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -28,7 +30,32 @@ class HotelController extends AbstractController
             'hotels' => $hotelRepository->findAll(),
         ]);
     }
+    /**
+     * @Route("/search/{iddest}", name="app_dests_stajaxs", methods={"GET"})
+     * @return JsonResponse
+     */
+    public function ajaxStat(Request $request,$iddest)
+    {
+        $data=$this->getDoctrine()->getManager()->getRepository(Hotel::class)->findBydes($iddest);
+        $nbrstars=[0,0,0,0,0];
+        for ($i = 1; $i <5; $i++) {
+            $nbrstars[$i]=$this->calculstars($data,$i);
+        }
 
+        return new JsonResponse($nbrstars);
+
+    }
+    /**
+     * @Route("/stat",name="statHotel")
+     */
+
+    public function stat()
+    {
+        $data=$this->getDoctrine()->getManager()->getRepository(Destination::class)->findAll();
+        return $this->render('hotel/stat.html.twig',[
+            'destinations'=>$data
+        ]);
+    }
     /**
      * @Route("/ReservationCh",name="ReservationCh")
      */
@@ -53,7 +80,7 @@ class HotelController extends AbstractController
     public function liste($id, HotelRepository $hotelRepository)
     {
         return $this->render('hotel/listeHotelFront.html.twig', [
-            'hotels' => $hotelRepository->findBydes($id)
+            'hotels' => $hotelRepository->findBydes($id),'id'=>$id
         ]);
     }
 
@@ -78,10 +105,23 @@ class HotelController extends AbstractController
                     $image,
                     $newFilename
                 );
-                $hotel->setImghotel($newFilename);}
+                $hotel->setImghotel($newFilename);
+            }
             $em=$this->getDoctrine()->getManager();
             $em->persist($hotel);
             $em->flush();
+           /* $sid = 'AC261bf63b493af9d47649c8ba01efc947';
+            $token = '296eb5f7d332842af27a38b4126c5571';
+            $sms = new \Twilio\Rest\Client($sid, $token);
+            $sms->messages->create(
+                '+21627986111',
+                [
+                    'from' => '+19379091230',
+                    'body' => 'Un nouveau hotel a été ajouté avec succès' . ' - ' .
+                        $hotel->getNom().' - ' .$hotel->getNbretoile() . ' étoiles'
+
+                ]
+            );*/
             return $this->redirectToRoute('app_hotel_index');
         }
         return $this->render("hotel/new.html.twig",
@@ -139,4 +179,42 @@ class HotelController extends AbstractController
         $em->flush();
         return $this->redirectToRoute('app_hotel_index');
     }
+
+
+    /**
+     * @Route("/{id}/hotel/Asc", name="affichRI")
+     */
+    public function afficheHotelFiltre(Request $request)
+    {
+        $hotels =$this->getDoctrine()->getRepository(Hotel::class)->findBy([], ['nbretoile' => 'ASC']);
+        return $this->render('hotel/listeHotelFront.html.twig', [
+            "hotels" => $hotels,'id'=>$request->get("id")
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/hotel/Desc", name="affiche_TRI")
+     */
+    public function afficheHotelFiltreD(Request $request)
+    {
+        $hotels =$this->getDoctrine()->getRepository(Hotel::class)->findBy([], ['nbretoile' => 'DESC']);
+        return $this->render('hotel/listeHotelFront.html.twig', [
+            "hotels" => $hotels,'id'=>$request->get("id")
+        ]);
+    }
+
+    public function calculstars($t,$star)
+    {
+        $count=0;
+        $nbrparstar=[];
+        foreach ($t as $f) {
+            if ($f->getNbretoile()==$star){
+                $count+=1;
+            }
+        }
+        return $count;
+    }
+
+
+
 }
