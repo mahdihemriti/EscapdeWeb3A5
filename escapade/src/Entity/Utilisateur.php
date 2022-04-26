@@ -5,16 +5,19 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use App\Repository\UtilisateurRepository;
+use Exception;
+use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use Rollerworks\Component\PasswordStrength\Validator\Constraints as RollerworksPassword;
+use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * Utilisateur
  *
  * @ORM\Table(name="utilisateur")
  * @ORM\Entity(repositoryClass=UtilisateurRepository::class)
  */
-class Utilisateur
+class Utilisateur implements UserInterface, \Serializable
 {
     /**
      * @var int
@@ -55,7 +58,7 @@ class Utilisateur
 
     /**
      * @var \DateTime|null
-     *
+     * @Assert\NotBlank(message="Ce champ ne doit pas être vide")
      *
      * @ORM\Column(name="dateDeNaissance", type="date", nullable=true)
      */
@@ -71,7 +74,7 @@ class Utilisateur
 
     /**
      * @var string|null
-     *@Assert\NotBlank(message="Ce champ ne doit pas être vide")
+     * @Assert\NotBlank(message="Ce champ ne doit pas être vide")
      * @Assert\Type("string")
      * @ORM\Column(name="ville", type="string", length=20, nullable=true)
      */
@@ -79,7 +82,8 @@ class Utilisateur
 
     /**
      * @var string
-     *@Assert\NotBlank(message="Ce champ ne doit pas être vide")
+     * @RollerworksPassword\PasswordStrength(minLength=7, minStrength=3)
+     * @Assert\NotBlank(message="Ce champ ne doit pas être vide")
      * @Assert\Type("string")
      * @ORM\Column(name="mdp", type="string", length=255, nullable=false)
      */
@@ -101,11 +105,9 @@ class Utilisateur
 
     /**
      * @var string
-     *
      * @ORM\Column(name="role", type="string", length=0, nullable=false)
      */
     private $role;
-    private $Confirm_Password;
 
     public function getId(): ?int
     {
@@ -232,21 +234,51 @@ class Utilisateur
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getConfirmPassword()
+
+    public function serialize()
     {
-        return $this->Confirm_Password;
+        return serialize(array(
+            $this->id,
+            $this->email,
+            $this->mdp,
+            // see section on salt below
+            // $this->salt,
+        ));
     }
 
-    /**
-     * @param mixed $Confirm_Password
-     */
-    public function setConfirmPassword($Confirm_Password): void
+    public function unserialize($serialized)
     {
-        $this->Confirm_Password = $Confirm_Password;
+        list (
+            $this->id,
+            $this->email,
+            $this->mdp,
+            // see section on salt below
+            // $this->salt
+            ) = unserialize($serialized, array('allowed_classes' => false));
     }
 
+    public function getRoles()
+    {
+        return array('ROLE_USER');
+    }
 
+    public function getPassword()
+    {
+        return $this->mdp;
+    }
+
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+    }
+
+    public function getUsername()
+    {
+        return $this->email;
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
 }

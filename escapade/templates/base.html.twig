@@ -48,6 +48,10 @@
         <link rel="stylesheet" href="{{ asset('front/css/cs-skin-border.css')}}">
 
         <link rel="stylesheet" href="{{ asset('front/css/style.css')}}">
+        <link rel="stylesheet" href="{{ asset('front/css/custom.css')}}">
+
+
+
 
 
 
@@ -86,6 +90,8 @@
         <script src="{{ asset('front/js/main.js')}}"></script>
 
 
+
+
     {% endblock %}
 </head>
 <body>
@@ -93,6 +99,7 @@
     <div id="fh5co-page">
 
         {% block header %}
+
             <header id="fh5co-header-section" class="sticky-banner">
                 <div class="container">
                     <div class="nav-header">
@@ -112,11 +119,11 @@
                                 {% block logIn %}
 
                                 <li>
-                                    <a href="{{ path ('home') }}"class="fh5co-sub-ddown"><i class="icon-user"></i></a>
+                                    <a href="{{ path ('home') }} "class="fh5co-sub-ddown"><i class="icon-user"></i></a>
                                     <ul class="fh5co-sub-menu">
 
-                                        <li><a href="{{ path ('signIn') }}">Connexion</a></li>
-                                        <li><a href="{{ path('signUp') }}">S'inscrire</a></li>
+                                        <li><a href="{{ path ('signIn') }}" >Connexion</a></li>
+                                        <li><a href="{{ path ('signUp') }}" >S'inscrire</a></li>
 
 
                                     </ul>
@@ -130,24 +137,12 @@
                 </div>
             </header>
         {% endblock %}
-        <div>
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm">
-                    </div>
-                    <div class="col-sm">
-
-                    </div>
-                    <div class="col-sm">
                         {% block content %}
 
-                        {% endblock %}
-                    </div>
-                </div>
-            </div>
 
-        </div>
+                        {% endblock %}
+
         {% block footer %}
             <footer>
                 <div id="footer">

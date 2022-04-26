@@ -8,10 +8,13 @@ use App\Form\RegistrationFormType;
 use App\Form\UtilisateurType;
 use App\Repository\UtilisateurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Twilio\Rest\Client;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 /**
  * @Route("/utilisateur")
  */
@@ -90,7 +93,7 @@ class UtilisateurController extends AbstractController
     /**
      * @Route("/signUp", name="signUp")
      */
-    public function signUp(Request $request): Response
+    public function signUp(Request $request,UserPasswordEncoderInterface $encoder): Response
     {
         $utilisateur = new utilisateur();
         $form = $this->createForm(RegistrationFormType::class, $utilisateur);
@@ -99,10 +102,14 @@ class UtilisateurController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $utilisateur->setRole("CLIENT");
             $utilisateur->setBlocked("non");
+            $encoded = $encoder->encodePassword($utilisateur, $form->get('mdp')->getData());
+
+            $utilisateur->setMdp($encoded);
 
             try {
                 $image=$form->get('image')->getData();
-                $fichier=md5(uniqid()).'.'.$image->guessExtension();
+                $name = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $fichier=$name.'.'.$image->guessExtension();
                 $image->move(
                     $this->getParameter('image_directory'),
                     $fichier
@@ -119,7 +126,7 @@ class UtilisateurController extends AbstractController
             return $this->redirectToRoute('home');
         }
 
-        return $this->render('utilisateur/signUp.html.twig', [
+        return $this->render('utilisateur/inscrit.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -154,6 +161,43 @@ class UtilisateurController extends AbstractController
         return $this->render('utilisateur/signIn.html.twig', [
             'form' => $form->createView(),
         ]);
+
+    }
+
+    /**
+     * @Route("/searchEmail/{email}", name="searchEmail")
+     */
+    public function searchByEmail($email,UtilisateurRepository $repository){
+        $user =$repository->findOneBy(['email'=>$email]);
+        if($user){
+            return $this->render('utilisateur/recuperation.html.twig', [
+                'user' =>$user,
+            ]);
+        }
+        else{
+
+        }
+    }
+
+    /**
+     * @Route("/sms/{numTel}", name="sms")
+     */
+    public function envoyerSms($numTel){
+        $rand=mt_rand(10000, 99999);
+        echo $rand;
+        $sid = "AC5ef9a2b12f93e3126946e2fc5ed68809"; // Your Account SID from www.twilio.com/console
+        $token = "3893e0bd4a4968e799efe2e61d1119ce"; // Your Auth Token from www.twilio.com/console
+
+        $twilio_number = "+19896324806";
+
+        $client = new Client($sid, $token);
+        $client->messages->create(
+        // Where to send a text message (your cell phone?)
+            '+216'.$numTel,
+            array(
+                'from' => $twilio_number,
+                'body' => 'I sent this message in under 10 minutes!'.$rand
+            ));
 
     }
 }

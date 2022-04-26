@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Utilisateur;
 
 class HomeController extends AbstractController
 {
@@ -53,6 +54,16 @@ class HomeController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/recla", name="recla")
+     */
+    public function afficheR(): Response
+    {
+        return $this->render('front/reclamation.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
+
 
     /**
      * @Route("/profil", name="profil")
@@ -79,6 +90,15 @@ class HomeController extends AbstractController
     public function affichepanier(): Response
     {
         return $this->render('front/panier.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
+    /**
+     * @Route("/forgetPassword", name="forgetPassword")
+     */
+    public function afficheForgetPassword(): Response
+    {
+        return $this->render('utilisateur/forgetPassword.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }
