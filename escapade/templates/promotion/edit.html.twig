@@ -1,0 +1,31 @@
+{% extends 'baseBack.html.twig' %}
+
+
+
+{% block content %}
+    <h1>Modifier promotion</h1>
+<br>
+    <br>
+    {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+
+    {{ form_label(form.taux,'Taux') }}
+    <br>
+    {{ form_widget(form.taux,{'attr':{'class':'taux','placeholder':'taux'}}) }}
+
+    <br>
+
+    {{ form_label(form.datedebut,'Date début') }}
+    {{ form_widget(form.datedebut,{'attr':{'class':'dateDebut','placeholder':'dateDebut'}}) }}
+
+    <br>
+    {{ form_label(form.datefin,'Date fin') }}
+    {{ form_widget(form.datefin,{'attr':{'class':'dateFin','placeholder':'dateFin'}}) }}
+
+    <br>
+    {{ form_end(form) }}
+
+<br>
+    <a href="{{ path('app_promotion_index') }}">Retour à la liste des promotions</a>
+
+
+{% endblock %}

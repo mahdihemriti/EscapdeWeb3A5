@@ -1,0 +1,3 @@
+<?php //App%255CEntity%255CPromotionRepository
+
+return [PHP_INT_MAX, []];

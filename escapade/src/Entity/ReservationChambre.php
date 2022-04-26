@@ -55,5 +55,58 @@ class ReservationChambre
      */
     private $idclient;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getDatearrivee(): ?\DateTimeInterface
+    {
+        return $this->datearrivee;
+    }
+
+    public function setDatearrivee(\DateTimeInterface $datearrivee): self
+    {
+        $this->datearrivee = $datearrivee;
+
+        return $this;
+    }
+
+    public function getDatealler(): ?\DateTimeInterface
+    {
+        return $this->datealler;
+    }
+
+    public function setDatealler(\DateTimeInterface $datealler): self
+    {
+        $this->datealler = $datealler;
+
+        return $this;
+    }
+
+    public function getIdchambre(): ?Chambre
+    {
+        return $this->idchambre;
+    }
+
+    public function setIdchambre(?Chambre $idchambre): self
+    {
+        $this->idchambre = $idchambre;
+
+        return $this;
+    }
+
+    public function getIdclient(): ?Utilisateur
+    {
+        return $this->idclient;
+    }
+
+    public function setIdclient(?Utilisateur $idclient): self
+    {
+        $this->idclient = $idclient;
+
+        return $this;
+    }
+
 
 }
