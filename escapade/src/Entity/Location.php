@@ -55,5 +55,58 @@ class Location
      */
     private $idclient;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getDateprise(): ?\DateTimeInterface
+    {
+        return $this->dateprise;
+    }
+
+    public function setDateprise(\DateTimeInterface $dateprise): self
+    {
+        $this->dateprise = $dateprise;
+
+        return $this;
+    }
+
+    public function getDateretour(): ?\DateTimeInterface
+    {
+        return $this->dateretour;
+    }
+
+    public function setDateretour(\DateTimeInterface $dateretour): self
+    {
+        $this->dateretour = $dateretour;
+
+        return $this;
+    }
+
+    public function getIdmoyentransport(): ?Moyendetransport
+    {
+        return $this->idmoyentransport;
+    }
+
+    public function setIdmoyentransport(?Moyendetransport $idmoyentransport): self
+    {
+        $this->idmoyentransport = $idmoyentransport;
+
+        return $this;
+    }
+
+    public function getIdclient(): ?Utilisateur
+    {
+        return $this->idclient;
+    }
+
+    public function setIdclient(?Utilisateur $idclient): self
+    {
+        $this->idclient = $idclient;
+
+        return $this;
+    }
+
 
 }

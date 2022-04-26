@@ -1,0 +1,22 @@
+<?php //App%255CController%255CBackController%2523afficheCB
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+    ],
+    null,
+    [
+        'Symfony\\Component\\Routing\\Annotation\\Route' => [
+            'path' => [
+                '/chambreBack',
+            ],
+            'name' => [
+                'chambreBack',
+            ],
+        ],
+    ],
+    [
+        $o[0],
+    ],
+    []
+); }];

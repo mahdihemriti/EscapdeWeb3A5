@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+
+{% block content %}
+    <h1>Connexion</h1>
+
+    {{ form_start(form,{'attr':{'novalidate': 'novalidate'}}) }}
+    <br>
+    {{ form_label(form.email,'email') }}
+
+    {{ form_widget(form.email,{'attr':{
+        'class':'email','placeholder':'Veuillez entrer le email'
+    }}) }}
+    {{ form_errors(form.email) }}
+    <br>
+    {{ form_label(form.mdp,'password') }}
+
+    {{ form_widget(form.mdp,{'attr':{
+        'class':'mdp','placeholder':'Veuillez entrer mdp'
+    }}) }}
+    {{ form_errors(form.mdp) }}
+    <br>
+    <button class="btn">{{ button_label|default('se Connecter') }}</button>
+    {{ form_end(form) }}
+
+{% endblock %}

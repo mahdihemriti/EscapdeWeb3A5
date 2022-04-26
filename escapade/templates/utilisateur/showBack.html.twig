@@ -1,0 +1,48 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block content %}
+    <h1>Utilisateur</h1>
+    <br>
+    <br>
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Nom</th>
+            <td>{{ utilisateur.nom }}</td>
+        </tr>
+        <tr>
+            <th>Prenom</th>
+            <td>{{ utilisateur.prenom }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ utilisateur.email }}</td>
+        </tr>
+        <tr>
+            <th>Date de naissance</th>
+            <td>{{ utilisateur.datedenaissance ? utilisateur.datedenaissance|date('Y-m-d') : '' }}</td>
+        </tr>
+        <tr>
+            <th>Numero téléphone</th>
+            <td>{{ utilisateur.numtel }}</td>
+        </tr>
+        <tr>
+            <th>Ville</th>
+            <td>{{ utilisateur.ville }}</td>
+        </tr>
+        <tr>
+            <th>Image</th>
+            <td><img src="{{asset('uploads/'~utilisateur.image)}}" width="50" height="50"></td>
+        </tr>
+        <tr>
+            <th>Blocked</th>
+            <td>{{ utilisateur.blocked }}</td>
+        </tr>
+
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_utilisateur_index') }}">Retour à la liste</a>
+
+{% endblock %}

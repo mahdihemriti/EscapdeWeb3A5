@@ -127,5 +127,14 @@ class BackController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/inscrit", name="inscrit")
+     */
+    public function afficheInscrit(): Response
+    {
+        return $this->render('back/inscrit.html.twig', [
+            'controller_name' => 'BackController',
+        ]);
+    }
 
 }

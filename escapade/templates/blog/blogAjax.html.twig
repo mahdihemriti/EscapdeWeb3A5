@@ -1,0 +1,30 @@
+<br>
+<br>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Nom</th>
+        <th>Date</th>
+        <th>Image</th>
+        <th>actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for blog in blogs %}
+        <tr>
+            <td>{{ blog.nom }}</td>
+            <td>{{ blog.date ? blog.date|date('Y-m-d') : '' }}</td>
+            <td><img src="{{ asset('images/' ~ blog.image) }}" width="50" height="50"></td>
+            <td>
+                <a href="{{ path('app_blog_show', {'id': blog.id}) }}">  <i class="fa fa-eye"></i></a>
+
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="6">Aucun blog disponible</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
