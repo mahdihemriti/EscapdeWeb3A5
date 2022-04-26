@@ -44,7 +44,7 @@ class BlogRepository extends ServiceEntityRepository
             $this->_em->flush();
         }
     }
-    public function findbynom($nom){
+    public function findbyNom($nom){
         return $this->createQueryBuilder('e')
             ->where('e.nom LIKE :nom')
             ->setParameter('nom', '%'.$nom.'%')

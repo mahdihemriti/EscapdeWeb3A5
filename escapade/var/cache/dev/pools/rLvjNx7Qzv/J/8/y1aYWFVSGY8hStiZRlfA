@@ -2,30 +2,46 @@
 
 return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
     $o = [
-        clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Validator\\Constraints\\NotBlank'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\NotBlank')),
+        clone ($p['Symfony\\Component\\Validator\\Constraints\\Type'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\Type')),
+        clone ($p['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
     ],
     null,
     [
         'stdClass' => [
-            'name' => [
-                'nom',
+            'message' => [
+                'Ce champ ne doit pas être vide',
+            ],
+            'groups' => [
+                [
+                    'Default',
+                ],
+                [
+                    'Default',
+                ],
             ],
             'type' => [
+                1 => 'string',
                 'string',
             ],
+            'name' => [
+                2 => 'nom',
+            ],
             'length' => [
-                50,
+                2 => 50,
             ],
             'precision' => [
-                null,
+                2 => null,
             ],
             'scale' => [
-                null,
+                2 => null,
             ],
         ],
     ],
     [
         $o[0],
+        $o[1],
+        $o[2],
     ],
     []
 ); }];

@@ -1,39 +1,34 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    <div class="fh5co-hero">
 
+    <style>
+        #calendrier{
+            width: 80%;
+            margin: auto;
+        }
+    </style>
 
-    <div id="fh5co-tours" class="fh5co-section-gray">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-                    <h3>Nos promotions</h3>
-                    <p>L'aventure en vaut la peine</p>
-                </div>
-            </div>
-
-            <div class="row">
-    {% for promotion in promotions %}
-
-                <div class="col-md-6 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-                    <div href="#"><img src="{{ asset('images/1.jpg') }}" class="img-responsive">
-                        <div class="desc">
-                            <h3>Taux: {{ promotion.taux }} %</h3>
-                            <span>Date début : {{ promotion.datedebut ? promotion.datedebut|date('Y-m-d') : '' }}</span>
-                            <span class="price">Date Fin: {{ promotion.datefin ? promotion.datefin|date('Y-m-d') : '' }}</span>
-                        </div>
-                    </div>
-                </div>
-
-
-                {% endfor %}
-
-        </div>
-        </div>
-    </div>
+    <div id="calendrier">
     </div>
 
+    <script>
+        window.onload = () => {
+            let calendarElt = document.querySelector("#calendrier")
+            let calendar = new FullCalendar.Calendar(calendarElt, {
+                initialView: 'dayGridMonth',
+                locale:'fr',
+                timeZone:'Afrique/Tunisie',
+                headerToolbar: {
+                    start: 'prev,next today',
+                    center: 'title',
+                    end: 'dayGridMonth,timeGridWeek'
+                },
+                events: {{ data|raw }}
+            })
 
+            calendar.render()
+        }
+    </script>
 
 {% endblock %}

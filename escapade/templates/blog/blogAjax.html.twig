@@ -17,8 +17,7 @@
             <td><img src="{{ asset('images/' ~ blog.image) }}" width="50" height="50"></td>
             <td>
                 <a href="{{ path('app_blog_show', {'id': blog.id}) }}">  <i class="fa fa-eye"></i></a>
-                <a href="{{ path('app_blog_edit', {'id': blog.id}) }}"><i class="fa fa-pen"> </i> </a>
-                {{ include('blog/_delete_form.html.twig') }}
+
             </td>
         </tr>
     {% else %}
@@ -29,4 +28,3 @@
     </tbody>
 </table>
 
-<a href="{{ path('app_blog_new') }}">Ajouter un blog </a>

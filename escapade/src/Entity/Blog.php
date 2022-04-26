@@ -9,9 +9,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Blog
  *
- * @ORM\Table(name="blog")
+ * @ORM\Table(name="blog", indexes={@ORM\Index(name="Fk_ClientBlog", columns={"idClient"})})
  * @ORM\Entity(repositoryClass=BlogRepository::class)
- *
  */
 class Blog
 {
@@ -41,21 +40,28 @@ class Blog
 
     /**
      * @var string
+     *
      *@Assert\NotBlank(message="Ce champ ne doit pas être vide")
      * @ORM\Column(name="description", type="string", length=255, nullable=false)
-     * @Assert\Length(min=15)
-     */
+     * @Assert\Length(min=15)*/
     private $description;
 
     /**
      * @var string
-     * @Assert\Image(
-     *     allowLandscape = true,
-     *     allowPortrait = true
-     * )
+     *
      * @ORM\Column(name="image", type="string", length=255, nullable=false)
      */
     private $image;
+
+    /**
+     * @var \Utilisateur
+     *
+     * @ORM\ManyToOne(targetEntity="Utilisateur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idClient", referencedColumnName="id")
+     * })
+     */
+    private $idclient;
 
     public function getId(): ?int
     {
@@ -106,6 +112,18 @@ class Blog
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getIdclient(): ?Utilisateur
+    {
+        return $this->idclient;
+    }
+
+    public function setIdclient(?Utilisateur $idclient): self
+    {
+        $this->idclient = $idclient;
 
         return $this;
     }

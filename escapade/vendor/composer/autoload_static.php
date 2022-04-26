@@ -21,6 +21,7 @@ class ComposerStaticInitdb85a9fcb3da01817843dfc185e76684
         '92c8763cd6170fce6fcfe7e26b4e8c10' => __DIR__ . '/..' . '/symfony/phpunit-bridge/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         'c2aad8997a98dfc4771bdbffea3d62b7' => __DIR__ . '/..' . '/laminas/laminas-code/polyfill/ReflectionEnumPolyfill.php',
+        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -34,6 +35,7 @@ class ComposerStaticInitdb85a9fcb3da01817843dfc185e76684
         ),
         'T' => 
         array (
+            'Twilio\\' => 7,
             'Twig\\Extra\\TwigExtraBundle\\' => 27,
             'Twig\\' => 5,
         ),
@@ -96,6 +98,7 @@ class ComposerStaticInitdb85a9fcb3da01817843dfc185e76684
             'Symfony\\Bundle\\WebServerBundle\\' => 31,
             'Symfony\\Bundle\\WebProfilerBundle\\' => 33,
             'Symfony\\Bundle\\TwigBundle\\' => 26,
+            'Symfony\\Bundle\\SwiftmailerBundle\\' => 33,
             'Symfony\\Bundle\\SecurityBundle\\' => 30,
             'Symfony\\Bundle\\MonologBundle\\' => 29,
             'Symfony\\Bundle\\MakerBundle\\' => 27,
@@ -109,6 +112,10 @@ class ComposerStaticInitdb85a9fcb3da01817843dfc185e76684
             'Svg\\' => 4,
             'Sensio\\Bundle\\FrameworkExtraBundle\\' => 35,
             'Sabberworm\\CSS\\' => 15,
+        ),
+        'R' => 
+        array (
+            'Rollerworks\\Component\\PasswordStrength\\' => 39,
         ),
         'P' => 
         array (
@@ -131,6 +138,8 @@ class ComposerStaticInitdb85a9fcb3da01817843dfc185e76684
         'F' => 
         array (
             'FontLib\\' => 8,
+            'FOS\\JsRoutingBundle\\' => 20,
+            'FOS\\CKEditorBundle\\' => 19,
         ),
         'E' => 
         array (
@@ -156,6 +165,10 @@ class ComposerStaticInitdb85a9fcb3da01817843dfc185e76684
             'Doctrine\\Bundle\\DoctrineBundle\\' => 31,
             'DeepCopy\\' => 9,
         ),
+        'C' => 
+        array (
+            'CalendarBundle\\' => 15,
+        ),
         'A' => 
         array (
             'App\\Tests\\' => 10,
@@ -173,6 +186,10 @@ class ComposerStaticInitdb85a9fcb3da01817843dfc185e76684
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'Twilio\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/twilio/sdk/src/Twilio',
         ),
         'Twig\\Extra\\TwigExtraBundle\\' => 
         array (
@@ -410,6 +427,10 @@ class ComposerStaticInitdb85a9fcb3da01817843dfc185e76684
         array (
             0 => __DIR__ . '/..' . '/symfony/twig-bundle',
         ),
+        'Symfony\\Bundle\\SwiftmailerBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/swiftmailer-bundle',
+        ),
         'Symfony\\Bundle\\SecurityBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/security-bundle',
@@ -462,6 +483,10 @@ class ComposerStaticInitdb85a9fcb3da01817843dfc185e76684
         array (
             0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/src',
         ),
+        'Rollerworks\\Component\\PasswordStrength\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rollerworks/password-strength-validator/src',
+        ),
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
@@ -501,6 +526,14 @@ class ComposerStaticInitdb85a9fcb3da01817843dfc185e76684
         'FontLib\\' => 
         array (
             0 => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib',
+        ),
+        'FOS\\JsRoutingBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/friendsofsymfony/jsrouting-bundle',
+        ),
+        'FOS\\CKEditorBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/friendsofsymfony/ckeditor-bundle/src',
         ),
         'Egulias\\EmailValidator\\' => 
         array (
@@ -576,6 +609,10 @@ class ComposerStaticInitdb85a9fcb3da01817843dfc185e76684
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
+        'CalendarBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/tattali/calendar-bundle/src',
+        ),
         'App\\Tests\\' => 
         array (
             0 => __DIR__ . '/../..' . '/tests',
@@ -583,6 +620,16 @@ class ComposerStaticInitdb85a9fcb3da01817843dfc185e76684
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'J' => 
+        array (
+            'JsonpCallbackValidator' => 
+            array (
+                0 => __DIR__ . '/..' . '/willdurand/jsonp-callback-validator/src',
+            ),
         ),
     );
 
@@ -1235,6 +1282,7 @@ class ComposerStaticInitdb85a9fcb3da01817843dfc185e76684
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitdb85a9fcb3da01817843dfc185e76684::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitdb85a9fcb3da01817843dfc185e76684::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitdb85a9fcb3da01817843dfc185e76684::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitdb85a9fcb3da01817843dfc185e76684::$classMap;
 
         }, null, ClassLoader::class);

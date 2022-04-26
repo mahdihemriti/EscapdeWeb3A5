@@ -21,6 +21,8 @@
       <parameter key="SecurityBundle">Symfony\Bundle\SecurityBundle\SecurityBundle</parameter>
       <parameter key="TwigExtraBundle">Twig\Extra\TwigExtraBundle\TwigExtraBundle</parameter>
       <parameter key="WebServerBundle">Symfony\Bundle\WebServerBundle\WebServerBundle</parameter>
+      <parameter key="SwiftmailerBundle">Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle</parameter>
+      <parameter key="FOSCKEditorBundle">FOS\CKEditorBundle\FOSCKEditorBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -71,11 +73,20 @@
         <parameter key="path">C:\Users\asus\escapade\vendor\symfony\web-server-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\WebServerBundle</parameter>
       </parameter>
+      <parameter key="SwiftmailerBundle" type="collection">
+        <parameter key="path">C:\Users\asus\escapade\vendor\symfony\swiftmailer-bundle</parameter>
+        <parameter key="namespace">Symfony\Bundle\SwiftmailerBundle</parameter>
+      </parameter>
+      <parameter key="FOSCKEditorBundle" type="collection">
+        <parameter key="path">C:\Users\asus\escapade\vendor\friendsofsymfony\ckeditor-bundle\src</parameter>
+        <parameter key="namespace">FOS\CKEditorBundle</parameter>
+      </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">srcApp_KernelDevDebugContainer</parameter>
     <parameter key="container.dumper.inline_class_loader">true</parameter>
     <parameter key="container.dumper.inline_factories">true</parameter>
+    <parameter key="image_directory">C:\Users\asus\escapade/public/uploads</parameter>
     <parameter key="event_dispatcher.event_aliases" type="collection">
       <parameter key="Symfony\Component\Console\Event\ConsoleCommandEvent">console.command</parameter>
       <parameter key="Symfony\Component\Console\Event\ConsoleErrorEvent">console.error</parameter>
@@ -149,6 +160,7 @@
     <parameter key="twig.form.resources" type="collection">
       <parameter>form_div_layout.html.twig</parameter>
       <parameter>bootstrap_4_layout.html.twig</parameter>
+      <parameter>@FOSCKEditor/Form/ckeditor_widget.html.twig</parameter>
     </parameter>
     <parameter key="twig.default_path">C:\Users\asus\escapade/templates</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
@@ -250,6 +262,19 @@
     <parameter key="security.authentication.session_strategy.strategy">migrate</parameter>
     <parameter key="security.access.always_authenticate_before_granting">false</parameter>
     <parameter key="security.authentication.hide_user_not_found">true</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.name">dynamic</parameter>
+    <parameter key="swiftmailer.spool.default.memory.path">C:\Users\asus\escapade\var\cache\dev/swiftmailer/spool/default</parameter>
+    <parameter key="swiftmailer.mailer.default.spool.enabled">true</parameter>
+    <parameter key="swiftmailer.mailer.default.plugin.impersonate">null</parameter>
+    <parameter key="swiftmailer.mailer.default.single_address">null</parameter>
+    <parameter key="swiftmailer.mailer.default.delivery.enabled">true</parameter>
+    <parameter key="swiftmailer.spool.enabled">true</parameter>
+    <parameter key="swiftmailer.delivery.enabled">true</parameter>
+    <parameter key="swiftmailer.single_address">null</parameter>
+    <parameter key="swiftmailer.mailers" type="collection">
+      <parameter key="default">swiftmailer.mailer.default</parameter>
+    </parameter>
+    <parameter key="swiftmailer.default_mailer">default</parameter>
     <parameter key="maker.compatible_check.doctrine.supports_attributes">true</parameter>
     <parameter key="data_collector.templates" type="collection">
       <parameter key="data_collector.request" type="collection">
@@ -320,6 +345,10 @@
         <parameter>doctrine_migrations</parameter>
         <parameter>@DoctrineMigrations/Collector/migrations.html.twig</parameter>
       </parameter>
+      <parameter key="swiftmailer.data_collector" type="collection">
+        <parameter>swiftmailer</parameter>
+        <parameter>@Swiftmailer/Collector/swiftmailer.html.twig</parameter>
+      </parameter>
       <parameter key="data_collector.dump" type="collection">
         <parameter>dump</parameter>
         <parameter>@Debug/Profiler/dump.html.twig</parameter>
@@ -354,6 +383,13 @@
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\BlogController"/>
       </call>
     </service>
+    <service id="App\Controller\CommentaireController" class="App\Controller\CommentaireController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\CommentaireController"/>
+      </call>
+    </service>
     <service id="App\Controller\FactureController" class="App\Controller\FactureController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -375,16 +411,56 @@
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\PromotionController"/>
       </call>
     </service>
+    <service id="App\Controller\ReclamationController" class="App\Controller\ReclamationController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\ReclamationController"/>
+      </call>
+    </service>
+    <service id="App\Controller\SecurityController" class="App\Controller\SecurityController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\SecurityController"/>
+      </call>
+    </service>
+    <service id="App\Controller\UtilisateurController" class="App\Controller\UtilisateurController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\UtilisateurController"/>
+      </call>
+    </service>
     <service id="App\Form\BlogType" class="App\Form\BlogType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\CommentaireType" class="App\Form\CommentaireType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Form\FactureType" class="App\Form\FactureType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\LoginType" class="App\Form\LoginType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\PromotionType" class="App\Form\PromotionType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\ReclamationType" class="App\Form\ReclamationType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\UtilisateurType" class="App\Form\UtilisateurType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Repository\BlogRepository" class="App\Repository\BlogRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\CommentaireRepository" class="App\Repository\CommentaireRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -395,6 +471,20 @@
     <service id="App\Repository\PromotionRepository" class="App\Repository\PromotionRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\ReclamationRepository" class="App\Repository\ReclamationRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\UtilisateurRepository" class="App\Repository\UtilisateurRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Security\LoginAuthenticator" class="App\Security\LoginAuthenticator" autowire="true" autoconfigure="true">
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+      <argument type="service" id="router.default"/>
+      <argument type="service" id="security.csrf.token_manager"/>
+      <argument type="service" id="security.user_password_encoder.generic"/>
     </service>
     <service id=".legacy_controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
       <tag name="monolog.logger" channel="request"/>
@@ -513,6 +603,7 @@
         <argument key="form.type.entity" type="service" id="form.type.entity" on-invalid="ignore_uninitialized"/>
         <argument key="security.token_storage" type="service" id="security.token_storage" on-invalid="ignore_uninitialized"/>
         <argument key="cache.security_expression_language" type="service" id="cache.security_expression_language" on-invalid="ignore_uninitialized"/>
+        <argument key="swiftmailer.email_sender.listener" type="service" id="swiftmailer.email_sender.listener" on-invalid="ignore_uninitialized"/>
         <argument key=".debug.http_client" type="service" id=".debug.http_client" on-invalid="ignore_uninitialized"/>
       </argument>
       <argument type="collection">
@@ -572,6 +663,9 @@
           <argument>setToken</argument>
         </argument>
         <argument key="cache.security_expression_language" type="collection">
+          <argument>reset</argument>
+        </argument>
+        <argument key="swiftmailer.email_sender.listener" type="collection">
           <argument>reset</argument>
         </argument>
         <argument key=".debug.http_client" type="collection">
@@ -816,15 +910,22 @@
         <argument>Symfony\Component\Form\Extension\Core\Type</argument>
         <argument>App\Form</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
+        <argument>FOS\CKEditorBundle\Form\Type</argument>
       </argument>
       <argument type="collection">
         <argument>App\Form\BlogType</argument>
+        <argument>App\Form\CommentaireType</argument>
         <argument>App\Form\FactureType</argument>
+        <argument>App\Form\LoginType</argument>
         <argument>App\Form\PromotionType</argument>
+        <argument>App\Form\ReclamationType</argument>
+        <argument>App\Form\RegistrationFormType</argument>
+        <argument>App\Form\UtilisateurType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FileType</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type\EntityType</argument>
+        <argument>FOS\CKEditorBundle\Form\Type\CKEditorType</argument>
       </argument>
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Core\Type\TransformationFailureExtension</argument>
@@ -1154,7 +1255,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.FV_gms2"/>
+      <argument type="service" id=".service_locator.cNwy_yY"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -1754,6 +1855,10 @@
           <argument>C:\Users\asus\escapade\src/Resources/TwigExtraBundle/translations</argument>
           <argument>C:\Users\asus\escapade\vendor\symfony\web-server-bundle/translations</argument>
           <argument>C:\Users\asus\escapade\src/Resources/WebServerBundle/translations</argument>
+          <argument>C:\Users\asus\escapade\vendor\symfony\swiftmailer-bundle/translations</argument>
+          <argument>C:\Users\asus\escapade\src/Resources/SwiftmailerBundle/translations</argument>
+          <argument>C:\Users\asus\escapade\vendor\friendsofsymfony\ckeditor-bundle\src/translations</argument>
+          <argument>C:\Users\asus\escapade\src/Resources/FOSCKEditorBundle/translations</argument>
           <argument>C:\Users\asus\escapade\src/Resources/translations</argument>
         </argument>
         <argument key="cache_vary" type="collection">
@@ -1786,6 +1891,10 @@
             <argument>C:\Users\asus\escapade\src/Resources/TwigExtraBundle/translations</argument>
             <argument>C:\Users\asus\escapade\vendor\symfony\web-server-bundle/translations</argument>
             <argument>C:\Users\asus\escapade\src/Resources/WebServerBundle/translations</argument>
+            <argument>C:\Users\asus\escapade\vendor\symfony\swiftmailer-bundle/translations</argument>
+            <argument>C:\Users\asus\escapade\src/Resources/SwiftmailerBundle/translations</argument>
+            <argument>C:\Users\asus\escapade\vendor\friendsofsymfony\ckeditor-bundle\src/translations</argument>
+            <argument>C:\Users\asus\escapade\src/Resources/FOSCKEditorBundle/translations</argument>
             <argument>C:\Users\asus\escapade\src/Resources/translations</argument>
           </argument>
         </argument>
@@ -2048,6 +2157,9 @@
       </call>
       <call method="add">
         <argument type="service" id="doctrine_migrations.migrations_collector"/>
+      </call>
+      <call method="add">
+        <argument type="service" id="swiftmailer.data_collector"/>
       </call>
       <call method="add">
         <argument type="service" id="data_collector.dump"/>
@@ -2643,6 +2755,38 @@
         </argument>
         <argument>0</argument>
       </call>
+      <call method="addListener">
+        <argument>kernel.exception</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="swiftmailer.email_sender.listener"/>
+          <argument>onException</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>kernel.terminate</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="swiftmailer.email_sender.listener"/>
+          <argument>onTerminate</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>console.error</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="swiftmailer.email_sender.listener"/>
+          <argument>onException</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>console.terminate</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="swiftmailer.email_sender.listener"/>
+          <argument>onTerminate</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
     </service>
     <service id="debug.controller_resolver" class="Symfony\Component\HttpKernel\Controller\TraceableControllerResolver" public="false">
       <tag name="monolog.logger" channel="request"/>
@@ -3160,6 +3304,9 @@
       <call method="addExtension">
         <argument type="service" id="doctrine.twig.doctrine_extension"/>
       </call>
+      <call method="addExtension">
+        <argument type="service" id="fos_ck_editor.twig_extension"/>
+      </call>
       <call method="addGlobal">
         <argument>app</argument>
         <argument type="service" id="twig.app_variable"/>
@@ -3275,6 +3422,22 @@
       <call method="addPath">
         <argument>C:\Users\asus\escapade\vendor\symfony\security-bundle/Resources/views</argument>
         <argument>!Security</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\Users\asus\escapade\vendor\symfony\swiftmailer-bundle/Resources/views</argument>
+        <argument>Swiftmailer</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\Users\asus\escapade\vendor\symfony\swiftmailer-bundle/Resources/views</argument>
+        <argument>!Swiftmailer</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\Users\asus\escapade\vendor\friendsofsymfony\ckeditor-bundle\src/Resources/views</argument>
+        <argument>FOSCKEditor</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\Users\asus\escapade\vendor\friendsofsymfony\ckeditor-bundle\src/Resources/views</argument>
+        <argument>!FOSCKEditor</argument>
       </call>
       <call method="addPath">
         <argument>C:\Users\asus\escapade/templates</argument>
@@ -3972,7 +4135,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.ZLM7fED"/>
+      <argument type="service" id=".service_locator.URQdhiw"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -4366,6 +4529,7 @@
     </service>
     <service id="security.authentication.manager" class="Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager" public="false">
       <argument type="iterator">
+        <argument type="service" id="security.authentication.provider.guard.main"/>
         <argument type="service" id="security.authentication.provider.anonymous.main"/>
       </argument>
       <argument>true</argument>
@@ -4384,7 +4548,17 @@
       <argument>none</argument>
     </service>
     <service id="security.encoder_factory.generic" class="Symfony\Component\Security\Core\Encoder\EncoderFactory" public="false">
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument key="App\Entity\Utilisateur" type="collection">
+          <argument key="class">Symfony\Component\Security\Core\Encoder\NativePasswordEncoder</argument>
+          <argument key="arguments" type="collection">
+            <argument>null</argument>
+            <argument>null</argument>
+            <argument>null</argument>
+            <argument>2y</argument>
+          </argument>
+        </argument>
+      </argument>
     </service>
     <service id="security.user_password_encoder.generic" class="Symfony\Component\Security\Core\Encoder\UserPasswordEncoder" public="false">
       <argument type="service" id="security.encoder_factory.generic"/>
@@ -4451,6 +4625,14 @@
       <argument type="service" id="request_stack" on-invalid="null"/>
       <argument type="service" id="router.default" on-invalid="null"/>
       <argument type="service" id="security.token_storage"/>
+      <call method="registerListener">
+        <argument>main</argument>
+        <argument>app_logout</argument>
+        <argument>logout</argument>
+        <argument>_csrf_token</argument>
+        <argument>null</argument>
+        <argument>null</argument>
+      </call>
     </service>
     <service id="security.user.provider.missing" class="Symfony\Component\Security\Core\User\MissingUserProvider" public="false" abstract="true">
       <argument></argument>
@@ -4508,12 +4690,34 @@
       <argument type="service" id="security.authentication.retry_entry_point"/>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
     </service>
-    <service id="security.access_map" class="Symfony\Component\Security\Http\AccessMap" public="false"/>
+    <service id="security.access_map" class="Symfony\Component\Security\Http\AccessMap" public="false">
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.5dJADCx"/>
+        <argument type="collection">
+          <argument>ROLE_ADMIN</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.5dJADCx"/>
+        <argument type="collection">
+          <argument>is_granted("IS_AUTHENTICATED_FULLY") and is_granted("ROLE_ADMIN")</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.k4QsZh_"/>
+        <argument type="collection">
+          <argument>ROLE_USER</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+    </service>
     <service id="security.context_listener" class="Symfony\Component\Security\Http\Firewall\ContextListener" public="false">
       <tag name="monolog.logger" channel="security"/>
       <argument type="service" id="security.untracked_token_storage"/>
       <argument type="iterator">
-        <argument type="service" id="security.user.provider.concrete.users_in_memory"/>
+        <argument type="service" id="security.user.provider.concrete.our_db_provider"/>
       </argument>
       <argument></argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
@@ -4816,8 +5020,11 @@
       <argument type="service" id="debug.event_dispatcher"/>
       <argument type="service" id="security.logout_url_generator"/>
     </service>
-    <service id="security.user.provider.concrete.users_in_memory" class="Symfony\Component\Security\Core\User\InMemoryUserProvider" public="false">
-      <argument type="collection"/>
+    <service id="security.user.provider.concrete.our_db_provider" class="Symfony\Bridge\Doctrine\Security\User\EntityUserProvider" public="false">
+      <argument type="service" id="doctrine"/>
+      <argument>App\Entity\Utilisateur</argument>
+      <argument>email</argument>
+      <argument>null</argument>
     </service>
     <service id="security.firewall.map.config.dev" class="Symfony\Bundle\SecurityBundle\Security\FirewallConfig" public="false">
       <argument>dev</argument>
@@ -4848,12 +5055,13 @@
       <argument>null</argument>
       <argument>true</argument>
       <argument>false</argument>
-      <argument>security.user.provider.concrete.users_in_memory</argument>
+      <argument>security.user.provider.concrete.our_db_provider</argument>
       <argument>main</argument>
-      <argument>null</argument>
+      <argument>App\Security\LoginAuthenticator</argument>
       <argument>null</argument>
       <argument>null</argument>
       <argument type="collection">
+        <argument>guard</argument>
         <argument>anonymous</argument>
       </argument>
       <argument>null</argument>
@@ -4861,7 +5069,7 @@
     <service id="security.context_listener.0" class="Symfony\Component\Security\Http\Firewall\ContextListener" public="false">
       <argument type="service" id="security.untracked_token_storage"/>
       <argument type="iterator">
-        <argument type="service" id="security.user.provider.concrete.users_in_memory"/>
+        <argument type="service" id="security.user.provider.concrete.our_db_provider"/>
       </argument>
       <argument>main</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
@@ -4871,6 +5079,46 @@
         <argument type="service" id="security.token_storage"/>
         <argument>enableUsageTracking</argument>
       </argument>
+    </service>
+    <service id="security.logout_listener.main" class="Symfony\Component\Security\Http\Firewall\LogoutListener" public="false">
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.http_utils"/>
+      <argument type="service" id="security.logout.success_handler.main"/>
+      <argument type="collection">
+        <argument key="csrf_parameter">_csrf_token</argument>
+        <argument key="csrf_token_id">logout</argument>
+        <argument key="logout_path">app_logout</argument>
+      </argument>
+      <call method="addHandler">
+        <argument type="service" id="security.logout.handler.csrf_token_clearing"/>
+      </call>
+      <call method="addHandler">
+        <argument type="service" id="security.logout.handler.session"/>
+      </call>
+    </service>
+    <service id="security.logout.success_handler.main" class="Symfony\Component\Security\Http\Logout\DefaultLogoutSuccessHandler" public="false">
+      <argument type="service" id="security.http_utils"/>
+      <argument>/</argument>
+    </service>
+    <service id="security.authentication.provider.guard.main" class="Symfony\Component\Security\Guard\Provider\GuardAuthenticationProvider" public="false">
+      <argument type="iterator">
+        <argument type="service" id="App\Security\LoginAuthenticator"/>
+      </argument>
+      <argument type="service" id="security.user.provider.concrete.our_db_provider"/>
+      <argument>main</argument>
+      <argument type="service" id="security.user_checker"/>
+      <argument type="service" id="security.user_password_encoder.generic"/>
+    </service>
+    <service id="security.authentication.listener.guard.main" class="Symfony\Component\Security\Guard\Firewall\GuardAuthenticationListener" public="false">
+      <tag name="security.remember_me_aware" id="main" provider="security.user.provider.concrete.our_db_provider"/>
+      <argument type="service" id="security.authentication.guard_handler"/>
+      <argument type="service" id="security.authentication.manager"/>
+      <argument>main</argument>
+      <argument type="iterator">
+        <argument type="service" id="App\Security\LoginAuthenticator"/>
+      </argument>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <argument>true</argument>
     </service>
     <service id="security.authentication.listener.anonymous.main" class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
       <argument type="service" id="security.untracked_token_storage"/>
@@ -4886,7 +5134,7 @@
       <argument type="service" id="security.authentication.trust_resolver"/>
       <argument type="service" id="security.http_utils"/>
       <argument>main</argument>
-      <argument>null</argument>
+      <argument type="service" id="App\Security\LoginAuthenticator"/>
       <argument>null</argument>
       <argument>null</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
@@ -4896,11 +5144,12 @@
       <argument type="iterator">
         <argument type="service" id="security.channel_listener"/>
         <argument type="service" id="security.context_listener.0"/>
+        <argument type="service" id="security.authentication.listener.guard.main"/>
         <argument type="service" id="security.authentication.listener.anonymous.main"/>
         <argument type="service" id="security.access_listener"/>
       </argument>
       <argument type="service" id="security.exception_listener.main"/>
-      <argument>null</argument>
+      <argument type="service" id="security.logout_listener.main"/>
       <argument type="service" id="security.firewall.map.config.main"/>
       <argument type="service" id="security.untracked_token_storage"/>
     </service>
@@ -4911,10 +5160,18 @@
         <argument key="security.firewall.map.context.main" type="service_closure" id="security.firewall.map.context.main"/>
       </argument>
     </service>
+    <service id=".security.request_matcher.5dJADCx" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/admin</argument>
+    </service>
+    <service id=".security.request_matcher.k4QsZh_" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/api/(post|comment)/\d+$</argument>
+    </service>
     <service id="security.command.user_password_encoder" class="Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand" public="false">
       <tag name="console.command" command="security:encode-password"/>
       <argument type="service" id="security.encoder_factory.generic"/>
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument>App\Entity\Utilisateur</argument>
+      </argument>
       <call method="setName">
         <argument>security:encode-password</argument>
       </call>
@@ -4952,12 +5209,164 @@
         <argument>server:status</argument>
       </call>
     </service>
+    <service id=".4_Swift_Transport_Esmtp_Auth_NTLMAuthenticator~_ZpCj3l" class="Swift_Transport_Esmtp_Auth_NTLMAuthenticator" public="false"/>
+    <service id=".3_Swift_Transport_Esmtp_Auth_PlainAuthenticator~_ZpCj3l" class="Swift_Transport_Esmtp_Auth_PlainAuthenticator" public="false"/>
+    <service id=".2_Swift_Transport_Esmtp_Auth_LoginAuthenticator~_ZpCj3l" class="Swift_Transport_Esmtp_Auth_LoginAuthenticator" public="false"/>
+    <service id=".1_Swift_Transport_Esmtp_Auth_CramMd5Authenticator~_ZpCj3l" class="Swift_Transport_Esmtp_Auth_CramMd5Authenticator" public="false"/>
+    <service id="swiftmailer.mailer.abstract" class="Swift_Mailer" public="true" abstract="true">
+      <argument type="service" id="swiftmailer.mailer.default.transport.spool"/>
+    </service>
+    <service id="swiftmailer.transport.smtp.configurator.abstract" class="Symfony\Bundle\SwiftmailerBundle\DependencyInjection\SmtpTransportConfigurator" public="false" abstract="true"/>
+    <service id="swiftmailer.transport.sendmail.abstract" class="Swift_Transport_SendmailTransport" public="false" abstract="true"/>
+    <service id="swiftmailer.transport.null.abstract" class="Swift_Transport_NullTransport" public="false" abstract="true"/>
+    <service id="swiftmailer.transport.failover" class="Swift_Transport_FailoverTransport" public="false"/>
+    <service id="swiftmailer.transport.buffer.abstract" class="Swift_Transport_StreamBuffer" public="false" abstract="true">
+      <argument type="service" id="swiftmailer.transport.replacementfactory"/>
+    </service>
+    <service id="swiftmailer.transport.authhandler.abstract" class="Swift_Transport_Esmtp_AuthHandler" public="false" abstract="true">
+      <argument type="collection">
+        <argument type="service" id=".1_Swift_Transport_Esmtp_Auth_CramMd5Authenticator~_ZpCj3l"/>
+        <argument type="service" id=".2_Swift_Transport_Esmtp_Auth_LoginAuthenticator~_ZpCj3l"/>
+        <argument type="service" id=".3_Swift_Transport_Esmtp_Auth_PlainAuthenticator~_ZpCj3l"/>
+        <argument type="service" id=".4_Swift_Transport_Esmtp_Auth_NTLMAuthenticator~_ZpCj3l"/>
+      </argument>
+    </service>
+    <service id="swiftmailer.transport.eventdispatcher.abstract" class="Swift_Events_SimpleEventDispatcher" public="false" abstract="true"/>
+    <service id="swiftmailer.transport.replacementfactory" class="Swift_StreamFilters_StringReplacementFilterFactory" public="false"/>
+    <service id="swiftmailer.plugin.redirecting.abstract" class="Swift_Plugins_RedirectingPlugin" public="false" abstract="true"/>
+    <service id="swiftmailer.plugin.antiflood.abstract" class="Swift_Plugins_AntiFloodPlugin" public="false" abstract="true"/>
+    <service id="swiftmailer.plugin.impersonate.abstract" class="Swift_Plugins_ImpersonatePlugin" public="false" abstract="true"/>
+    <service id="swiftmailer.plugin.messagelogger.abstract" class="Swift_Plugins_MessageLogger" abstract="true"/>
+    <service id="swiftmailer.transport.smtp.abstract" class="Swift_Transport_EsmtpTransport" public="false" abstract="true"/>
+    <service id="swiftmailer.transport.spool.abstract" class="Swift_Transport_SpoolTransport" public="false" abstract="true"/>
+    <service id="swiftmailer.spool.file.abstract" class="Swift_FileSpool" public="false" abstract="true">
+      <argument></argument>
+    </service>
+    <service id="swiftmailer.spool.memory.abstract" class="Swift_MemorySpool" public="false" abstract="true"/>
+    <service id="swiftmailer.email_sender.listener" class="Symfony\Bundle\SwiftmailerBundle\EventListener\EmailSenderListener">
+      <tag name="kernel.event_subscriber"/>
+      <tag name="kernel.reset" method="reset"/>
+      <argument type="service" id="service_container"/>
+      <argument type="service" id="monolog.logger" on-invalid="null"/>
+    </service>
+    <service id="swiftmailer.data_collector" class="Symfony\Bundle\SwiftmailerBundle\DataCollector\MessageDataCollector" public="false">
+      <tag name="data_collector" template="@Swiftmailer/Collector/swiftmailer.html.twig" id="swiftmailer" priority="245"/>
+      <argument type="service" id="service_container"/>
+    </service>
+    <service id="swiftmailer.command.debug" class="Symfony\Bundle\SwiftmailerBundle\Command\DebugCommand">
+      <tag name="console.command" command="debug:swiftmailer"/>
+      <call method="setName">
+        <argument>debug:swiftmailer</argument>
+      </call>
+    </service>
+    <service id="swiftmailer.command.new_email" class="Symfony\Bundle\SwiftmailerBundle\Command\NewEmailCommand">
+      <tag name="console.command" command="swiftmailer:email:send"/>
+      <call method="setName">
+        <argument>swiftmailer:email:send</argument>
+      </call>
+    </service>
+    <service id="swiftmailer.command.send_email" class="Symfony\Bundle\SwiftmailerBundle\Command\SendEmailCommand">
+      <tag name="console.command" command="swiftmailer:spool:send"/>
+      <call method="setName">
+        <argument>swiftmailer:spool:send</argument>
+      </call>
+    </service>
+    <service id="swiftmailer.mailer.default.transport.eventdispatcher" class="Swift_Events_SimpleEventDispatcher" public="false"/>
+    <service id="swiftmailer.mailer.default.transport.dynamic" class="Swift_Transport">
+      <argument type="collection">
+        <argument key="transport">smtp</argument>
+        <argument key="url">%env(MAILER_URL)%</argument>
+        <argument key="username">null</argument>
+        <argument key="password">null</argument>
+        <argument key="host">localhost</argument>
+        <argument key="port">null</argument>
+        <argument key="timeout">30</argument>
+        <argument key="source_ip">null</argument>
+        <argument key="local_domain">null</argument>
+        <argument key="encryption">null</argument>
+        <argument key="auth_mode">null</argument>
+        <argument key="command">/usr/sbin/sendmail -bs</argument>
+        <argument key="stream_options" type="collection"/>
+      </argument>
+      <argument type="service" id="router.request_context" on-invalid="null"/>
+      <argument type="service" id="swiftmailer.mailer.default.transport.eventdispatcher"/>
+      <factory class="Symfony\Bundle\SwiftmailerBundle\DependencyInjection\SwiftmailerTransportFactory" method="createTransport"/>
+    </service>
+    <service id="swiftmailer.mailer.default" class="Swift_Mailer" public="true">
+      <argument type="service" id="swiftmailer.mailer.default.transport.spool"/>
+    </service>
+    <service id="swiftmailer.mailer.default.spool.memory" class="Swift_MemorySpool" public="false"/>
+    <service id="swiftmailer.mailer.default.transport.spool" class="Swift_Transport_SpoolTransport" public="false">
+      <argument type="service" id="swiftmailer.mailer.default.transport.eventdispatcher"/>
+      <argument type="service" id="swiftmailer.mailer.default.spool.memory"/>
+      <call method="registerPlugin">
+        <argument type="service" id="swiftmailer.mailer.default.plugin.messagelogger"/>
+      </call>
+    </service>
+    <service id="swiftmailer.mailer.default.plugin.messagelogger" class="Swift_Plugins_MessageLogger" public="true">
+      <tag name="swiftmailer.default.plugin"/>
+    </service>
+    <service id="fos_ck_editor.builder.json_builder" class="FOS\CKEditorBundle\Builder\JsonBuilder">
+      <argument type="service" id="property_accessor"/>
+    </service>
+    <service id="fos_ck_editor.command.installer" class="FOS\CKEditorBundle\Command\CKEditorInstallerCommand">
+      <tag name="console.command" command="ckeditor:install"/>
+      <argument type="service" id="fos_ck_editor.installer"/>
+      <call method="setName">
+        <argument>ckeditor:install</argument>
+      </call>
+    </service>
+    <service id="fos_ck_editor.configuration" class="FOS\CKEditorBundle\Config\CKEditorConfiguration">
+      <argument type="collection">
+        <argument key="enable">true</argument>
+        <argument key="async">false</argument>
+        <argument key="auto_inline">true</argument>
+        <argument key="inline">false</argument>
+        <argument key="autoload">true</argument>
+        <argument key="jquery">false</argument>
+        <argument key="require_js">false</argument>
+        <argument key="input_sync">false</argument>
+        <argument key="base_path">bundles/fosckeditor/</argument>
+        <argument key="js_path">bundles/fosckeditor/ckeditor.js</argument>
+        <argument key="jquery_path">bundles/fosckeditor/adapters/jquery.js</argument>
+        <argument key="default_config">null</argument>
+        <argument key="configs" type="collection"/>
+        <argument key="plugins" type="collection"/>
+        <argument key="styles" type="collection"/>
+        <argument key="templates" type="collection"/>
+        <argument key="filebrowsers" type="collection"/>
+        <argument key="toolbars" type="collection">
+          <argument key="configs" type="collection"/>
+          <argument key="items" type="collection"/>
+        </argument>
+      </argument>
+    </service>
+    <service id="fos_ck_editor.form.type" class="FOS\CKEditorBundle\Form\Type\CKEditorType">
+      <tag name="form.type"/>
+      <argument type="service" id="fos_ck_editor.configuration"/>
+    </service>
+    <service id="fos_ck_editor.installer" class="FOS\CKEditorBundle\Installer\CKEditorInstaller"/>
+    <service id="fos_ck_editor.renderer" class="FOS\CKEditorBundle\Renderer\CKEditorRenderer">
+      <argument type="service" id="fos_ck_editor.builder.json_builder"/>
+      <argument type="service" id="router.default"/>
+      <argument type="service" id="assets.packages"/>
+      <argument type="service" id="request_stack"/>
+      <argument type="service" id="twig"/>
+      <argument type="expression">container.hasParameter('locale') ? parameter('locale') : null</argument>
+    </service>
+    <service id="fos_ck_editor.twig_extension" class="FOS\CKEditorBundle\Twig\CKEditorExtension">
+      <tag name="twig.extension"/>
+      <argument type="service" id="fos_ck_editor.renderer"/>
+    </service>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\BackController" class="App\Controller\BackController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\BackController" class="App\Controller\BackController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\BackController" class="App\Controller\BackController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\BlogController" class="App\Controller\BlogController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\BlogController" class="App\Controller\BlogController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\BlogController" class="App\Controller\BlogController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CommentaireController" class="App\Controller\CommentaireController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CommentaireController" class="App\Controller\CommentaireController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\CommentaireController" class="App\Controller\CommentaireController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\FactureController" class="App\Controller\FactureController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\FactureController" class="App\Controller\FactureController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\FactureController" class="App\Controller\FactureController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -4967,18 +5376,43 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\PromotionController" class="App\Controller\PromotionController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\PromotionController" class="App\Controller\PromotionController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\PromotionController" class="App\Controller\PromotionController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ReclamationController" class="App\Controller\ReclamationController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ReclamationController" class="App\Controller\ReclamationController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\ReclamationController" class="App\Controller\ReclamationController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\UtilisateurController" class="App\Controller\UtilisateurController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\UtilisateurController" class="App\Controller\UtilisateurController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\UtilisateurController" class="App\Controller\UtilisateurController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\BlogType" class="App\Form\BlogType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\BlogType" class="App\Form\BlogType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CommentaireType" class="App\Form\CommentaireType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\CommentaireType" class="App\Form\CommentaireType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\FactureType" class="App\Form\FactureType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\FactureType" class="App\Form\FactureType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\LoginType" class="App\Form\LoginType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\LoginType" class="App\Form\LoginType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\PromotionType" class="App\Form\PromotionType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\PromotionType" class="App\Form\PromotionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ReclamationType" class="App\Form\ReclamationType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ReclamationType" class="App\Form\ReclamationType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\RegistrationFormType" class="App\Form\RegistrationFormType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\UtilisateurType" class="App\Form\UtilisateurType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\UtilisateurType" class="App\Form\UtilisateurType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\BlogRepository" class="App\Repository\BlogRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\BlogRepository" class="App\Repository\BlogRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CommentaireRepository" class="App\Repository\CommentaireRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\CommentaireRepository" class="App\Repository\CommentaireRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\FactureRepository" class="App\Repository\FactureRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\FactureRepository" class="App\Repository\FactureRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\PromotionRepository" class="App\Repository\PromotionRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\PromotionRepository" class="App\Repository\PromotionRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ReclamationRepository" class="App\Repository\ReclamationRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\ReclamationRepository" class="App\Repository\ReclamationRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UtilisateurRepository" class="App\Repository\UtilisateurRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\UtilisateurRepository" class="App\Repository\UtilisateurRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.CmORmuK" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5260,16 +5694,29 @@
         <argument>make:migration</argument>
       </call>
     </service>
-    <service id=".service_locator.x8FmIZ0" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
-      </argument>
-    </service>
     <service id=".service_locator.4JAAJ.e" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="blogRepository" type="service_closure" id="App\Repository\BlogRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.MXek0QQ" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="blogRepository" type="service_closure" id="App\Repository\BlogRepository"/>
+        <argument key="com" type="service_closure" id="App\Repository\CommentaireRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.8ZuNAXa" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="mailer" type="service_closure" id="swiftmailer.mailer.default"/>
+      </argument>
+    </service>
+    <service id=".service_locator.8yqhsUG" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="commentaireRepository" type="service_closure" id="App\Repository\CommentaireRepository"/>
       </argument>
     </service>
     <service id=".service_locator.ynYNJ8X" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -5284,15 +5731,90 @@
         <argument key="promotionRepository" type="service_closure" id="App\Repository\PromotionRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.OWpx.DU" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.VbBc5lm" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="mailer" type="service_closure" id="swiftmailer.mailer.default"/>
+        <argument key="utilisateurRepository" type="service_closure" id="App\Repository\UtilisateurRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.bJ2nGqo" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="reclamationRepository" type="service_closure" id="App\Repository\ReclamationRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.jbi61RT" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="reclamationRepository" type="service_closure" id="App\Repository\ReclamationRepository"/>
+        <argument key="utilisateur" type="service_closure" id=".errored..service_locator.jbi61RT.App\Entity\Utilisateur"/>
+      </argument>
+    </service>
+    <service id=".service_locator.Yrn9bQF" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="reclamation" type="service_closure" id=".errored..service_locator.Yrn9bQF.App\Entity\Reclamation"/>
+      </argument>
+    </service>
+    <service id=".service_locator.8kL29dq" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="reclamation" type="service_closure" id=".errored..service_locator.8kL29dq.App\Entity\Reclamation"/>
+        <argument key="reclamationRepository" type="service_closure" id="App\Repository\ReclamationRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.g.xob4v" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="authenticationUtils" type="service_closure" id="security.authentication_utils"/>
+      </argument>
+    </service>
+    <service id=".service_locator.ZahoQIa" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="utilisateurRepository" type="service_closure" id="App\Repository\UtilisateurRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.z1iWlPx" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="utilisateur" type="service_closure" id=".errored..service_locator.z1iWlPx.App\Entity\Utilisateur"/>
+      </argument>
+    </service>
+    <service id=".service_locator.vhEU2eq" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="utilisateur" type="service_closure" id=".errored..service_locator.vhEU2eq.App\Entity\Utilisateur"/>
+        <argument key="utilisateurRepository" type="service_closure" id="App\Repository\UtilisateurRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.jmvbEvf" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="encoder" type="service_closure" id="security.user_password_encoder.generic"/>
+      </argument>
+    </service>
+    <service id=".service_locator.ZwDlruq" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repository" type="service_closure" id="App\Repository\UtilisateurRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.HOWMswc" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\BlogController::delete" type="service_closure" id=".service_locator.4JAAJ.e"/>
-        <argument key="App\Controller\BlogController::detail" type="service_closure" id=".service_locator.4JAAJ.e"/>
+        <argument key="App\Controller\BlogController::detail" type="service_closure" id=".service_locator.MXek0QQ"/>
         <argument key="App\Controller\BlogController::edit" type="service_closure" id=".service_locator.4JAAJ.e"/>
-        <argument key="App\Controller\BlogController::index" type="service_closure" id=".service_locator.x8FmIZ0"/>
+        <argument key="App\Controller\BlogController::index" type="service_closure" id=".service_locator.4JAAJ.e"/>
         <argument key="App\Controller\BlogController::indexfront" type="service_closure" id=".service_locator.4JAAJ.e"/>
+        <argument key="App\Controller\BlogController::new" type="service_closure" id=".service_locator.8ZuNAXa"/>
         <argument key="App\Controller\BlogController::show" type="service_closure" id=".service_locator.4JAAJ.e"/>
+        <argument key="App\Controller\CommentaireController::delete" type="service_closure" id=".service_locator.8yqhsUG"/>
+        <argument key="App\Controller\CommentaireController::edit" type="service_closure" id=".service_locator.8yqhsUG"/>
+        <argument key="App\Controller\CommentaireController::index" type="service_closure" id=".service_locator.8yqhsUG"/>
+        <argument key="App\Controller\CommentaireController::show" type="service_closure" id=".service_locator.8yqhsUG"/>
         <argument key="App\Controller\FactureController::delete" type="service_closure" id=".service_locator.ynYNJ8X"/>
         <argument key="App\Controller\FactureController::edit" type="service_closure" id=".service_locator.ynYNJ8X"/>
         <argument key="App\Controller\FactureController::index" type="service_closure" id=".service_locator.ynYNJ8X"/>
@@ -5303,13 +5825,34 @@
         <argument key="App\Controller\PromotionController::index" type="service_closure" id=".service_locator.Z2K.Iwb"/>
         <argument key="App\Controller\PromotionController::indexfront" type="service_closure" id=".service_locator.Z2K.Iwb"/>
         <argument key="App\Controller\PromotionController::listo1" type="service_closure" id=".service_locator.Z2K.Iwb"/>
+        <argument key="App\Controller\PromotionController::new" type="service_closure" id=".service_locator.VbBc5lm"/>
         <argument key="App\Controller\PromotionController::show" type="service_closure" id=".service_locator.Z2K.Iwb"/>
+        <argument key="App\Controller\ReclamationController::delete" type="service_closure" id=".service_locator.8kL29dq"/>
+        <argument key="App\Controller\ReclamationController::edit" type="service_closure" id=".service_locator.8kL29dq"/>
+        <argument key="App\Controller\ReclamationController::index" type="service_closure" id=".service_locator.bJ2nGqo"/>
+        <argument key="App\Controller\ReclamationController::new" type="service_closure" id=".service_locator.jbi61RT"/>
+        <argument key="App\Controller\ReclamationController::show" type="service_closure" id=".service_locator.Yrn9bQF"/>
+        <argument key="App\Controller\SecurityController::login" type="service_closure" id=".service_locator.g.xob4v"/>
+        <argument key="App\Controller\UtilisateurController::delete" type="service_closure" id=".service_locator.vhEU2eq"/>
+        <argument key="App\Controller\UtilisateurController::edit" type="service_closure" id=".service_locator.vhEU2eq"/>
+        <argument key="App\Controller\UtilisateurController::index" type="service_closure" id=".service_locator.ZahoQIa"/>
+        <argument key="App\Controller\UtilisateurController::new" type="service_closure" id=".service_locator.ZahoQIa"/>
+        <argument key="App\Controller\UtilisateurController::searchByEmail" type="service_closure" id=".service_locator.ZwDlruq"/>
+        <argument key="App\Controller\UtilisateurController::show" type="service_closure" id=".service_locator.z1iWlPx"/>
+        <argument key="App\Controller\UtilisateurController::showback" type="service_closure" id=".service_locator.ZahoQIa"/>
+        <argument key="App\Controller\UtilisateurController::signIn" type="service_closure" id=".service_locator.ZwDlruq"/>
+        <argument key="App\Controller\UtilisateurController::signUp" type="service_closure" id=".service_locator.jmvbEvf"/>
         <argument key="App\Controller\BlogController:delete" type="service_closure" id=".service_locator.4JAAJ.e"/>
-        <argument key="App\Controller\BlogController:detail" type="service_closure" id=".service_locator.4JAAJ.e"/>
+        <argument key="App\Controller\BlogController:detail" type="service_closure" id=".service_locator.MXek0QQ"/>
         <argument key="App\Controller\BlogController:edit" type="service_closure" id=".service_locator.4JAAJ.e"/>
-        <argument key="App\Controller\BlogController:index" type="service_closure" id=".service_locator.x8FmIZ0"/>
+        <argument key="App\Controller\BlogController:index" type="service_closure" id=".service_locator.4JAAJ.e"/>
         <argument key="App\Controller\BlogController:indexfront" type="service_closure" id=".service_locator.4JAAJ.e"/>
+        <argument key="App\Controller\BlogController:new" type="service_closure" id=".service_locator.8ZuNAXa"/>
         <argument key="App\Controller\BlogController:show" type="service_closure" id=".service_locator.4JAAJ.e"/>
+        <argument key="App\Controller\CommentaireController:delete" type="service_closure" id=".service_locator.8yqhsUG"/>
+        <argument key="App\Controller\CommentaireController:edit" type="service_closure" id=".service_locator.8yqhsUG"/>
+        <argument key="App\Controller\CommentaireController:index" type="service_closure" id=".service_locator.8yqhsUG"/>
+        <argument key="App\Controller\CommentaireController:show" type="service_closure" id=".service_locator.8yqhsUG"/>
         <argument key="App\Controller\FactureController:delete" type="service_closure" id=".service_locator.ynYNJ8X"/>
         <argument key="App\Controller\FactureController:edit" type="service_closure" id=".service_locator.ynYNJ8X"/>
         <argument key="App\Controller\FactureController:index" type="service_closure" id=".service_locator.ynYNJ8X"/>
@@ -5320,7 +5863,23 @@
         <argument key="App\Controller\PromotionController:index" type="service_closure" id=".service_locator.Z2K.Iwb"/>
         <argument key="App\Controller\PromotionController:indexfront" type="service_closure" id=".service_locator.Z2K.Iwb"/>
         <argument key="App\Controller\PromotionController:listo1" type="service_closure" id=".service_locator.Z2K.Iwb"/>
+        <argument key="App\Controller\PromotionController:new" type="service_closure" id=".service_locator.VbBc5lm"/>
         <argument key="App\Controller\PromotionController:show" type="service_closure" id=".service_locator.Z2K.Iwb"/>
+        <argument key="App\Controller\ReclamationController:delete" type="service_closure" id=".service_locator.8kL29dq"/>
+        <argument key="App\Controller\ReclamationController:edit" type="service_closure" id=".service_locator.8kL29dq"/>
+        <argument key="App\Controller\ReclamationController:index" type="service_closure" id=".service_locator.bJ2nGqo"/>
+        <argument key="App\Controller\ReclamationController:new" type="service_closure" id=".service_locator.jbi61RT"/>
+        <argument key="App\Controller\ReclamationController:show" type="service_closure" id=".service_locator.Yrn9bQF"/>
+        <argument key="App\Controller\SecurityController:login" type="service_closure" id=".service_locator.g.xob4v"/>
+        <argument key="App\Controller\UtilisateurController:delete" type="service_closure" id=".service_locator.vhEU2eq"/>
+        <argument key="App\Controller\UtilisateurController:edit" type="service_closure" id=".service_locator.vhEU2eq"/>
+        <argument key="App\Controller\UtilisateurController:index" type="service_closure" id=".service_locator.ZahoQIa"/>
+        <argument key="App\Controller\UtilisateurController:new" type="service_closure" id=".service_locator.ZahoQIa"/>
+        <argument key="App\Controller\UtilisateurController:searchByEmail" type="service_closure" id=".service_locator.ZwDlruq"/>
+        <argument key="App\Controller\UtilisateurController:show" type="service_closure" id=".service_locator.z1iWlPx"/>
+        <argument key="App\Controller\UtilisateurController:showback" type="service_closure" id=".service_locator.ZahoQIa"/>
+        <argument key="App\Controller\UtilisateurController:signIn" type="service_closure" id=".service_locator.ZwDlruq"/>
+        <argument key="App\Controller\UtilisateurController:signUp" type="service_closure" id=".service_locator.jmvbEvf"/>
       </argument>
     </service>
     <service id=".service_locator.Y7gDuDN" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -5382,12 +5941,18 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.FV_gms2" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.cNwy_yY" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\BlogType" type="service_closure" id="App\Form\BlogType"/>
+        <argument key="App\Form\CommentaireType" type="service_closure" id="App\Form\CommentaireType"/>
         <argument key="App\Form\FactureType" type="service_closure" id="App\Form\FactureType"/>
+        <argument key="App\Form\LoginType" type="service_closure" id="App\Form\LoginType"/>
         <argument key="App\Form\PromotionType" type="service_closure" id="App\Form\PromotionType"/>
+        <argument key="App\Form\ReclamationType" type="service_closure" id="App\Form\ReclamationType"/>
+        <argument key="App\Form\RegistrationFormType" type="service_closure" id="App\Form\RegistrationFormType"/>
+        <argument key="App\Form\UtilisateurType" type="service_closure" id="App\Form\UtilisateurType"/>
+        <argument key="FOS\CKEditorBundle\Form\Type\CKEditorType" type="service_closure" id="fos_ck_editor.form.type"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service_closure" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\FileType" type="service_closure" id="form.type.file"/>
@@ -5554,12 +6119,15 @@
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service_closure" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
       </argument>
     </service>
-    <service id=".service_locator.ZLM7fED" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.URQdhiw" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\BlogRepository" type="service_closure" id="App\Repository\BlogRepository"/>
+        <argument key="App\Repository\CommentaireRepository" type="service_closure" id="App\Repository\CommentaireRepository"/>
         <argument key="App\Repository\FactureRepository" type="service_closure" id="App\Repository\FactureRepository"/>
         <argument key="App\Repository\PromotionRepository" type="service_closure" id="App\Repository\PromotionRepository"/>
+        <argument key="App\Repository\ReclamationRepository" type="service_closure" id="App\Repository\ReclamationRepository"/>
+        <argument key="App\Repository\UtilisateurRepository" type="service_closure" id="App\Repository\UtilisateurRepository"/>
       </argument>
     </service>
     <service id="doctrine.dbal.logging_middleware.default" class="Doctrine\DBAL\Logging\Middleware">
@@ -5625,6 +6193,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\CommentaireController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\CommentaireController"/>
+      <argument>App\Controller\CommentaireController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
     <service id=".service_locator.vdmMuyE.App\Controller\FactureController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\FactureController"/>
       <argument>App\Controller\FactureController</argument>
@@ -5640,6 +6214,24 @@
     <service id=".service_locator.vdmMuyE.App\Controller\PromotionController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\PromotionController"/>
       <argument>App\Controller\PromotionController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\ReclamationController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\ReclamationController"/>
+      <argument>App\Controller\ReclamationController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\SecurityController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\SecurityController"/>
+      <argument>App\Controller\SecurityController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\UtilisateurController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\UtilisateurController"/>
+      <argument>App\Controller\UtilisateurController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>
@@ -5789,12 +6381,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.OWpx.DU"/>
+      <argument type="service" id=".service_locator.HOWMswc"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.OWpx.DU"/>
+      <argument type="service" id=".service_locator.HOWMswc"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -5804,8 +6396,13 @@
       </call>
       <factory class="Symfony\Component\HttpClient\HttpClient" method="create"/>
     </service>
+    <service id=".errored..service_locator.jbi61RT.App\Entity\Utilisateur" class="App\Entity\Utilisateur"/>
+    <service id=".errored..service_locator.Yrn9bQF.App\Entity\Reclamation" class="App\Entity\Reclamation"/>
+    <service id=".errored..service_locator.8kL29dq.App\Entity\Reclamation" class="App\Entity\Reclamation"/>
+    <service id=".errored..service_locator.z1iWlPx.App\Entity\Utilisateur" class="App\Entity\Utilisateur"/>
+    <service id=".errored..service_locator.vhEU2eq.App\Entity\Utilisateur" class="App\Entity\Utilisateur"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
-      <argument type="service" id=".service_locator.TfYcj5y"/>
+      <argument type="service" id=".service_locator.fql2ATJ"/>
       <argument type="collection">
         <argument key="about">console.command.about</argument>
         <argument key="assets:install">console.command.assets_install</argument>
@@ -5875,6 +6472,10 @@
         <argument key="server:start">web_server.command.server_start</argument>
         <argument key="server:stop">web_server.command.server_stop</argument>
         <argument key="server:status">web_server.command.server_status</argument>
+        <argument key="debug:swiftmailer">swiftmailer.command.debug</argument>
+        <argument key="swiftmailer:email:send">swiftmailer.command.new_email</argument>
+        <argument key="swiftmailer:spool:send">swiftmailer.command.send_email</argument>
+        <argument key="ckeditor:install">fos_ck_editor.command.installer</argument>
         <argument key="make:auth">maker.auto_command.make_auth</argument>
         <argument key="make:command">maker.auto_command.make_command</argument>
         <argument key="make:controller">maker.auto_command.make_controller</argument>
@@ -5900,7 +6501,7 @@
         <argument key="make:migration">maker.auto_command.make_migration</argument>
       </argument>
     </service>
-    <service id=".service_locator.TfYcj5y" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.fql2ATJ" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="Doctrine\DBAL\Tools\Console\Command\RunSqlCommand" type="service_closure" id="Doctrine\DBAL\Tools\Console\Command\RunSqlCommand"/>
@@ -5962,6 +6563,7 @@
         <argument key="doctrine_migrations.up_to_date_command" type="service_closure" id="doctrine_migrations.up_to_date_command"/>
         <argument key="doctrine_migrations.version_command" type="service_closure" id="doctrine_migrations.version_command"/>
         <argument key="doctrine_migrations.versions_command" type="service_closure" id="doctrine_migrations.versions_command"/>
+        <argument key="fos_ck_editor.command.installer" type="service_closure" id="fos_ck_editor.command.installer"/>
         <argument key="maker.auto_command.make_auth" type="service_closure" id="maker.auto_command.make_auth"/>
         <argument key="maker.auto_command.make_command" type="service_closure" id="maker.auto_command.make_command"/>
         <argument key="maker.auto_command.make_controller" type="service_closure" id="maker.auto_command.make_controller"/>
@@ -5985,6 +6587,9 @@
         <argument key="maker.auto_command.make_voter" type="service_closure" id="maker.auto_command.make_voter"/>
         <argument key="monolog.command.server_log" type="service_closure" id="monolog.command.server_log"/>
         <argument key="security.command.user_password_encoder" type="service_closure" id="security.command.user_password_encoder"/>
+        <argument key="swiftmailer.command.debug" type="service_closure" id="swiftmailer.command.debug"/>
+        <argument key="swiftmailer.command.new_email" type="service_closure" id="swiftmailer.command.new_email"/>
+        <argument key="swiftmailer.command.send_email" type="service_closure" id="swiftmailer.command.send_email"/>
         <argument key="twig.command.debug" type="service_closure" id="twig.command.debug"/>
         <argument key="twig.command.lint" type="service_closure" id="twig.command.lint"/>
         <argument key="var_dumper.command.server_dump" type="service_closure" id="var_dumper.command.server_dump"/>
@@ -6111,7 +6716,7 @@
     <service id="form.choice_list_factory" alias="form.choice_list_factory.cached" public="false"/>
     <service id="Symfony\Component\Asset\Packages" alias="assets.packages" public="false"/>
     <service id="Symfony\Contracts\HttpClient\HttpClientInterface" alias=".debug.http_client"/>
-    <service id="mailer" alias="mailer.mailer"/>
+    <service id="mailer" alias="swiftmailer.mailer.default" public="true"/>
     <service id="Symfony\Component\Mailer\MailerInterface" alias="mailer.mailer"/>
     <service id="Symfony\Component\Mailer\Transport\TransportInterface" alias="mailer.default_transport"/>
     <service id="Symfony\Component\Validator\Validator\ValidatorInterface" alias="debug.validator" public="false"/>
@@ -6188,13 +6793,24 @@
     <service id="Symfony\Component\Security\Http\HttpUtils" alias="security.http_utils" public="false"/>
     <service id="Symfony\Component\Security\Guard\GuardAuthenticatorHandler" alias="security.authentication.guard_handler" public="false"/>
     <service id="security.firewall" alias="debug.security.firewall" public="false"/>
-    <service id="Symfony\Component\Security\Core\User\UserProviderInterface" alias="security.user.provider.concrete.users_in_memory"/>
+    <service id="Symfony\Component\Security\Core\User\UserProviderInterface" alias="security.user.provider.concrete.our_db_provider"/>
     <service id="security.authentication.session_strategy.main" alias="security.authentication.session_strategy"/>
     <service id="security.user_checker.main" alias="security.user_checker" public="false"/>
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker" public="false"/>
+    <service id="swiftmailer.mailer.default.transport" alias="swiftmailer.mailer.default.transport.spool"/>
+    <service id="swiftmailer.mailer.default.spool" alias="swiftmailer.mailer.default.spool.memory"/>
+    <service id="swiftmailer.mailer.default.transport.real" alias="swiftmailer.mailer.default.transport.dynamic" public="true"/>
+    <service id="swiftmailer.spool" alias="swiftmailer.mailer.default.spool.memory"/>
+    <service id="swiftmailer.transport.real" alias="swiftmailer.mailer.default.transport.dynamic"/>
+    <service id="Swift_Spool" alias="swiftmailer.mailer.default.spool.memory" public="false"/>
+    <service id="swiftmailer.plugin.messagelogger" alias="swiftmailer.mailer.default.plugin.messagelogger"/>
+    <service id="swiftmailer.mailer" alias="swiftmailer.mailer.default"/>
+    <service id="swiftmailer.transport" alias="swiftmailer.mailer.default.transport.spool" public="true"/>
+    <service id="Swift_Mailer" alias="swiftmailer.mailer.default" public="false"/>
+    <service id="Swift_Transport" alias="swiftmailer.mailer.default.transport.spool" public="false"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.OWpx.DU"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.HOWMswc"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

@@ -1,7 +1,6 @@
 {% extends 'baseBack.html.twig' %}
 
 
-
 {% block content %}
     <h1>Blog</h1>
 
@@ -18,17 +17,17 @@
             </tr>
             <tr>
                 <th>Description</th>
-                <td>{{ blog.description }}</td>
+                <td>{{ blog.description | raw }}</td>
             </tr>
             <tr>
                 <th>Image</th>
                 <td><img src="{{ asset('images/' ~ blog.image) }}" width="50" height="50"></td>
             </tr>
-            <tr>
-                <th> </th>
-                <td><a href="{{ path('app_blog_edit', {'id': blog.id}) }}"> <i class="fa fa-pen"></i></a></td>
-                <td>    {{ include('blog/_delete_form.html.twig') }} </td>
-            </tr>
+        <tr>
+            <th>Client</th>
+            <td>{{ blog.idclient.nom }}</td>
+        </tr>
+
         </tbody>
     </table>
 

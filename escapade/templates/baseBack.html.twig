@@ -85,12 +85,12 @@
             <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="{{ path ('userBack') }}">Utilisateur</a>
+                    <a class="collapse-item" href="/utilisateur/">Utilisateur</a>
                     <a class="collapse-item" href="{{ path ('reclamationBack') }}">Réclamation</a>
                     <a class="collapse-item" href="/promotion/">Promotion</a>
                     <a class="collapse-item" href="/facture/">Panier</a>
                     <a class="collapse-item" href="/blog/">Blog</a>
-                    <a class="collapse-item" href="{{ path ('comBack') }}">Commentaire</a>
+                    <a class="collapse-item" href="/commentaire/">Commentaire</a>
 
                 </div>
             </div>
@@ -111,7 +111,7 @@
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Login Screens:</h6>
-                    <a class="collapse-item" href="{{ path ('login') }}">Login</a>
+                    <a class="collapse-item" href="{{ path ('app_login') }}">Login</a>
                     <a class="collapse-item" href="{{ path ('inscrit') }}">Register</a>
                     <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                     <div class="collapse-divider"></div>
@@ -254,7 +254,7 @@
                         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-primary" href="{{ path ('login') }}">Logout</a>
+                            <a class="btn btn-primary" href="{{ path ('app_login') }}">Logout</a>
                         </div>
                     </div>
                 </div>

@@ -6,10 +6,14 @@ use App\Entity\Promotion;
 use App\Form\PromotionType;
 use App\Repository\PromotionRepository;
 use App\Repository\FactureRepository;
+use App\Repository\UtilisateurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Dompdf\Dompdf;
@@ -32,21 +36,37 @@ class PromotionController extends AbstractController
     }
 
     /**
-     * @Route("/front", name="app_promotion_indexfront", methods={"GET"})
+     * @Route("/front", name="app_promotion_indexfront")
      */
     public function indexfront(PromotionRepository $promotionRepository): Response
     {
-        return $this->render('promotion/promotionFront.html.twig', [
-            'promotions' => $promotionRepository->findAll(),
-        ]);
+        $events=$promotionRepository->findAll();
+
+        $rdvs =[];
+
+         foreach ($events as $event)
+         {
+             $rdvs[]=[
+                 'id'=>$event->getId(),
+                 'taux'=>$event->getTaux(),
+                 'dateDebut'=>$event->getDatedebut()->format('Y-m-d'),
+                 'datefin'=>$event->getDatefin()->format('Y-m-d')
+
+             ];
+         }
+         $data = json_encode($rdvs);
+        return $this->render('promotion/promotionFront.html.twig',
+            compact('data'));
     }
 
     /**
      * @Route("/new", name="app_promotion_new", methods={"GET", "POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request,UtilisateurRepository $utilisateurRepository,\Swift_Mailer $mailer): Response
     {
         $promotion = new Promotion();
+        $utilisateurs=$utilisateurRepository->findAll();
+      //  $promotion=$promotionRepository->find($id);
         $form = $this->createForm(PromotionType::class, $promotion);
         $form->add('Ajouter',SubmitType::class);
         $form->handleRequest($request);
@@ -56,12 +76,38 @@ class PromotionController extends AbstractController
             $em=$this->getDoctrine()->getManager();
             $em->persist($promotion);
             $em->flush();
+           /* $sid = 'AC025364ca8637a9f62bc9aa52443b9819';
+            $token = 'fe377b1bcbf67998514d97d68371e022';
+            $sms = new \Twilio\Rest\Client($sid, $token);
+            $sms->messages->create(
+                '+21655989026',
+                [
+                    'from' => '+12513335897',
+                    'body' => 'BONNE NOUVELLE ! profitez de notre nouvelle promotion'
 
+                ]
+            );*/
+            foreach ($utilisateurs as $utilisateur ) {
+
+                if($utilisateur->getRole()=="CLIENT"){
+                $message = (new \Swift_Message('Alerte'))
+                    ->setFrom('celine.benbrahim@esprit.tn')
+                    ->setTo($utilisateur->getEmail())
+                    ->setBody($this->renderView(
+                    // templates/emails/registration.html.twig
+                        'promotion/msg.html.twig'
+                         ),
+                        'text/html'
+                    );
+
+                $mailer->send($message);
+            }}
             return $this->redirectToRoute('app_promotion_index');
         }
 
         return $this->render('promotion/new.html.twig', [
             'promotion' => $promotion,
+
             'form' => $form->createView(),
         ]);
     }
@@ -117,7 +163,6 @@ class PromotionController extends AbstractController
     /**
      * @Route("/search/back", name="promoAjax", methods={"GET"})
      */
-
     public function search(Request $request ) :Response
     {
         $promotionRepository = $this->getDoctrine()->getRepository(Promotion::class);
@@ -168,6 +213,7 @@ class PromotionController extends AbstractController
             "Attachment" => false
         ]);
     }
+
 
 
 }

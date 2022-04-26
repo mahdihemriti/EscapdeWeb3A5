@@ -2,30 +2,98 @@
 
 {% block content %}
 
-    <div id="fh5co-tours" class="fh5co-section-gray">
+    <div class="container">
+        <!-- Page Heading/Breadcrumbs -->
+        <p class="mt-4 mb-4">
+            <br>
+        </p>
 
-        <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
 
-            <div class="col-md-4 animate-box">
-                <div class="row">
-                    <div class="col-md-12">
-                        <br>
-                        <h4 class="prod-title">{{ blog.nom }}</h4>
-                        <p class="posted_by">{{ blog.date ? blog.date|date('Y-m-d') : '' }}</p>
-                    </div>
-
-                    <p>{{ blog.description }}</p>
+                <h1><strong>{{ blog.nom | upper}}</strong></h1>
+                <!-- Preview Image -->
+                <hr>
+                <!-- Date/Time -->
+                <p>Publier le {{ blog.date ? blog.date|date('Y-m-d') : '' }}
+                    </p>
+                <hr>
+                <div class="zoom" >
+                    <p class="desc"> {{ blog.description | raw }}</p>
                 </div>
-
+                <div class="photoo">
+                    <div class="zoom">
+                        <img class="img-responsive" src="{{ asset('images/' ~ blog.image) }}" alt="travel">
+                    </div>
+                </div>
             </div>
-            <div class=" col-md-6 animate-box" >
-                <img class="img-responsive" src="{{ asset('images/' ~ blog.image) }}" alt="travel">
-            </div>
 
+
+            <a href="{{ path('app_blog_edit', {'id': blog.id}) }}"><i class="icon-pencil"> </i> Modifier</a>
+              <a> {{ include('blog/_delete_form.html.twig') }}  </a>
+            <a href="{{ path('app_blog_indexfront') }}">Retour à la liste des blogs</a>
+
+        </div>
+    <!--commentaire-->
+    <div class="card my-4">
+        <div class="card-body">
+
+                <div class="form-group">
+
+                    {{ form_start(forms,{'attr':{'novalidate':'novalidate'}}) }}
+                    {{ form_label(forms.description,'Laissez un commentaire') }}
+                    {{ form_widget(forms.description,{'attr':{'class':'description','placeholder':'description'}}) }}
+
+                    {{ form_end(forms) }}
+
+                </div>
 
 
         </div>
-        <a class="btn btn-primary" href="{{ path('app_blog_indexfront') }}">Retour à la liste</a>
+    </div>
+
+    </div>
+
+
+
+
+
+    </div>
+    <div id="fh5co-testimonial" >
+        <div class="container">
+            <div class="row animate-box">
+                <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                    <h2>Happy Clients</h2>
+                </div>
+            </div>
+            {% for commentaire in commentaires %}
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="box-testimony animate-box">
+                        <blockquote>
+                            <span class="quote"><span><i class="icon-quotes-right"></i></span></span>
+
+                            {{ commentaire.description }}
+
+                                <div class="btn">
+
+                                    <a href="{{ path('app_commentaire_edit', {'id': commentaire.id}) }}"> <i  class="icon-pencil"> </i></a>
+                                    {{ include('commentaire/_delete_form.html.twig') }}
+                                </div>
+
+
+                        </blockquote>
+                       <p class="author">{{ commentaire.idclient.nom }} {{ commentaire.idclient.prenom }}</p>
+
+
+                    </div>
+                    {% endfor %}
+        <!-- Comments section-->
+
+
+
+
+    </div></div>
     </div>
 
 

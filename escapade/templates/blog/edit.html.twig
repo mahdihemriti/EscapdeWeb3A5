@@ -1,4 +1,4 @@
-{% extends 'baseBack.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block content %}
     <h1>Modifier blog</h1>
@@ -6,9 +6,9 @@
     <br>
     {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
 
-    {{ form_label(form.nom,'Nom') }}
+    {{ form_label(form.nom,'Titre') }}
     <br>
-    {{ form_widget(form.nom,{'attr':{'class':'nom','placeholder':'nom'}}) }}
+    {{ form_widget(form.nom,{'attr':{'class':'nom','placeholder':'Titre'}}) }}
 
 
     <br>
@@ -23,7 +23,7 @@
     {{ form_end(form) }}
 
     <br>
-    <a href="{{ path('app_blog_index') }}">Retour à la liste des blogs</a>
+    <a href="{{ path('app_blog_indexfront') }}">Retour à la liste des blogs</a>
 
 
 {% endblock %}

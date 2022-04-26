@@ -4,6 +4,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
     $o = [
         clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Table'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Table')),
         clone ($p['Doctrine\\ORM\\Mapping\\Index'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Index')),
+        clone $p['Doctrine\\ORM\\Mapping\\Index'],
         clone ($p['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
     ],
     null,
@@ -12,22 +13,30 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             'name' => [
                 'commentaire',
                 'Fk_Clientcommentaireutilisateur',
+                'Fk_ClientcommentaireBlog',
             ],
             'indexes' => [
                 [
                     $o[1],
+                    $o[2],
                 ],
             ],
             'columns' => [
                 1 => [
                     'idClient',
                 ],
+                [
+                    'idBlog',
+                ],
+            ],
+            'repositoryClass' => [
+                3 => 'CommentaireRepository',
             ],
         ],
     ],
     [
         $o[0],
-        $o[2],
+        $o[3],
     ],
     []
 ); }];

@@ -126,15 +126,6 @@ class BackController extends AbstractController
             'controller_name' => 'BackController',
         ]);
     }
-    /**
-     * @Route("/login", name="login")
-     */
-    public function affichelogin(): Response
-    {
-        return $this->render('back/login.html.twig', [
-            'controller_name' => 'BackController',
-        ]);
-    }
 
     /**
      * @Route("/inscrit", name="inscrit")
