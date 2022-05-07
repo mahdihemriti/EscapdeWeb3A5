@@ -214,4 +214,31 @@ class BlogController extends AbstractController
         }
         return $realEntities;
     }
+
+    /**
+     * @Route("/TrierDESC/back", name="trie1",methods={"GET"})
+     */
+    public function Trierdate(Request $request,BlogRepository $blogRepository): Response
+    {
+        $blogRepository = $this->getDoctrine()->getRepository(Blog::class);
+        $blog = $blogRepository->findBydate();
+
+        return $this->render('blog/index.html.twig', [
+            'blogs' => $blog,
+        ]);
+    }
+
+
+    /**
+     * @Route("/TrierASC/back", name="trie2",methods={"GET"})
+     */
+    public function Trierdate2(Request $request,BlogRepository $blogRepository): Response
+    {
+        $blogRepository = $this->getDoctrine()->getRepository(Blog::class);
+        $blog = $blogRepository->findBydate2();
+
+        return $this->render('blog/index.html.twig', [
+            'blogs' => $blog,
+        ]);
+    }
 }

@@ -52,6 +52,24 @@ class BlogRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function findBydate()
+    {
+        return $this->createQueryBuilder('Blog')
+            ->orderBy('Blog.date','ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findBydate2()
+    {
+        return $this->createQueryBuilder('Blog')
+            ->orderBy('Blog.date','DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Blog[] Returns an array of Blog objects
     //  */

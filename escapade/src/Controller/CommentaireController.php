@@ -96,10 +96,11 @@ class CommentaireController extends AbstractController
     public function delete(Request $request,$id,CommentaireRepository $commentaireRepository): Response
     {
         $Commentaire=$commentaireRepository->find($id);
+        $idd=$Commentaire->getIdblog();
         $em=$this->getDoctrine()->getManager();
         $em->remove($Commentaire);
         $em->flush();
-        return $this->redirectToRoute('frontblog');
+        return $this->redirectToRoute('frontblog',[$idd]);
     }
 
     /**

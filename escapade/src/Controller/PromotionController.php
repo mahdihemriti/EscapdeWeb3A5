@@ -7,6 +7,7 @@ use App\Form\PromotionType;
 use App\Repository\PromotionRepository;
 use App\Repository\FactureRepository;
 use App\Repository\UtilisateurRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -38,6 +39,34 @@ class PromotionController extends AbstractController
     /**
      * @Route("/front", name="app_promotion_indexfront")
      */
+    public function calendrier(EntityManagerInterface $entityManager,PromotionRepository $rep): Response
+    {
+        $promotions = $entityManager
+            ->getRepository(Promotion::class)
+            ->findAll();
+
+        $compet=$rep->findAll();
+        $rdvs = [];
+        foreach ($compet as $event)
+        {
+            $rdvs[]=[
+                'taux'=>$event->getTaux(),
+                'dateDebut'=>$event->getDatedebut()->format('Y-m-d'),
+                'datefin'=>$event->getDatefin()->format('Y-m-d'),
+                'backgroundColor'=> '#0ec51',
+                'borderColor'=> 'green',
+                'textColor' => 'black'
+            ];
+        }
+        $data = json_encode($rdvs);
+        return $this->render('promotion/promotionFront.html.twig',compact('data', 'promotions'));
+
+
+    }
+
+    /*
+     * @Route("/front", name="app_promotion_indexfront")
+     *
     public function indexfront(PromotionRepository $promotionRepository): Response
     {
         $events=$promotionRepository->findAll();
@@ -58,7 +87,7 @@ class PromotionController extends AbstractController
         return $this->render('promotion/promotionFront.html.twig',
             compact('data'));
     }
-
+*/
     /**
      * @Route("/new", name="app_promotion_new", methods={"GET", "POST"})
      */

@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\PromotionRepository;
 use App\Repository\FactureRepository;
-
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * Promotion
  *
@@ -30,6 +30,7 @@ class Promotion
      * @Assert\Positive
      * @ORM\Column(name="taux", type="float", precision=10, scale=0, nullable=false)
 
+     * @Groups ("post:read")
      *
      * @Assert\Range(
      *      min = 0,
@@ -41,14 +42,14 @@ class Promotion
 
     /**
      * @var \DateTime
-     *
+     * @Groups ("post:read")
      * @ORM\Column(name="dateDebut", type="date", nullable=false)
      */
     private $datedebut;
 
     /**
      * @var \DateTime
-
+     * @Groups ("post:read")
      * @ORM\Column(name="dateFin", type="date", nullable=false)
      * @Assert\Expression("this.getDatefin() > this.getDatedebut()",message="Date fin doit être superieure à la date de début")
      */

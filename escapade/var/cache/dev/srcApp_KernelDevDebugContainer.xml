@@ -5731,6 +5731,13 @@
         <argument key="promotionRepository" type="service_closure" id="App\Repository\PromotionRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.Q0TDKnZ" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="rep" type="service_closure" id="App\Repository\PromotionRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.VbBc5lm" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5801,9 +5808,11 @@
         <argument key="repository" type="service_closure" id="App\Repository\UtilisateurRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.HOWMswc" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.P1DsKMU" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Controller\BlogController::Trierdate" type="service_closure" id=".service_locator.4JAAJ.e"/>
+        <argument key="App\Controller\BlogController::Trierdate2" type="service_closure" id=".service_locator.4JAAJ.e"/>
         <argument key="App\Controller\BlogController::delete" type="service_closure" id=".service_locator.4JAAJ.e"/>
         <argument key="App\Controller\BlogController::detail" type="service_closure" id=".service_locator.MXek0QQ"/>
         <argument key="App\Controller\BlogController::edit" type="service_closure" id=".service_locator.4JAAJ.e"/>
@@ -5820,10 +5829,10 @@
         <argument key="App\Controller\FactureController::index" type="service_closure" id=".service_locator.ynYNJ8X"/>
         <argument key="App\Controller\FactureController::listo1" type="service_closure" id=".service_locator.ynYNJ8X"/>
         <argument key="App\Controller\FactureController::show" type="service_closure" id=".service_locator.ynYNJ8X"/>
+        <argument key="App\Controller\PromotionController::calendrier" type="service_closure" id=".service_locator.Q0TDKnZ"/>
         <argument key="App\Controller\PromotionController::delete" type="service_closure" id=".service_locator.Z2K.Iwb"/>
         <argument key="App\Controller\PromotionController::edit" type="service_closure" id=".service_locator.Z2K.Iwb"/>
         <argument key="App\Controller\PromotionController::index" type="service_closure" id=".service_locator.Z2K.Iwb"/>
-        <argument key="App\Controller\PromotionController::indexfront" type="service_closure" id=".service_locator.Z2K.Iwb"/>
         <argument key="App\Controller\PromotionController::listo1" type="service_closure" id=".service_locator.Z2K.Iwb"/>
         <argument key="App\Controller\PromotionController::new" type="service_closure" id=".service_locator.VbBc5lm"/>
         <argument key="App\Controller\PromotionController::show" type="service_closure" id=".service_locator.Z2K.Iwb"/>
@@ -5842,6 +5851,8 @@
         <argument key="App\Controller\UtilisateurController::showback" type="service_closure" id=".service_locator.ZahoQIa"/>
         <argument key="App\Controller\UtilisateurController::signIn" type="service_closure" id=".service_locator.ZwDlruq"/>
         <argument key="App\Controller\UtilisateurController::signUp" type="service_closure" id=".service_locator.jmvbEvf"/>
+        <argument key="App\Controller\BlogController:Trierdate" type="service_closure" id=".service_locator.4JAAJ.e"/>
+        <argument key="App\Controller\BlogController:Trierdate2" type="service_closure" id=".service_locator.4JAAJ.e"/>
         <argument key="App\Controller\BlogController:delete" type="service_closure" id=".service_locator.4JAAJ.e"/>
         <argument key="App\Controller\BlogController:detail" type="service_closure" id=".service_locator.MXek0QQ"/>
         <argument key="App\Controller\BlogController:edit" type="service_closure" id=".service_locator.4JAAJ.e"/>
@@ -5858,10 +5869,10 @@
         <argument key="App\Controller\FactureController:index" type="service_closure" id=".service_locator.ynYNJ8X"/>
         <argument key="App\Controller\FactureController:listo1" type="service_closure" id=".service_locator.ynYNJ8X"/>
         <argument key="App\Controller\FactureController:show" type="service_closure" id=".service_locator.ynYNJ8X"/>
+        <argument key="App\Controller\PromotionController:calendrier" type="service_closure" id=".service_locator.Q0TDKnZ"/>
         <argument key="App\Controller\PromotionController:delete" type="service_closure" id=".service_locator.Z2K.Iwb"/>
         <argument key="App\Controller\PromotionController:edit" type="service_closure" id=".service_locator.Z2K.Iwb"/>
         <argument key="App\Controller\PromotionController:index" type="service_closure" id=".service_locator.Z2K.Iwb"/>
-        <argument key="App\Controller\PromotionController:indexfront" type="service_closure" id=".service_locator.Z2K.Iwb"/>
         <argument key="App\Controller\PromotionController:listo1" type="service_closure" id=".service_locator.Z2K.Iwb"/>
         <argument key="App\Controller\PromotionController:new" type="service_closure" id=".service_locator.VbBc5lm"/>
         <argument key="App\Controller\PromotionController:show" type="service_closure" id=".service_locator.Z2K.Iwb"/>
@@ -6381,12 +6392,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.HOWMswc"/>
+      <argument type="service" id=".service_locator.P1DsKMU"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.HOWMswc"/>
+      <argument type="service" id=".service_locator.P1DsKMU"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -6810,7 +6821,7 @@
     <service id="Swift_Transport" alias="swiftmailer.mailer.default.transport.spool" public="false"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.HOWMswc"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.P1DsKMU"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>
