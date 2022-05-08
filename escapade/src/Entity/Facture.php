@@ -3,12 +3,16 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use App\Repository\PromotionRepository;
+use App\Repository\FactureRepository;
+
 
 /**
  * Facture
  *
  * @ORM\Table(name="facture", indexes={@ORM\Index(name="Fk_ClientFacture", columns={"idClient"}), @ORM\Index(name="Fk_PromoFacture", columns={"idPromotion"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=FactureRepository::class)
  */
 class Facture
 {
@@ -25,13 +29,14 @@ class Facture
      * @var float
      *
      * @ORM\Column(name="prixTotal", type="float", precision=10, scale=0, nullable=false)
+     * @Assert\NotBlank
+     * @Assert\Positive
      */
     private $prixtotal;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date", type="date", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
+     * @var \DateTime|null
+     * @ORM\Column(name="date", type="date", nullable=true, options={"default"="CURRENT_TIMESTAMP"})
      */
     private $date = 'CURRENT_TIMESTAMP';
 
@@ -39,6 +44,8 @@ class Facture
      * @var float
      *
      * @ORM\Column(name="prixFinal", type="float", precision=10, scale=0, nullable=false)
+     * @Assert\Positive
+     * @Assert\Expression("this.getPrixfinal() < this.getPrixtotal()",message="Date fianl doit être infirueure à la prix total")
      */
     private $prixfinal;
 
@@ -47,8 +54,11 @@ class Facture
      *
      * @ORM\ManyToOne(targetEntity="Promotion")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idPromotion", referencedColumnName="id")
+     * @ORM\JoinColumn(name="idPromotion", referencedColumnName="id")
+     *
      * })
+
+     *
      */
     private $idpromotion;
 
@@ -57,8 +67,9 @@ class Facture
      *
      * @ORM\ManyToOne(targetEntity="Utilisateur")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idClient", referencedColumnName="id")
+     * @ORM\JoinColumn(name="idClient", referencedColumnName="id")
      * })
+     *
      */
     private $idclient;
 
@@ -84,7 +95,7 @@ class Facture
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setDate(?\DateTimeInterface $date): self
     {
         $this->date = $date;
 

@@ -86,10 +86,11 @@
                                     {{ form_widget(form.mdp.second,{'attr':{'class':'form-control','placeholder':'confirmer mot de passe'}}) }}
                                     {{ form_errors(form.mdp.second,{'attr':{'class':'text-danger'}}) }}
                                 </div>
-
+                                {{ form_widget(form.recaptcha) }}
                                 <button class="btn btn-primary btn-user btn-block">{{ button_label|default('inscrire') }}</button>
 
                                 {{ form_end(form) }}
+
                                 <hr>
                             {#
                             <div class="text-center">
@@ -97,7 +98,7 @@
                                 </div>
                             #}
                                 <div class="text-center">
-                                    <a class="small" href="#">Already have an account? Login!</a>
+                                    <a class="small" href="{{ path('app_login') }}">Already have an account? Login!</a>
                                 </div>
                             </div>
                         </div>

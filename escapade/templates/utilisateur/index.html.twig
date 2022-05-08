@@ -1,51 +1,44 @@
 {% extends 'baseBack.html.twig' %}
 
-{% block title %}Utilisateur index{% endblock %}
 
 {% block content %}
-    <h1>Utilisateur index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Email</th>
-                <th>Datedenaissance</th>
-                <th>Numtel</th>
-                <th>Ville</th>
-                <th>Mdp</th>
-                <th>Image</th>
-                <th>Blocked</th>
-                <th>Role</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for utilisateur in utilisateurs %}
-            <tr>
-                <td>{{ utilisateur.nom }}</td>
-                <td>{{ utilisateur.prenom }}</td>
-                <td>{{ utilisateur.email }}</td>
-                <td>{{ utilisateur.datedenaissance ? utilisateur.datedenaissance|date('Y-m-d') : '' }}</td>
-                <td>{{ utilisateur.numtel }}</td>
-                <td>{{ utilisateur.ville }}</td>
-                <td>{{ utilisateur.mdp }}</td>
-                <td>{{ utilisateur.image }}</td>
-                <td>{{ utilisateur.blocked }}</td>
-                <td>{{ utilisateur.role }}</td>
-                <td>
-                    <a href="{{ path('app_utilisateur_show', {'id': utilisateur.id}) }}">show</a>
-                    <a href="{{ path('app_utilisateur_edit', {'id': utilisateur.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="12">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="container" id="all">
+        {% include 'utilisateur/userAjax.html.twig' %}
+    </div>
+    <br>
+    <script src="{{ asset('assets/js/jquery.js') }}"></script>
+    <script
+            src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js')}}">
+    </script>
 
-    <a href="{{ path('app_utilisateur_new') }}">Create new</a>
+
+    <script>
+        $( document ).ready(function() {
+            var currentRequest = null;
+            $("#search").keyup(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte
+                afin d’effectuer la recherche */
+                var value = $(this).val();
+                if(currentRequest != null) {
+                    currentRequest.abort();
+                }
+                /* Ajax est lancé lors du remplissage du champ texte dont l’id est
+                « search » pour faire la recherche */
+                currentRequest = $.ajax({
+                    url : "{{ path('userAjax') }}",
+                    type : 'GET',
+                    data: {
+                        'searchValue' : value
+                    },
+                    success : function(retour)
+                    {
+                        $('#all').html(retour);
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
+
 {% endblock %}

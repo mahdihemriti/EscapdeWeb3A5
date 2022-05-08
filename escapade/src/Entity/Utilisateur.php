@@ -6,11 +6,11 @@ use Doctrine\ORM\Mapping as ORM;
 
 use App\Repository\UtilisateurRepository;
 use Exception;
-use JetBrains\PhpStorm\Internal\LanguageLevelTypeAware;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Validator\Constraints as Assert;
 use Rollerworks\Component\PasswordStrength\Validator\Constraints as RollerworksPassword;
 use Symfony\Component\Security\Core\User\UserInterface;
+use EWZ\Bundle\RecaptchaBundle\Validator\Constraints as Recaptcha;
 /**
  * Utilisateur
  *
@@ -108,6 +108,10 @@ class Utilisateur implements UserInterface, \Serializable
      * @ORM\Column(name="role", type="string", length=0, nullable=false)
      */
     private $role;
+    /**
+     * @Recaptcha\IsTrue
+     */
+    public $recaptcha;
 
     public function getId(): ?int
     {

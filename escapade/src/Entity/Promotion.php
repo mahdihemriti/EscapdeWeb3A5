@@ -3,12 +3,15 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use App\Repository\PromotionRepository;
+use App\Repository\FactureRepository;
 
 /**
  * Promotion
  *
  * @ORM\Table(name="promotion")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=PromotionRepository::class)
  */
 class Promotion
 {
@@ -23,8 +26,16 @@ class Promotion
 
     /**
      * @var float
-     *
+     * @Assert\NotBlank
+     * @Assert\Positive
      * @ORM\Column(name="taux", type="float", precision=10, scale=0, nullable=false)
+
+     *
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 60,
+     *      notInRangeMessage = "Taux doit être entre 0 et 60",
+     * )
      */
     private $taux;
 
@@ -37,8 +48,9 @@ class Promotion
 
     /**
      * @var \DateTime
-     *
+
      * @ORM\Column(name="dateFin", type="date", nullable=false)
+     * @Assert\Expression("this.getDatefin() > this.getDatedebut()",message="Date fin doit être superieure à la date de début")
      */
     private $datefin;
 

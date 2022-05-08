@@ -13,18 +13,18 @@
             </tr>
             <tr>
                 <th>Description</th>
-                <td>{{ reclamation.description }}</td>
+                <td>{{ reclamation.description |raw }}</td>
             </tr>
             <tr>
-                <th>nom</th>
+                <th>Nom</th>
                 <td>{{ reclamation.idclient.nom }}</td>
             </tr>
             <tr>
-                <th>prenom</th>
+                <th>Prenom</th>
                 <td>{{ reclamation.idclient.prenom }}</td>
             </tr>
             <tr>
-                <th>email</th>
+                <th>Adresse mail</th>
                 <td>{{ reclamation.idclient.email }}</td>
             </tr>
         </tbody>
@@ -32,7 +32,5 @@
 
     <a href="{{ path('app_reclamation_index') }}">back to list</a>
 
-    <a href="{{ path('app_reclamation_edit', {'id': reclamation.id}) }}">edit</a>
 
-    {{ include('reclamation/_delete_form.html.twig') }}
 {% endblock %}

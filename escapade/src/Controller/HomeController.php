@@ -14,23 +14,17 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('front/index.html.twig', [
-            'controller_name' => 'HomeController',
+        $user=$this->getUser();
+        return $this->render('Front/index.html.twig', [
+            'controller_name' => 'HomeController','u'=>$user,
         ]);
-    }
-    /**
-     * @Route("/homeC", name="homeC")
-     */
-    public function homeC(): Response
-    {
-        return $this->render('front/homeConnected.html.twig');
     }
     /**
      * @Route("/hotel", name="hotel")
      */
     public function afficheH(): Response
     {
-        return $this->render('front/hotel.html.twig', [
+        return $this->render('Front/hotel.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }
@@ -40,7 +34,7 @@ class HomeController extends AbstractController
      */
     public function afficheMT(): Response
     {
-        return $this->render('front/moyenT.html.twig', [
+        return $this->render('Front/moyenT.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }
@@ -49,28 +43,17 @@ class HomeController extends AbstractController
      */
     public function afficheST(): Response
     {
-        return $this->render('front/siteT.html.twig', [
+        return $this->render('Front/siteT.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }
-
-    /**
-     * @Route("/recla", name="recla")
-     */
-    public function afficheR(): Response
-    {
-        return $this->render('front/reclamation.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
-    }
-
-
+    
     /**
      * @Route("/profil", name="profil")
      */
     public function afficheP(): Response
     {
-        return $this->render('front/profil.html.twig', [
+        return $this->render('Front/profil.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }
@@ -80,26 +63,9 @@ class HomeController extends AbstractController
      */
     public function afficheApropos(): Response
     {
-        return $this->render('front/apropos.html.twig', [
+        return $this->render('Front/apropos.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }
-    /**
-     * @Route("/panier", name="panier")
-     */
-    public function affichepanier(): Response
-    {
-        return $this->render('front/panier.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
-    }
-    /**
-     * @Route("/forgetPassword", name="forgetPassword")
-     */
-    public function afficheForgetPassword(): Response
-    {
-        return $this->render('utilisateur/forgetPassword.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
-    }
+
 }

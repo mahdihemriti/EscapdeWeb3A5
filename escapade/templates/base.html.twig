@@ -25,6 +25,10 @@
     <meta name="twitter:image" content="" />
     <meta name="twitter:url" content="" />
     <meta name="twitter:card" content="" />
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css"
+          integrity="sha256-5veQuRbWaECuYxwap/IOE/DAwNxgm4ikX7nrgsqYp88=" crossorigin="anonymous">
     {% block stylesheets %}
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link rel="shortcut icon" href="favicon.ico">
@@ -48,15 +52,13 @@
         <link rel="stylesheet" href="{{ asset('front/css/cs-skin-border.css')}}">
 
         <link rel="stylesheet" href="{{ asset('front/css/style.css')}}">
-        <link rel="stylesheet" href="{{ asset('front/css/custom.css')}}">
-
-
-
 
 
 
     {% endblock %}
 
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js" integrity="sha256-XCdgoNaBjzkUaEJiauEq+85q/xi/2D4NcB3ZHwAapoM="
+            crossorigin="anonymous"></script>
     {% block javascripts %}
         <!-- Modernizr JS -->
         <script src="{{ asset('front/js/modernizr-2.6.2.min.js')}}"></script>
@@ -91,15 +93,14 @@
 
 
 
-
     {% endblock %}
+
 </head>
 <body>
 <div id="fh5co-wrapper">
     <div id="fh5co-page">
 
         {% block header %}
-
             <header id="fh5co-header-section" class="sticky-banner">
                 <div class="container">
                     <div class="nav-header">
@@ -116,19 +117,37 @@
                                 <li><a href="{{ path ('hotel') }}">Hôtel</a></li>
                                 <li><a href="{{ path ('moyenT') }}">Moyen de transport</a></li>
                                 <li><a href="{{ path ('siteT') }}">Site Touristique</a></li>
-                                {% block logIn %}
-
-                                <li>
-                                    <a href="{{ path ('home') }} "class="fh5co-sub-ddown"><i class="icon-user"></i></a>
-                                    <ul class="fh5co-sub-menu">
-
-                                        <li><a href="{{ path ('signIn') }}" >Connexion</a></li>
-                                        <li><a href="{{ path ('signUp') }}" >S'inscrire</a></li>
+                                <li><a href="/promotion/front">Nos promotion</a></li>
+                                <li><a href="{{ path ('app_blog_indexfront') }}">Blog</a></li>
 
 
-                                    </ul>
-                                </li>
-                                {% endblock %}
+
+                                    {% if app.user %}
+                                        <li>
+                                            <a href="{{ path ('home') }} "class="fh5co-sub-ddown"><i class="icon-user"></i></a>
+                                            <ul class="fh5co-sub-menu">
+
+                                                <li><a href="{{ path ('app_utilisateur_show',{'id':app.user.id}) }}" >profil</a></li>
+                                                <li><a href="{{ path ('app_reclamation_new',{'id':app.user.id}) }}" >reclamation</a></li>
+                                                <li><a href="{{ path ('app_logout')}}" >deconnexion</a></li>
+
+
+                                            </ul>
+                                        </li>
+                                    {% else %}
+
+                                        <li>
+                                            <a href="{{ path ('home') }} "class="fh5co-sub-ddown"><i class="icon-user"></i></a>
+                                            <ul class="fh5co-sub-menu">
+
+                                                <li><a href="{{ path ('app_login') }}" >Connexion</a></li>
+                                                <li><a href="{{ path ('signUp') }}" >S'inscrire</a></li>
+
+
+                                            </ul>
+                                        </li>
+
+                                    {% endif %}
 
                             </ul>
 
@@ -137,13 +156,18 @@
                 </div>
             </header>
         {% endblock %}
+        <div class="container">
 
-                        {% block content %}
+            {% block content %}
 
+            {% endblock %}
 
-                        {% endblock %}
+        </div>
 
         {% block footer %}
+            <br>
+            <br>
+            <br>
             <footer>
                 <div id="footer">
                     <div class="container">

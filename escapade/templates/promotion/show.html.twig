@@ -1,0 +1,31 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block content %}
+    <h1>Promotion</h1>
+    <br>
+    <br>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Taux</th>
+                <td>{{ promotion.taux }}</td>
+            </tr>
+            <tr>
+                <th>Datedebut</th>
+                <td>{{ promotion.datedebut ? promotion.datedebut|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Datefin</th>
+                <td>{{ promotion.datefin ? promotion.datefin|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th> </th>
+                <td><a href="{{ path('app_promotion_edit', {'id': promotion.id}) }}"> <i class="fa fa-pen"></i></a></td>
+                <td>{{ include('promotion/_delete_form.html.twig') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_promotion_index') }}">Retour à la liste</a>
+
+{% endblock %}

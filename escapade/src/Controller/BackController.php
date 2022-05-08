@@ -127,7 +127,6 @@ class BackController extends AbstractController
         ]);
     }
 
-
     /**
      * @Route("/inscrit", name="inscrit")
      */
