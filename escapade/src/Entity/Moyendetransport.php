@@ -59,9 +59,9 @@ class Moyendetransport
     /**
      * @var float
      *
-     * @ORM\Column(name="tarifJournÃ©e", type="float", precision=10, scale=0, nullable=false)
+     * @ORM\Column(name="tarifJournee", type="float", precision=10, scale=0, nullable=false)
      */
-    private $tarifjournã©e;
+    private $tarifjournee;
 
     /**
      * @var \Destination
@@ -148,14 +148,14 @@ class Moyendetransport
         return $this;
     }
 
-    public function getTarifjournã©e(): ?float
+    public function getTarifjournee(): ?float
     {
-        return $this->tarifjournã©e;
+        return $this->tarifjournee;
     }
 
-    public function setTarifjournã©e(float $tarifjournã©e): self
+    public function setTarifjournee(float $tarifjournee): self
     {
-        $this->tarifjournã©e = $tarifjournã©e;
+        $this->tarifjournee = $tarifjournee;
 
         return $this;
     }

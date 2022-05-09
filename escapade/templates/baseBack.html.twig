@@ -3,23 +3,20 @@
 
 <head>
     {% block metas %}
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
     {% endblock %}
     <title>Escapade</title>
     <link rel="shortcut icon" href="{{ asset ('images/logo.png') }}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     {% block stylesheets %}
 
         <!-- Custom fonts for this template-->
         <link href="{{ asset('back/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
               rel="stylesheet">
-
         <!-- Custom styles for this template-->
         <link href="{{ asset('back/css/sb-admin-2.min.css') }}" rel="stylesheet">
     {% endblock %}
@@ -63,11 +60,11 @@
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-cog"></i>
-                <span>NOS OFFRES</span>
+                <span>les offres</span>
             </a>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">VOYAGE</h6>
+                    <h6 class="collapse-header">Voyage:</h6>
                     <a class="collapse-item" href="/destination">Destinaton</a>
                     <a class="collapse-item" href="/hotel/">Hôtel</a>
                     <a class="collapse-item" href="/chambre/">Chambre</a>
@@ -88,11 +85,13 @@
             <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                  data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="{{ path ('userBack') }}">Utilisateur</a>
-                    <a class="collapse-item" href="{{ path ('reclamationBack') }}">Réclamation</a>
-                    {#  <a class="collapse-item" href="{{ path ('app_promotion_show') }}">Promotion</a> #}
-                    <a class="collapse-item" href="{{ path ('panierBack') }}">Panier</a>
-                    <a class="collapse-item" href="{{ path ('comBack') }}">Commentaire</a>
+                    <a class="collapse-item" href="{{ path ('app_utilisateur_index') }}">Utilisateur</a>
+                    <a class="collapse-item" href="{{ path ('app_reclamation_index') }}">Réclamation</a>
+                    <a class="collapse-item" href="/promotion/">Promotion</a>
+                    <a class="collapse-item" href="/facture/">Panier</a>
+                    <a class="collapse-item" href="/blog/">Blog</a>
+                    <a class="collapse-item" href="/commentaire/">Commentaire</a>
+
                 </div>
             </div>
         </li>
@@ -112,7 +111,7 @@
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Login Screens:</h6>
-                    <a class="collapse-item" href="{{ path ('login') }}">Login</a>
+                    <a class="collapse-item" href="{{ path ('app_login') }}">Login</a>
                     <a class="collapse-item" href="{{ path ('inscrit') }}">Register</a>
                     <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                     <div class="collapse-divider"></div>
@@ -161,12 +160,12 @@
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
                 </button>
-
+                {% block search %}
                 <!-- Topbar Search -->
                 <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                        <input type="text" id="search" class="form-control bg-light border-0 small" placeholder="Search for..."
                                aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-primary" type="button">
@@ -175,6 +174,7 @@
                         </div>
                     </div>
                 </form>
+                {% endblock %}
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -209,9 +209,9 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Mahdi Hemriti</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ app.user.username }}</span>
                             <img class="img-profile rounded-circle"
-                                 src={{ asset('images/undraw_profile.svg') }}>
+                                 src="{{ asset('images/undraw_profile.svg') }}">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -255,7 +255,7 @@
                         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-primary" href="{{ path ('login') }}">Logout</a>
+                            <a class="btn btn-primary" href="{{ path ('app_logout') }}">Logout</a>
                         </div>
                     </div>
                 </div>
@@ -264,19 +264,13 @@
         <!-- /.container-fluid -->
         <!-- End of Topbar -->
         {% endblock %}
-        {% block title %}
 
-        {% endblock %}
         <div class="container">
+
         {% block content %}
 
-
-
-            <script src="{{ asset('js/app.js')}}"></script>
-            <script src="{{ asset('js/jquery.min.js')}}"></script>
         {% endblock %}
         </div>
-
 
         {% block footer %}
             <!-- End of Main Content -->
@@ -284,7 +278,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; ESCAPADE 2022</span>
+                        <span>Copyright &copy; Your Website 2021</span>
                     </div>
                 </div>
             </footer>
@@ -293,9 +287,6 @@
     </div>
 
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 <!-- End of Content Wrapper -->
 
@@ -303,11 +294,7 @@
 
 <!-- Scroll to Top Button-->
 {% block javascripts %}
-
-
-
     <!-- Bootstrap core JavaScript-->
-
     <script src="{{ asset('back/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('back/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- Core plugin JavaScript-->
@@ -319,9 +306,7 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('back/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('back/js/demo/chart-pie-demo.js') }}"></script>
-
 {% endblock %}
 </body>
 
 </html>
-

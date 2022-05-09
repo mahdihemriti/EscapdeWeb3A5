@@ -3,12 +3,15 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use App\Repository\PromotionRepository;
+use App\Repository\FactureRepository;
 
 /**
  * Promotion
  *
  * @ORM\Table(name="promotion")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=PromotionRepository::class)
  */
 class Promotion
 {
@@ -23,8 +26,16 @@ class Promotion
 
     /**
      * @var float
-     *
+     * @Assert\NotBlank
+     * @Assert\Positive
      * @ORM\Column(name="taux", type="float", precision=10, scale=0, nullable=false)
+
+     *
+     * @Assert\Range(
+     *      min = 0,
+     *      max = 60,
+     *      notInRangeMessage = "Taux doit être entre 0 et 60",
+     * )
      */
     private $taux;
 
@@ -37,83 +48,52 @@ class Promotion
 
     /**
      * @var \DateTime
-     *
+
      * @ORM\Column(name="dateFin", type="date", nullable=false)
+     * @Assert\Expression("this.getDatefin() > this.getDatedebut()",message="Date fin doit être superieure à la date de début")
      */
     private $datefin;
 
-    /**
-     * @return int
-     */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @param int $id
-     * @return Promotion
-     */
-    public function setId(int $id): Promotion
-    {
-        $this->id = $id;
-        return $this;
-    }
-
-    /**
-     * @return float
-     */
-    public function getTaux(): float
+    public function getTaux(): ?float
     {
         return $this->taux;
     }
 
-    /**
-     * @param float $taux
-     * @return Promotion
-     */
-    public function setTaux(float $taux): Promotion
+    public function setTaux(float $taux): self
     {
         $this->taux = $taux;
+
         return $this;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getDatedebut(): \DateTime
+    public function getDatedebut(): ?\DateTimeInterface
     {
         return $this->datedebut;
     }
 
-    /**
-     * @param \DateTime $datedebut
-     * @return Promotion
-     */
-    public function setDatedebut(\DateTime $datedebut): Promotion
+    public function setDatedebut(\DateTimeInterface $datedebut): self
     {
         $this->datedebut = $datedebut;
+
         return $this;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getDatefin(): \DateTime
+    public function getDatefin(): ?\DateTimeInterface
     {
         return $this->datefin;
     }
 
-    /**
-     * @param \DateTime $datefin
-     * @return Promotion
-     */
-    public function setDatefin(\DateTime $datefin): Promotion
+    public function setDatefin(\DateTimeInterface $datefin): self
     {
         $this->datefin = $datefin;
+
         return $this;
     }
-
 
 
 }

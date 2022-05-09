@@ -85,6 +85,19 @@
     "egulias/email-validator": {
         "version": "3.1.2"
     },
+    "excelwebzone/recaptcha-bundle": {
+        "version": "1.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "1.5",
+            "ref": "fd4da7bc71749db65bc83abf5d164bfa9c839cf4"
+        },
+        "files": [
+            "./config/packages/dev/ewz_recaptcha.yaml",
+            "./config/packages/ewz_recaptcha.yaml"
+        ]
+    },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.7"
     },
@@ -96,6 +109,36 @@
             "version": "2.0",
             "ref": "f5ad42002183a6881962683e6d84bbb25cdfce5d"
         }
+    },
+    "friendsofsymfony/jsrouting-bundle": {
+        "version": "2.8",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "2.3",
+            "ref": "a9f2e49180f75cdc71ae279a929c4b2e0638de84"
+        }
+    },
+    "google/recaptcha": {
+        "version": "1.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "1.1",
+            "ref": "e5a4aa21f2e98d7440ae9aab6b56e307f99dd084"
+        }
+    },
+    "karser/karser-recaptcha3-bundle": {
+        "version": "0.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "0.1",
+            "ref": "c51ce07c10331d506762efe25b6f5843c1a5ea17"
+        },
+        "files": [
+            "./config/packages/karser_recaptcha3.yaml"
+        ]
     },
     "laminas/laminas-code": {
         "version": "4.5.1"
@@ -173,6 +216,9 @@
     },
     "psr/log": {
         "version": "1.1.4"
+    },
+    "rollerworks/password-strength-validator": {
+        "version": "v1.7.2"
     },
     "sabberworm/php-css-parser": {
         "version": "8.4.0"
@@ -611,6 +657,15 @@
     "symfony/yaml": {
         "version": "v4.4.37"
     },
+    "tattali/calendar-bundle": {
+        "version": "1.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "1.1",
+            "ref": "0c643e17b5340747b35c2c75e11727fa31bfa9bb"
+        }
+    },
     "theseer/tokenizer": {
         "version": "1.2.1"
     },
@@ -625,5 +680,8 @@
     },
     "webmozart/assert": {
         "version": "1.10.0"
+    },
+    "willdurand/jsonp-callback-validator": {
+        "version": "v1.1.0"
     }
 }

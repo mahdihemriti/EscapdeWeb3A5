@@ -5,9 +5,6 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\ChambreRepository;
-use App\Repository\DestinationRepository;
-use App\Repository\HotelRepository;
 
 class BackController extends AbstractController
 {
@@ -22,24 +19,8 @@ class BackController extends AbstractController
     }
 
 
-    /**
-     * @Route("/hotelBack", name="hotelBack")
-     */
-    public function afficheHB(): Response
-    {
-        return $this->render('back/hotelBack.html.twig', [
-            'controller_name' => 'BackController',
-        ]);
-    }
-    /**
-     * @Route("/chambreBack", name="chambreBack")
-     */
-    public function afficheCB(): Response
-    {
-        return $this->render('back/chambreBack.html.twig', [
-            'controller_name' => 'BackController',
-        ]);
-    }
+
+
     /**
      * @Route("/guideBack", name="guideBack")
      */
@@ -118,15 +99,6 @@ class BackController extends AbstractController
     public function afficheComB(): Response
     {
         return $this->render('back/comBack.html.twig', [
-            'controller_name' => 'BackController',
-        ]);
-    }
-    /**
-     * @Route("/login", name="login")
-     */
-    public function affichelogin(): Response
-    {
-        return $this->render('back/login.html.twig', [
             'controller_name' => 'BackController',
         ]);
     }

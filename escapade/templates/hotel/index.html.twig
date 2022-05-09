@@ -26,7 +26,7 @@
                 <td>{{ hotel.matriculefiscale }}</td>
                 <td>{{ hotel.nom }}</td>
                 <td>{{ hotel.nbretoile }}</td>
-                <td>{{ hotel.description | raw }}</td>
+                <td>{{ hotel.description | striptags | slice(0, 15)| raw }}...</td>
 
                 <td>{{ hotel.iddestination.pays }}</td>
                 <td>

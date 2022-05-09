@@ -21,7 +21,7 @@
             </tr>
             <tr>
                 <th>Description</th>
-                <td>{{ hotel.description | raw }}</td>
+                <td>{{ hotel.description | raw | striptags | slice(0, 15) }}</td>
             </tr>
             <tr>
                 <th>Destination</th>

@@ -81,10 +81,10 @@ class DestinationController extends AbstractController
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($destination);
                 $em->flush();
-              //  $sid = 'AC261bf63b493af9d47649c8ba01efc947';
-               // $token = '296eb5f7d332842af27a38b4126c5571';
-                //$sms = new \Twilio\Rest\Client($sid, $token);
-             /*   $sms->messages->create(
+              /*  $sid = 'AC261bf63b493af9d47649c8ba01efc947';
+                $token = '296eb5f7d332842af27a38b4126c5571';
+                $sms = new \Twilio\Rest\Client($sid, $token);
+                $sms->messages->create(
                     '+21627986111',
                     [
                         'from' => '+19379091230',

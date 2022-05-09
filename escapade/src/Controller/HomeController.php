@@ -5,9 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\ChambreRepository;
-use App\Repository\DestinationRepository;
-use App\Repository\HotelRepository;
+use App\Entity\Utilisateur;
 
 class HomeController extends AbstractController
 {
@@ -16,10 +14,12 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
+        $user=$this->getUser();
         return $this->render('Front/index.html.twig', [
-            'controller_name' => 'HomeController',
+            'controller_name' => 'HomeController','u'=>$user,
         ]);
     }
+
 
     /**
      * @Route("/moyenT", name="moyenT")
@@ -39,16 +39,7 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
-
-    /**
-     * @Route("/reclamation", name="reclamation")
-     */
-    public function afficheR(): Response
-    {
-        return $this->render('Front/reclamation.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
-    }
+    
     /**
      * @Route("/profil", name="profil")
      */
@@ -68,13 +59,5 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
-    /**
-     * @Route("/panier", name="panier")
-     */
-    public function affichepanier(): Response
-    {
-        return $this->render('Front/panier.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
-    }
+
 }

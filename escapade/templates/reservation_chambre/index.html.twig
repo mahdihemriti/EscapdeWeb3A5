@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ReservationChambre index{% endblock %}
+
+{% block body %}
+    <h1>ReservationChambre index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>DATE ARRIVEE</th>
+                <th>DATE RETOUR</th>
+                <th>CHAMBRE</th>
+                <th>CLIENT</th>
+                <th>ACTIONS</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservation_chambre in reservation_chambres %}
+            <tr>
+
+                <td>{{ reservation_chambre.datearrivee ? reservation_chambre.datearrivee|date('Y-m-d') : '' }}</td>
+                <td>{{ reservation_chambre.datealler ? reservation_chambre.datealler|date('Y-m-d') : '' }}</td>
+                <td>{{ reservation_chambre.idchambre.num}}</td>
+                <td>{{ reservation_chambre.idclient.nom}}</td>
+                <td>
+                    <a href="{{ path('app_reservation_chambre_edit', {'id': reservation_chambre.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Pas de reservations chambres trouvées</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
+
+

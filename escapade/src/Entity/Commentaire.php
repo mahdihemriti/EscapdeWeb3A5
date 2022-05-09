@@ -7,82 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Commentaire
  *
- * @ORM\Table(name="commentaire", indexes={@ORM\Index(name="Fk_Clientcommentaireutilisateur", columns={"idClient"})})
- * @ORM\Entity
+ * @ORM\Table(name="commentaire", indexes={@ORM\Index(name="Fk_Clientcommentaireutilisateur", columns={"idClient"}), @ORM\Index(name="Fk_ClientcommentaireBlog", columns={"idBlog"})})
+ * @ORM\Entity(repositoryClass=CommentaireRepository::class)
  */
 class Commentaire
 {
-    /**
-     * @return int
-     */
-    public function getId(): int
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     * @return Commentaire
-     */
-    public function setId(int $id): Commentaire
-    {
-        $this->id = $id;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescription(): string
-    {
-        return $this->description;
-    }
-
-    /**
-     * @param string $description
-     * @return Commentaire
-     */
-    public function setDescription(string $description): Commentaire
-    {
-        $this->description = $description;
-        return $this;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getDate(): \DateTime
-    {
-        return $this->date;
-    }
-
-    /**
-     * @param \DateTime $date
-     * @return Commentaire
-     */
-    public function setDate(\DateTime $date): Commentaire
-    {
-        $this->date = $date;
-        return $this;
-    }
-
-    /**
-     * @return \Utilisateur
-     */
-    public function getIdclient(): \Utilisateur
-    {
-        return $this->idclient;
-    }
-
-    /**
-     * @param \Utilisateur $idclient
-     * @return Commentaire
-     */
-    public function setIdclient(\Utilisateur $idclient): Commentaire
-    {
-        $this->idclient = $idclient;
-        return $this;
-    }
     /**
      * @var int
      *
@@ -95,16 +24,16 @@ class Commentaire
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=50, nullable=false)
+     * @ORM\Column(name="description", type="string", length=255, nullable=false)
      */
     private $description;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="date", nullable=false)
+     * @ORM\Column(name="date", type="date", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
      */
-    private $date;
+    private $date = 'CURRENT_TIMESTAMP';
 
     /**
      * @var \Utilisateur
@@ -115,6 +44,69 @@ class Commentaire
      * })
      */
     private $idclient;
+
+    /**
+     * @var \Blog
+     *
+     * @ORM\ManyToOne(targetEntity="Blog")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idBlog", referencedColumnName="id")
+     * })
+     */
+    private $idblog;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    public function getIdclient(): ?Utilisateur
+    {
+        return $this->idclient;
+    }
+
+    public function setIdclient(?Utilisateur $idclient): self
+    {
+        $this->idclient = $idclient;
+
+        return $this;
+    }
+
+    public function getIdblog(): ?Blog
+    {
+        return $this->idblog;
+    }
+
+    public function setIdblog(?Blog $idblog): self
+    {
+        $this->idblog = $idblog;
+
+        return $this;
+    }
 
 
 }

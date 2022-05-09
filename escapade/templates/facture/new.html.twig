@@ -1,0 +1,33 @@
+{% extends 'baseBack.html.twig' %}
+
+
+
+{% block content %}
+    <h1>Ajouter une facture</h1>
+    <br>
+    <br>
+    {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+
+    {{ form_label(form.prixtotal,'Prix total') }}
+    <br>
+    {{ form_widget(form.prixtotal,{'attr':{'class':'prixtotal','placeholder':'prixtotal'}}) }}
+
+ <br>
+
+    {{ form_label(form.idclient,'Client') }}
+    <br>
+    {{ form_widget(form.idclient,{'attr':{'class':'idclient','placeholder':'idclient'}}) }}
+
+
+
+<br>
+    {{ form_label(form.idpromotion,'Promotion') }}
+    <br>
+    {{ form_widget(form.idpromotion,{'attr':{'class':'idpromotion','placeholder':'idpromotion'}}) }}
+
+<br> <br>
+    {{ form_end(form) }}
+
+    <br>
+    <a href="{{ path('app_facture_index') }}">back to list</a>
+{% endblock %}

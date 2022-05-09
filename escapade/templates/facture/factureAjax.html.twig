@@ -1,0 +1,36 @@
+<br>
+<br>
+<table class="table table-striped">
+    <thead>
+    <tr>
+
+        <th>Prix total</th>
+        <th>Date</th>
+        <th>Prix final</th>
+        <th>actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for facture in factures %}
+        <tr>
+
+            <td>{{ facture.prixtotal }}</td>
+            <td>{{ facture.date ? facture.date|date('Y-m-d') : '' }}</td>
+            <td>{{ facture.prixfinal }}</td>
+            <td>
+                <a href="{{ path('app_facture_show', {'idf': facture.idf}) }}"><i class="fa fa-eye"></i></a>
+                <a href="{{ path('app_facture_edit', {'idf': facture.idf}) }}"><i class="fa fa-pen"></i></a>
+                {{ include('facture/_delete_form.html.twig') }}
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="5">no records found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<a href="{{ path('app_facture_new') }}">Create new</a>
+<br>
+<a  href="{{ path('liste') }}">Mettre sous forme pdf</a>

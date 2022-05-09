@@ -33,7 +33,6 @@ class HotelType extends AbstractType
             ->add('iddestination',EntityType::class, ['class'=>Destination::class,
             'choice_label'=>'ville'
 
-
             ])
         ;
     }

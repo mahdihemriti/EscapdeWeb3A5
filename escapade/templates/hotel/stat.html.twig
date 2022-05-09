@@ -1,5 +1,7 @@
 {% extends 'baseBack.html.twig' %}
+
 {%  block javascripts %}
+
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
@@ -7,9 +9,11 @@
                 var r = Math.floor(Math.random() * 255);
                 var g = Math.floor(Math.random() * 255);
                 var b = Math.floor(Math.random() * 255);
+
                 return "rgba(" + r + "," + g + "," + b + ", 0.5)";
         }
         function poolColors(a) {
+
                 var pool = [];
                 for(i = 0; i < a; i++) {
                         pool.push(dynamicColors());
@@ -61,18 +65,14 @@
                                 hoverOffset: 4
                         }]
                 },
-
         });
         $('#axeanal').on('change', function() {
 
-
                 labels=[]
                 data=[]
-
                 labels=["*","**","***","****","*****"]
                 console.log(this.value)
                 $.ajax({
-
                         url: "/hotel/search/" + this.value,
                         method: 'get',
                         success: function (data, reponse) {
@@ -105,7 +105,6 @@
                                                                         display: true,
                                                                         text: 'Etoiles'
                                                                 }
-
                                                         }
                                                 }
                                         }
@@ -135,23 +134,21 @@
                 {% for destination in destinations %}
 
                         <option value="{{ destination.id }}">{{ destination.pays }} - {{ destination.ville }}</option>
-
-
                 {% endfor %}
         </select>
         <div class="row">
                 <div class="col-sm-6">
-                        <canvas id="myChart" width="400" height="400"></canvas>
+                        <canvas id="myChart" width="400" height="400">
 
+                        </canvas>
                 </div>
                 <div class="col-sm-6">
-                        <canvas id="myChartdoghnut" width="400" height="400"></canvas>
+                        <canvas id="myChartdoghnut" width="400" height="400">
 
+
+                        </canvas>
                 </div>
 
         </div>
-
-
-
 
 {% endblock %}

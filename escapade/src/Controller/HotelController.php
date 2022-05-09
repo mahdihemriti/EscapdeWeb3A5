@@ -38,8 +38,8 @@ class HotelController extends AbstractController
     {
         $data=$this->getDoctrine()->getManager()->getRepository(Hotel::class)->findBydes($iddest);
         $nbrstars=[0,0,0,0,0];
-        for ($i = 1; $i <5; $i++) {
-            $nbrstars[$i]=$this->calculstars($data,$i);
+        for ($i = 0; $i <5; $i++) {
+            $nbrstars[$i]=$this->calculstars($data,$i+1);
         }
 
         return new JsonResponse($nbrstars);
@@ -57,12 +57,12 @@ class HotelController extends AbstractController
         ]);
     }
     /**
-     * @Route("/ReservationCh",name="ReservationCh")
+     * @Route("/ReservationCh/{id}",name="ReservationCh")
      */
 
-    public function reserv()
+    public function reserv($id)
     {
-        return $this->render('hotel/reserverChambre.html.twig');
+        return $this->render('hotel/reserverChambre.html.twig',['id'=>$id]);
     }
     /**
      * @Route("/front", name="app_hotel_indexfront", methods={"GET"})
