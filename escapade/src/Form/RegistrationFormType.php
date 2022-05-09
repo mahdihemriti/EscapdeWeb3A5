@@ -13,6 +13,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Validator\Constraints\File;
+use Karser\Recaptcha3Bundle\Form\Recaptcha3Type;
+use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3;
+use EWZ\Bundle\RecaptchaBundle\Form\Type\EWZRecaptchaType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -53,8 +56,24 @@ class RegistrationFormType extends AbstractType
             'second_options' => ['label' => 'Repeat Password'],
             ])
 
+            ->add('captcha', Recaptcha3Type::class, [
+                'constraints' => new Recaptcha3(),
+                'action_name' => 'homepage'
+            ])
+             ->add('recaptcha', EWZRecaptchaType::class, array(
+                 'attr' => array(
+                     'options' => array(
+                         'theme' => 'light',
+                         'type'  => 'image',
+                         'size'  => 'normal',
+                         'defer' => true,
+                         'async' => true,
+                     )
+                 )
+             ));
 
-        ;
+
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void

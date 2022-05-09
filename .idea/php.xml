@@ -130,9 +130,27 @@
       <path value="$PROJECT_DIR$/escapade/vendor/symfony/http-client" />
       <path value="$PROJECT_DIR$/escapade/vendor/symfony/http-client-contracts" />
       <path value="$PROJECT_DIR$/escapade/vendor/symfony/monolog-bridge" />
+      <path value="$PROJECT_DIR$/escapade/vendor/rollerworks/password-strength-bundle" />
+      <path value="$PROJECT_DIR$/escapade/vendor/willdurand/jsonp-callback-validator" />
+      <path value="$PROJECT_DIR$/escapade/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/escapade/vendor/sabberworm/php-css-parser" />
+      <path value="$PROJECT_DIR$/escapade/vendor/symfony/swiftmailer-bundle" />
+      <path value="$PROJECT_DIR$/escapade/vendor/karser/karser-recaptcha3-bundle" />
+      <path value="$PROJECT_DIR$/escapade/vendor/friendsofsymfony/jsrouting-bundle" />
+      <path value="$PROJECT_DIR$/escapade/vendor/friendsofsymfony/ckeditor-bundle" />
+      <path value="$PROJECT_DIR$/escapade/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/escapade/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/escapade/vendor/google/recaptcha" />
+      <path value="$PROJECT_DIR$/escapade/vendor/tattali/calendar-bundle" />
+      <path value="$PROJECT_DIR$/escapade/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/escapade/vendor/twilio/sdk" />
+      <path value="$PROJECT_DIR$/escapade/vendor/excelwebzone/recaptcha-bundle" />
+      <path value="$PROJECT_DIR$/escapade/vendor/rollerworks/password-strength-validator" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.1">
+    <option name="suggestChangeDefaultLanguageLevel" value="false" />
+  </component>
   <component name="PhpUnit">
     <phpunit_settings>
       <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/escapade/vendor/autoload.php" />

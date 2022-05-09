@@ -3,15 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use App\Repository\ReclamationRepository;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-
 
 /**
  * Reclamation
  *
  * @ORM\Table(name="reclamation", indexes={@ORM\Index(name="Fk_UtilisateurReclamation", columns={"idClient"})})
- * @ORM\Entity(repositoryClass=ReclamationRepository::class)
+ * @ORM\Entity
  */
 class Reclamation
 {

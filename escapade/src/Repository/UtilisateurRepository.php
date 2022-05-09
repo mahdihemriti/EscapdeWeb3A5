@@ -45,6 +45,15 @@ class UtilisateurRepository extends ServiceEntityRepository
         }
     }
 
+    public function findbyNom($nom){
+        return $this->createQueryBuilder('e')
+            ->where('e.nom LIKE :nom')
+            ->setParameter('nom', '%'.$nom.'%')
+            ->getQuery()
+            ->getResult();
+    }
+
+
     // /**
     //  * @return Utilisateur[] Returns an array of Utilisateur objects
     //  */

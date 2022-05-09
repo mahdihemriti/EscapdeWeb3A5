@@ -1,0 +1,37 @@
+<br>
+<br>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for utilisateur in utilisateurs %}
+        <tr>
+            <td>{{ utilisateur.nom }}</td>
+            <td>{{ utilisateur.prenom }}</td>
+            <td>{{ utilisateur.email }}</td>
+            <td>
+                <a href="{{ path('app_utilisateur_showBack', {'id': utilisateur.id}) }}">afficher</a>
+
+            </td>
+            <td>
+                <a href="{{ path('app_user_block', {'id': utilisateur.id}) }}">blocker</a>
+
+            </td>
+
+        </tr>
+
+    {% else %}
+        <tr>
+            <td colspan="12">no records found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+

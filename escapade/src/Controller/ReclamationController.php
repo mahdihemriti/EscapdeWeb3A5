@@ -41,7 +41,7 @@ class ReclamationController extends AbstractController
 
             $reclamationRepository->add($reclamation);
             //return $this->redirectToRoute('app_reclamation_index', [], Response::HTTP_SEE_OTHER);
-            return $this->render('front/homeConnected.html.twig', [
+            return $this->render('Front/index.html.twig', [
                 'utilisateur' => $utilisateur,
             ]);
         }

@@ -1,17 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Utilisateur{% endblock %}
-{% block logIn %}
-    <li><a href="{{ path ('reclamation') }}">Réclamation</a></li>
-    <li><a href="{{ path ('panier') }}"><i class='icon-shopping-cart'></i></a></li>
-    <li>
-        <a href="{{ path ('home') }}"class="fh5co-sub-ddown"><i class="icon-user"></i></a>
-        <ul class="fh5co-sub-menu">
-            <li><a href="{{ path ('app_utilisateur_show',{id: utilisateur.id}) }}">Profil</a></li>
-            <li><a href="{{ path('home') }}">deconnexion</a></li>
-        </ul>
-    </li>
-{% endblock %}
 
 
 {% block content %}

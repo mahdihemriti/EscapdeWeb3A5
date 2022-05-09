@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Commentaire
  *
- * @ORM\Table(name="commentaire", indexes={@ORM\Index(name="Fk_Clientcommentaireutilisateur", columns={"idClient"})})
- * @ORM\Entity
+ * @ORM\Table(name="commentaire", indexes={@ORM\Index(name="Fk_Clientcommentaireutilisateur", columns={"idClient"}), @ORM\Index(name="Fk_ClientcommentaireBlog", columns={"idBlog"})})
+ * @ORM\Entity(repositoryClass=CommentaireRepository::class)
  */
 class Commentaire
 {
@@ -24,16 +24,16 @@ class Commentaire
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=50, nullable=false)
+     * @ORM\Column(name="description", type="string", length=255, nullable=false)
      */
     private $description;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="date", nullable=false)
+     * @ORM\Column(name="date", type="date", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
      */
-    private $date;
+    private $date = 'CURRENT_TIMESTAMP';
 
     /**
      * @var \Utilisateur
@@ -44,6 +44,16 @@ class Commentaire
      * })
      */
     private $idclient;
+
+    /**
+     * @var \Blog
+     *
+     * @ORM\ManyToOne(targetEntity="Blog")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idBlog", referencedColumnName="id")
+     * })
+     */
+    private $idblog;
 
     public function getId(): ?int
     {
@@ -82,6 +92,18 @@ class Commentaire
     public function setIdclient(?Utilisateur $idclient): self
     {
         $this->idclient = $idclient;
+
+        return $this;
+    }
+
+    public function getIdblog(): ?Blog
+    {
+        return $this->idblog;
+    }
+
+    public function setIdblog(?Blog $idblog): self
+    {
+        $this->idblog = $idblog;
 
         return $this;
     }
