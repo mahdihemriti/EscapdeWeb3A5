@@ -149,6 +149,9 @@
     "myclabs/deep-copy": {
         "version": "1.11.0"
     },
+    "necrox87/yii2-nudity-detector": {
+        "version": "dev-master"
+    },
     "nikic/php-parser": {
         "version": "v4.13.2"
     },

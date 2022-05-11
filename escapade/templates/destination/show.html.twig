@@ -1,0 +1,73 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block content %}
+
+    <h1>Destination</h1>
+<br>
+    <br>
+    <table class="table table-striped">
+        <tbody>
+
+            <tr>
+                <th>PAYS</th>
+                <td>{{ dest.pays }}</td>
+            </tr>
+            <tr>
+                <th>VILLE</th>
+                <td>{{ dest.ville }}</td>
+            </tr>
+            <tr>
+                <th>IMAGE</th>
+                <td>
+                    <img src="{{ asset('images/' ~ dest.img) }}" width="50" height="50">
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+         <a class="btn btn-primary " href="{{ path('app_destination_index') }}">Retour à la liste</a>
+
+         <a class="btn btn-primary " href="{{ path('app_destination_edit', {'id': dest.id}) }}">Modifier</a>
+
+
+    <br>
+
+    <br>
+
+
+
+    <!-- Button trigger modal -->
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+       Supprimer
+    </button>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">ALERT</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Êtes-vous sûr de bien vouloir supprimer cet élément?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+
+                    {{ include('destination/_delete_form.html.twig') }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
+    </script>
+{% endblock %}

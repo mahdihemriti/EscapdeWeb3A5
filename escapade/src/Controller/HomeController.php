@@ -19,15 +19,7 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController','u'=>$user,
         ]);
     }
-    /**
-     * @Route("/hotel", name="hotel")
-     */
-    public function afficheH(): Response
-    {
-        return $this->render('Front/hotel.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
-    }
+
 
     /**
      * @Route("/moyenT", name="moyenT")

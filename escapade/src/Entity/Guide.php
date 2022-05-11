@@ -2,69 +2,64 @@
 
 namespace App\Entity;
 
+use App\Repository\GuideRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Guide
- *
- * @ORM\Table(name="guide", indexes={@ORM\Index(name="FK_SiteTouristiqueGuide", columns={"idSiteTouristique"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=GuideRepository::class)
  */
 class Guide
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
-     * @var string
+     *  @Assert\NotBlank(message=" nom doit etre non vide")
+     * @Assert\Length(
+     *      min = 5,
+     *      minMessage=" Entrer un nom au moin de 5 caracteres"
      *
-     * @ORM\Column(name="nom", type="string", length=20, nullable=false)
+     *     )
+     * @ORM\Column(type="string", length=255)
      */
     private $nom;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="pernom", type="string", length=20, nullable=false)
+     * @Assert\NotBlank(message="prenom  doit etre non vide")
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 100,
+     *      minMessage = "doit etre >=1 ",
+     *      maxMessage = "doit etre <=24" )
+     * @ORM\Column(type="string", length=24)
      */
     private $pernom;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nationnalite", type="string", length=20, nullable=false)
+     * @Assert\NotBlank(message="nat  :doit etre non vide")
+     * @ORM\Column(type="string", length=1000)
      */
     private $nationnalite;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=20, nullable=false)
+     * @Assert\NotBlank(message="email  :doit etre non vide")
+     * @ORM\Column(type="string", length=1000)
      */
     private $email;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="langue", type="string", length=10, nullable=false)
+     * @Assert\NotBlank(message="langue  :doit etre non vide")
+     * @ORM\Column(type="string", length=1000)
      */
     private $langue;
 
-    /**
-     * @var \Sitetourstique
-     *
-     * @ORM\ManyToOne(targetEntity="Sitetourstique")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idSiteTouristique", referencedColumnName="id")
-     * })
-     */
-    private $idsitetouristique;
+
+   // private $idSiteTouristique;
 
     public function getId(): ?int
     {
@@ -118,7 +113,6 @@ class Guide
 
         return $this;
     }
-
     public function getLangue(): ?string
     {
         return $this->langue;
@@ -126,22 +120,20 @@ class Guide
 
     public function setLangue(string $langue): self
     {
-        $this->langue = $langue;
+        $this->langue= $langue;
 
         return $this;
     }
 
-    public function getIdsitetouristique(): ?Sitetourstique
-    {
-        return $this->idsitetouristique;
-    }
+    //public function getIdSiteTouristique(): ?int
+   // {
+      //  return $this->idSiteTouristique;
+    //}
 
-    public function setIdsitetouristique(?Sitetourstique $idsitetouristique): self
-    {
-        $this->idsitetouristique = $idsitetouristique;
+    //public function setIdSiteTouristique(?int $idSiteTouristique): self
+    //{
+      //  $this->idSiteTouristique = $idSiteTouristique;
 
-        return $this;
-    }
-
-
+        //return $this;
+    //}
 }

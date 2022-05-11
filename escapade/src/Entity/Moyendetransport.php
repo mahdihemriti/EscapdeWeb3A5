@@ -3,12 +3,11 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\MoyendetransportRepository;
 
 /**
- * Moyendetransport
- *
- * @ORM\Table(name="moyendetransport", indexes={@ORM\Index(name="Fk_AgenceMoyen", columns={"idAgence"}), @ORM\Index(name="Fk_MoyenTransportDestination", columns={"idDestination"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=MoyendetransportRepository::class)
+ * @ORM\Table(name="moyendetransport", indexes={@ORM\Index(name="Fk_AgenceMoyen", columns={"idAgence"})})
  */
 class Moyendetransport
 {
@@ -52,29 +51,27 @@ class Moyendetransport
     /**
      * @var string
      *
-     * @ORM\Column(name="status", type="string", length=0, nullable=false)
+     * @ORM\Column(name="status", type="string", length=20, nullable=false)
      */
     private $status;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=100, nullable=false)
+     */
+    private $image;
+
+    /**
      * @var float
      *
-     * @ORM\Column(name="tarifJournee", type="float", precision=10, scale=0, nullable=false)
+     * @ORM\Column(name="tarifJourne", type="float", precision=10, scale=0, nullable=false)
      */
-    private $tarifjournee;
+    private $tarifjourne;
+
+
 
     /**
-     * @var \Destination
-     *
-     * @ORM\ManyToOne(targetEntity="Destination")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idDestination", referencedColumnName="id")
-     * })
-     */
-    private $iddestination;
-
-    /**
-     * @var \Agencedelocation
      *
      * @ORM\ManyToOne(targetEntity="Agencedelocation")
      * @ORM\JoinColumns({
@@ -148,33 +145,23 @@ class Moyendetransport
         return $this;
     }
 
-    public function getTarifjournee(): ?float
+    public function getImage(): ?string
     {
-        return $this->tarifjournee;
+        return $this->image;
     }
 
-    public function setTarifjournee(float $tarifjournee): self
+    public function setImage(string $image): self
     {
-        $this->tarifjournee = $tarifjournee;
+        $this->image = $image;
 
         return $this;
     }
 
-    public function getIddestination(): ?Destination
-    {
-        return $this->iddestination;
-    }
-
-    public function setIddestination(?Destination $iddestination): self
-    {
-        $this->iddestination = $iddestination;
-
-        return $this;
-    }
 
     public function getIdagence(): ?Agencedelocation
     {
         return $this->idagence;
+
     }
 
     public function setIdagence(?Agencedelocation $idagence): self
@@ -183,6 +170,20 @@ class Moyendetransport
 
         return $this;
     }
+
+    public function getTarifjourne(): ?float
+    {
+        return $this->tarifjourne;
+    }
+
+    public function setTarifjourne(float $tarifjourne): self
+    {
+        $this->tarifjourne = $tarifjourne;
+
+        return $this;
+    }
+
+
 
 
 }

@@ -76,7 +76,7 @@ class PromotionController extends AbstractController
             $em=$this->getDoctrine()->getManager();
             $em->persist($promotion);
             $em->flush();
-           /* $sid = 'AC025364ca8637a9f62bc9aa52443b9819';
+            $sid = 'AC025364ca8637a9f62bc9aa52443b9819';
             $token = 'fe377b1bcbf67998514d97d68371e022';
             $sms = new \Twilio\Rest\Client($sid, $token);
             $sms->messages->create(
@@ -86,7 +86,7 @@ class PromotionController extends AbstractController
                     'body' => 'BONNE NOUVELLE ! profitez de notre nouvelle promotion'
 
                 ]
-            );*/
+            );
             foreach ($utilisateurs as $utilisateur ) {
 
                 if($utilisateur->getRole()=="CLIENT"){

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+
+{% block content %}
+<script src="https://kit.fontawesome.com/a934e8d7df.js" crossorigin="anonymous"></script>
+
+<div id="fh5co-tours" class="fh5co-section-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+                <h3>Popular hotel &amp; hostel destinations</h3>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            </div>
+        </div>
+
+
+
+
+        <div class="row row-bottom-padded-md"  id="containerr">
+            {% for u in agence %}
+            <div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn" >
+                <div href="#"><img src="{{ asset('uploads/agence/'~u.image)}}" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+                    <div class="desc">
+                        <span></span>
+                        <h3>{{ u.libelle }}</h3>
+                        <span>{{ u.adresse }}</span>
+                        <span class="price">{{ u.numtel }}</span>
+                        <a class="btn btn-primary btn-outline" href="{{ path('detailFront',{'id':u.id})  }}">View Offers <i class="icon-arrow-right22"></i></a>
+                        <div class="post-share-options">
+                        <a onclick="loadDoc()" href="{{path('agence_like', {'id':u.id})}}" class="btn btn-link js-like-link">
+                            <i class="fa fa-heart"></i>
+                            <span class= "js-likes" >{{ u.likes  }} </span>
+                        </a>
+                            <div class="post-share-inner clearfix">
+                                <!-- Load Facebook SDK for JavaScript -->
+                                <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2F127.0.0.1%3A8000%2Farticle%2Fclient%2Fdisplay%2F{{ u.id }}&layout=button_count&size=small&width=91&height=20&appId" width="91" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}

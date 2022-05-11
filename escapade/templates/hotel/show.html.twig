@@ -1,0 +1,55 @@
+{% extends 'baseBack.html.twig' %}
+{% block content %}
+
+    <h1>Hotel</h1>
+    <br>
+    <br>
+    <table class="table table-striped">
+        <tbody>
+
+            <tr>
+                <th>Matricule fiscal</th>
+                <td>{{ hotel.matriculefiscale }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ hotel.nom }}</td>
+            </tr>
+            <tr>
+                <th>Nombre des étoiles</th>
+                <td>{{ hotel.nbretoile }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ hotel.description | raw | striptags | slice(0, 15) }}</td>
+            </tr>
+            <tr>
+                <th>Destination</th>
+                <td>{{ hotel.iddestination.pays }}</td>
+            </tr>
+            <tr>
+                <th>Nombre des chambres Réservées</th>
+                <td>{{ hotel.nbchambretotal }}</td>
+            </tr>
+            <tr>
+                <th>Nombre totales des chambres</th>
+                <td>{{ hotel.maxchambre }}</td>
+            </tr>
+            <tr>
+                <th>Image hôtel</th>
+                <td>
+                    <img src="{{ asset('images/' ~ hotel.imghotel ) }}" width="50" height="50"></td>
+
+            </tr>
+        </tbody>
+    </table>
+
+    <a  class="btn btn-primary " href="{{ path('app_hotel_index') }}">Retour à la liste</a>
+    <br>
+    <br>
+
+    <a  class="btn btn-primary " href="{{ path('app_hotel_edit', {'idhotel': hotel.idhotel}) }}">Modifier</a>
+    <br>
+
+    {{ include('hotel/_delete_form.html.twig') }}
+{% endblock %}

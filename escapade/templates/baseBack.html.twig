@@ -65,9 +65,9 @@
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Voyage:</h6>
-                    <a class="collapse-item" href="{{ path ('destination') }}">Destinaton</a>
-                    <a class="collapse-item" href="{{ path ('hotelBack') }}">Hôtel</a>
-                    <a class="collapse-item" href="{{ path ('chambreBack') }}">Chambre</a>
+                    <a class="collapse-item" href="/destination">Destinaton</a>
+                    <a class="collapse-item" href="/hotel/">Hôtel</a>
+                    <a class="collapse-item" href="/chambre/">Chambre</a>
                     <a class="collapse-item" href="{{ path ('guideBack') }}">Guide</a>
                     <a class="collapse-item" href="{{ path ('siteTBack') }}">Site tourstique</a>
                     <a class="collapse-item" href="{{ path ('MoyenTBack') }}">Moyen de transport</a>
@@ -91,6 +91,12 @@
                     <a class="collapse-item" href="/facture/">Panier</a>
                     <a class="collapse-item" href="/blog/">Blog</a>
                     <a class="collapse-item" href="/commentaire/">Commentaire</a>
+                    <span>Guide</span>
+                    <a class="collapse-item" href="/addguide/">Ajouter Guide</a>
+                    <a class="collapse-item" href="/listguides/">Liste des guides (PDF)</a>
+                    <span>Site touristique</span>
+                    <a class="collapse-item" href="/addsite/">Ajouter Site touristique</a>
+                    <a class="collapse-item" href="/listsite/">Liste des sites (PDF)</a>
 
                 </div>
             </div>
@@ -209,7 +215,7 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ app.user.username }}</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{% if app.user  %}{{ app.user.username }}{% endif %}</span>
                             <img class="img-profile rounded-circle"
                                  src="{{ asset('images/undraw_profile.svg') }}">
                         </a>

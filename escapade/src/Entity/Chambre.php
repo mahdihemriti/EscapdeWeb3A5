@@ -3,15 +3,22 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ChambreRepository;
+use App\Repository\DestinationRepository;
+use App\Repository\HotelRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Chambre
  *
  * @ORM\Table(name="chambre", indexes={@ORM\Index(name="Fk_HotelChambre", columns={"idHotel"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=ChambreRepository::class)
+
  */
 class Chambre
 {
+
+
     /**
      * @var int
      *
@@ -180,6 +187,8 @@ class Chambre
 
         return $this;
     }
+
+
 
 
 }

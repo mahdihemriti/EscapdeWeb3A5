@@ -32,27 +32,21 @@ class FactureController extends AbstractController
     /**
      * @Route("/new", name="app_facture_new", methods={"GET", "POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request,PromotionRepository $promotionRepository): Response
     {
         $facture = new Facture();
-        $form = $this->createForm(FactureType::class, $facture);
-        $form->add('Ajouter',SubmitType::class);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+        $utilisateur=$this->getUser();
+        $promotion=$promotionRepository->findPromoActive();
             $facture->setDate(new \DateTime('now'));
-            $facture->setPrixfinal($facture->getPrixtotal() -(($facture->getPrixtotal()*$facture->getIdpromotion()->getTaux())/100));
-
+            $facture->setPrixfinal($request->get('prixF'));
+        $facture->setPrixtotal($request->get('prixT'));
+        $facture->setIdclient($utilisateur);
+        $facture->setIdpromotion($promotion[0]);
             $em=$this->getDoctrine()->getManager();
             $em->persist($facture);
             $em->flush();
 
             return $this->redirectToRoute('app_facture_index');
-        }
-
-        return $this->render('facture/new.html.twig', [
-
-            'form' => $form->createView()
-        ]);
     }
 
     /**

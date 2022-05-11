@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8b5984f853acb0be5ca3d38e4825f6ed",
+    "content-hash": "e49af17741d72af8f769af410fb02fb6",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2072,6 +2072,52 @@
                 }
             ],
             "time": "2022-03-13T20:29:46+00:00"
+        },
+        {
+            "name": "necrox87/yii2-nudity-detector",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/necrox87/yii2-nudity-detector.git",
+                "reference": "59474b1480f5ed53a17f06551318d30c3765d143"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/necrox87/yii2-nudity-detector/zipball/59474b1480f5ed53a17f06551318d30c3765d143",
+                "reference": "59474b1480f5ed53a17f06551318d30c3765d143",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "necrox87\\NudityDetector\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Germani",
+                    "email": "necrox87@gmail.com"
+                }
+            ],
+            "description": "This algorithm tries to detect nudity in the image based on the amount os skin colors in it. Based on work of FreebieStock (https://github.com/FreebieStock/php-nudity-detector)",
+            "keywords": [
+                " nudity detector",
+                "library",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/necrox87/yii2-nudity-detector/issues",
+                "source": "https://github.com/necrox87/yii2-nudity-detector/tree/master"
+            },
+            "time": "2015-10-31T18:50:24+00:00"
         },
         {
             "name": "phenx/php-font-lib",
@@ -10504,7 +10550,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "necrox87/yii2-nudity-detector": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

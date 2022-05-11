@@ -1,0 +1,53 @@
+
+
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div id="fh5co-tours" class="fh5co-section-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+                    <h3></h3>
+                    <p>Nos chambres disponibles avec votre choix</p>
+                </div>
+            </div>
+            <div class="row row-bottom-padded-md">
+
+                <div class="col-md-12 animate-box">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <br>
+                            <br>
+                            <h2>Veuillez choisir la chambre que vous plait</h2>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="row row-bottom-padded-md">
+                {% for chambre in chambres %}
+                    <div class="col-md-3 col-sm-1 fh5co-tours animate-box" data-animate-effect="fadeIn">
+                        <div href="#">
+                            <img src="{{ asset('images/' ~ chambre.img ) }}"
+                                 alt="{{ chambre.num }}" class="img-responsive" height="50" width="600" >
+                            <div class="desc">
+                                <span></span>
+                                <h3>{{ chambre.prixNuit}}</h3>
+                                <h3>Ville: {{ chambre.Type}} {{ chambre.vueSurMer}}  </h3>
+                                <a class="btn btn-primary " href="{{ path('app_reservation_chambre_new', {'idC': chambre.id , 'checkIn': checkIn ,'checkOut': checkOut} ) }}"> Réserver </a>
+
+                            </div>
+                        </div>
+
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+

@@ -1,0 +1,30 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block javascripts %}
+<script>
+    function change(){
+        pays=document.getElementById("pays").selected
+    }
+</script>
+{% endblock %}
+
+{% block content %}
+    <h1>Créer une nouvelle destination</h1>
+    <br> <br>
+
+    <select class="form-select" aria-label="Pays" id="pays" onselect="change()">
+        <option selected value="">Choisir un pays</option>
+        <option value="France">France</option>
+        <option value="Italy">Italy</option>
+        <option value="Belgique">Belgique</option>
+    </select>
+    <select class="form-select" aria-label="Pays" id="ville">
+        <option selected value="">Choisir une ville</option>
+
+    </select>
+
+    <button name="button" type="submit" class="btn-success">Enregistrer</button>
+
+
+    <script src="{{ asset('js/app.js')}}"></script>
+{% endblock %}

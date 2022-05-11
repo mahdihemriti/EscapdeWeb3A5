@@ -1,0 +1,57 @@
+{% extends 'baseBack.html.twig' %}
+
+
+
+{% block content %}
+    <h1>Chambre</h1>
+    <br>
+    <br>
+    <table class="table table-striped">
+        <tbody>
+
+            <tr>
+                <th>Numéro</th>
+                <td>{{ chambre.num }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ chambre.type }}</td>
+            </tr>
+            <tr>
+                <th>Vue sur mer</th>
+                <td>{{ chambre.vuesurmer }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ chambre.description }}</td>
+            </tr>
+            <tr>
+                <th>Prix nuitée</th>
+                <td>{{ chambre.prixnuit }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ chambre.status }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td> <img src="{{ asset('images/' ~ chambre.img ) }}" width="50" height="50"></td>
+            </tr>
+            <tr>
+
+                <td>
+                    <a   class="btn btn-primary " href="{{ path('app_chambre_index') }}">Retour à la liste</a>
+                </td>
+                <td>
+                    <a  class="btn btn-primary " href="{{ path('app_chambre_edit', {'id': chambre.id}) }}">Modifier</a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+
+
+    {{ include('chambre/_delete_form.html.twig') }}
+{% endblock %}

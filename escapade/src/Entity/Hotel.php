@@ -1,20 +1,23 @@
 <?php
 
 namespace App\Entity;
-
+use App\Repository\ChambreRepository;
+use App\Repository\DestinationRepository;
+use App\Repository\HotelRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Hotel
  *
  * @ORM\Table(name="hotel", indexes={@ORM\Index(name="FK_HotelDestination", columns={"idDestination"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=HotelRepository::class)
  */
 class Hotel
 {
     /**
      * @var int
-     *
+
      * @ORM\Column(name="idHotel", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -23,62 +26,81 @@ class Hotel
 
     /**
      * @var string
-     *
+     *@Assert\NotBlank(message="Ce champ ne doit pas être vide")
      * @ORM\Column(name="matriculeFiscale", type="string", length=20, nullable=false)
      */
     private $matriculefiscale;
 
     /**
      * @var string
-     *
+     *@Assert\NotBlank(message="Ce champ ne doit pas être vide")
+   * @Assert\Type("string")
      * @ORM\Column(name="nom", type="string", length=20, nullable=false)
      */
     private $nom;
 
     /**
      * @var int
-     *
+     * @Assert\Positive(message="Le nombre des * doit être positif")
+     *@Assert\NotBlank(message="Ce champ ne doit pas être vide")
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 5,
+     *      notInRangeMessage = "Le nombre des étoiles=  {{ min }} min et {{ max }}max ",
+     * )
      * @ORM\Column(name="nbrEtoile", type="integer", nullable=false)
      */
     private $nbretoile;
 
     /**
      * @var string
-     *
+     *@Assert\NotBlank(message="Ce champ ne doit pas être vide")
      * @ORM\Column(name="description", type="string", length=80, nullable=false)
+     * * @Assert\Length(min=15)
      */
     private $description;
 
+
     /**
      * @var int
-     *
+     *@Assert\NotBlank(message="Ce champ ne doit pas être vide")
+     * @Assert\Positive(message="Le nombre des chambres total doit être positif")
      * @ORM\Column(name="nbChambreTotal", type="integer", nullable=false)
+     * @Assert\Expression("this.getNbchambretotal() < this.getMaxchambre()",message="le nombre total dse chambres doit être infireure à max chambre ")
      */
     private $nbchambretotal;
 
     /**
      * @var int
-     *
+     * @Assert\Positive(message="Le nombre des chambres total doit être positif")
+     *@Assert\NotBlank(message="Ce champ ne doit pas être vide")
      * @ORM\Column(name="maxChambre", type="integer", nullable=false)
      */
     private $maxchambre;
 
     /**
      * @var string|null
-     *
+
+     * @Assert\Image(
+     *     allowLandscape = true,
+     *     allowPortrait = true
+     * )
      * @ORM\Column(name="imgHotel", type="string", length=255, nullable=true)
      */
     private $imghotel;
 
     /**
      * @var \Destination
-     *
+     *@Assert\NotBlank(message="Ce champ ne doit pas être vide")
      * @ORM\ManyToOne(targetEntity="Destination")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idDestination", referencedColumnName="id")
      * })
      */
     private $iddestination;
+
+
+
 
     public function getIdhotel(): ?int
     {
@@ -180,6 +202,18 @@ class Hotel
 
         return $this;
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

@@ -1434,8 +1434,8 @@ img {
 .img-responsive {
   display: block;
   max-width: 1000%;
-  height: 150px;
-  width: 560px;
+  height: 350px;
+
 }
 
 .img-rounded {

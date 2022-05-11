@@ -17,34 +17,10 @@ class BackController extends AbstractController
             'controller_name' => 'BackController',
         ]);
     }
-    /**
-     * @Route("/destination", name="destination")
-     */
-    public function afficheD(): Response
-    {
-        return $this->render('back/destination.html.twig', [
-            'controller_name' => 'BackController',
-        ]);
-    }
 
-    /**
-     * @Route("/hotelBack", name="hotelBack")
-     */
-    public function afficheHB(): Response
-    {
-        return $this->render('back/hotelBack.html.twig', [
-            'controller_name' => 'BackController',
-        ]);
-    }
-    /**
-     * @Route("/chambreBack", name="chambreBack")
-     */
-    public function afficheCB(): Response
-    {
-        return $this->render('back/chambreBack.html.twig', [
-            'controller_name' => 'BackController',
-        ]);
-    }
+
+
+
     /**
      * @Route("/guideBack", name="guideBack")
      */

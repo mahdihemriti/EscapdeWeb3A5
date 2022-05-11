@@ -53,6 +53,13 @@ class PromotionRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    public function findPromoActive(){
+        return $this->createQueryBuilder('p')
+            ->where('p.datefin >=  CURRENT_DATE()')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult();
+    }
 
 
 
