@@ -1,0 +1,24 @@
+{% extends 'baseLogin.html.twig' %}
+
+{% block title %}forgetten_pass{% endblock %}
+
+{% block content %}
+    <div class="p-5">
+        <div class="text-center">
+            <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+        </div>
+        {{ form_start(emailform) }}
+            <div class="form-group">
+                {{ form_widget(emailform) }}
+            </div>
+
+        <button class="btn btn-primary btn-user btn-block">Envoyer</button>
+
+
+        {{ form_end(emailform) }}
+        <hr>
+        <div class="text-center">
+            <a class="small" href="{{ path ('signUp') }}">Create an Account!</a>
+        </div>
+    </div>
+{% endblock %}

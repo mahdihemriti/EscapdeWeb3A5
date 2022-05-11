@@ -1,0 +1,41 @@
+{% extends 'baseBack.html.twig' %}
+
+
+
+{% block content %}
+    <h1>Réservations chambres</h1>
+    <br> <br><br><br><br><br>
+    <br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+
+                <th>DATE ARRIVEE</th>
+                <th>DATE RETOUR</th>
+                <th>CHAMBRE</th>
+                <th>CLIENT</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservation_chambre in reservation_chambres %}
+            <tr>
+
+                <td>{{ reservation_chambre.datearrivee ? reservation_chambre.datearrivee|date('Y-m-d') : '' }}</td>
+                <td>{{ reservation_chambre.datealler ? reservation_chambre.datealler|date('Y-m-d') : '' }}</td>
+                <td>{{ reservation_chambre.idchambre.num}}</td>
+                <td>{{ reservation_chambre.idclient.nom}}</td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Pas de reservations chambres trouvées</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
+
+

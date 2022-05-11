@@ -1,0 +1,31 @@
+<br>
+<br>
+
+<table class="table">
+    <thead>
+    <tr>
+
+        <th>Description</th>
+        <th>Date</th>
+        <th>actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for commentaire in commentaires %}
+        <tr>
+            <td>{{ commentaire.description | raw}}</td>
+            <td>{{ commentaire.date ? commentaire.date|date('Y-m-d') : '' }}</td>
+
+            <td>
+                <a href="{{ path('app_commentaire_show', {'id': commentaire.id}) }}">show</a>
+
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="4">no records found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+

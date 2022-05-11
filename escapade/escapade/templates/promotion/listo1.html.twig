@@ -1,0 +1,42 @@
+{% block content %}
+<div class="fa fa-chevron-down">
+    <div class="dropdown-item">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h1 align="center">Liste des promotions</h1>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+<table id="example" class="dropdown-item" border="2">
+    <thead class=" fa fa-chevron-down">
+    <tr>
+        <th>Taux</th>
+        <th>Datedebut</th>
+        <th>Datefin</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for promotion in promotions %}
+        <tr>
+
+            <td>{{ promotion.taux }}</td>
+            <td>{{ promotion.datedebut ? promotion.datedebut|date('Y-m-d') : '' }}</td>
+            <td>{{ promotion.datefin ? promotion.datefin|date('Y-m-d') : '' }}</td>
+
+
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="5">Acune promotion disponible</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}
+

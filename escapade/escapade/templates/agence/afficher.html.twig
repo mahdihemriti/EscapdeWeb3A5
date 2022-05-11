@@ -1,0 +1,77 @@
+{% extends "baseBack.html.twig" %}
+{% block content %}
+
+
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Agence de location</h6>
+        </div>
+        <form method="POST" class="form-horizontal " >
+            <div class="row" style="padding-left: 100px" >
+                <select class="form-select" name="sort"  style="width: 50%"  >
+                    <option value="libelle">libelle</option>
+                    <option value="adresse">adresse </option>
+                    <option value="default">default </option>
+                </select>
+                <input type="submit" class="btn btn-purple btn-rounded " style="width: 20%" value="Trier">
+
+            </div>
+        </form>
+        <div>
+            <a  style=" position:absolute;right:10%;top:1% ;" class="btn btn-icon waves-effect waves-light btn-success m-b-5" href="{{ path('agence_new') }}"> <i class="fa fa-plus dark"></i> </a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="datatable" class="table table-bordered">
+
+                <thead>
+                                <th>Libelle</th>
+                                <th>Addresse</th>
+                                <th>Telephone</th>
+                                <th>email</th>
+                                <th>image</th>
+                                <th>edit</th>
+                                <th>delete</th>
+
+                                </thead>
+                                {% for u in agence  %}
+                                <tbody>
+                                <td>{{ u.libelle }}</td>
+                                <td>{{ u.adresse }}</td>
+                                <td>{{ u.numtel }}</td>
+                                <td>{{ u.email }}</td>
+                                <td><img src="{{ asset('uploads/agence/'~ u.image)  }}" alt="" width="50">
+                                </td>
+                                <td>
+
+                                    <a type="button" href="{{ path('modifyagence', {'id': u.id}) }}" class="btn btn-primary btn-icon rounded-pill"><i class=" dripicons-document-edit">Edit</i></a>
+                                </td>
+                                <td>
+                                    <form method="post" action="{{ path('agence_delete', {'id': u.id}) }}"  onsubmit="return confirm('Voulez vous supprimer cette agence ?')">
+                                        <input type="hidden" name="_method" value="SUP">
+                                        <input type="hidden" name="_token" value="{{u.id }}">
+                                        <button type="submit" value="supprimer" class="btn btn-danger btn-icon  rounded-pill"><i class="ti-trash">Delete</i></button>
+                                    </form>
+                                </td>
+                                </tbody>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

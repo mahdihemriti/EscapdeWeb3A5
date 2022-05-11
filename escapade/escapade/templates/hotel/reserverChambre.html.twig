@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{%  block content %}
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="flights">
+        <div class="row">
+<form action="{{ path('find',{'id': id}) }}r">
+            <div class="col-xxs-12 col-xs-6 mt alternate">
+                <div class="input-field">
+                    <label for="date-start">Date Aller:</label>
+                    <input name="date-start" type="date" class="form-control" id="date-start" placeholder="mm/dd/yyyy">
+                </div>
+            </div>
+            <div class="col-xxs-12 col-xs-6 mt alternate">
+                <div class="input-field">
+                    <label for="date-end">Date Retour:</label>
+                    <input  name="date-end" type="date" class="form-control" id="date-end" placeholder="mm/dd/yyyy">
+                </div>
+            </div>
+<br> <br>
+            <div class="col-sm-12 col-s-6 mt">
+                <section>
+                    <label for="class">Type:</label>
+                    <select name="type">
+                        <option value="" >Choisir </option>
+                        <option value="simple">Single</option>
+                        <option value="doublee">Double</option>
+
+                    </select>
+                </section>
+            </div>
+            <div class="col-sm-12 col-xs-6 mt">
+                <section>
+                    <label for="class">Vue sur mer:</label>
+                    <select name="vsm">
+                        <option value="" >Choisir</option>
+                        <option value="yes">OUI</option>
+                        <option value="no">NON</option>
+
+                    </select>
+                </section>
+            </div>
+            <div class="col-md-12 col-xs-6 mt">
+                <input type="submit" class="btn btn-primary btn-block" value="Rechercher chambre">
+            </div>
+</form>
+        </div>
+
+    </div>
+</div>
+
+{%  endblock  %}

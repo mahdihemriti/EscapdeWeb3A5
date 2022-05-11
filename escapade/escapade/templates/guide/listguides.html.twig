@@ -1,0 +1,54 @@
+{% extends 'basepdf.html.twig' %}
+
+
+{% block body %}
+
+
+    <div class="row" style="display: flex;align-items: center;justify-content: center;margin-top: 150px;">
+
+        <div class="col-lg-6">
+
+            <div class="card">
+                <div class="card-body">
+                    <a href="{{ path('addGuide') }}"><i class="ri-arrow-left-circle-fill" style="font-size: 50px;"></i></a>
+                    <h5 class="card-title">Liste des Guides</h5>
+
+                    <!-- Table with stripped rows -->
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>nom</th>
+                            <th>Prenom</th>
+                            <th>Nationnalite</th>
+                            <th>Email</th>
+                            <th>Langue</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for guide in b %}
+                            <tr>
+                                <td>{{ guide.nom }}</td>
+                                <td>{{ guide.pernom }}</td>
+                                <td>{{ guide.nationnalite }}</td>
+                                <td>{{ guide.email }}</td>
+                                <td>{{ guide.langue }}</td>
+
+                            </tr>
+
+
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                    <!-- End small tables -->
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+{% endblock %}
