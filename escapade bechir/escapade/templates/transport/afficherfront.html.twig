@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+
+{% block content %}
+<div id="fh5co-car" class="fh5co-section-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+                <h3>Car Rent In U.S.</h3>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            </div>
+        </div>
+        <div class="row row-bottom-padded-md">
+            {% for u in transport %}
+
+            <div class="col-md-6 animate-box">
+                <div class="car">
+                    <div class="one-4">
+                        <h3>{{ u.libelle }}</h3>
+                        <span class="price">{{ u.tarifjourne }}$<small> / day</small></span>
+                        <span class="price">capacite : <small> {{ u.capacite }}</small></span>
+                        <span class="price">description : <small> {{ u.description }}</small></span>
+                        <span class="price">statut : <small>{{ u.status }}</small></span>
+                    </div>
+
+                    <img class="one-1" src="{{ asset('uploads/transport/'~u.image)}}">
+
+                </div>
+            </div>
+
+            {% endfor %}
+
+
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}
